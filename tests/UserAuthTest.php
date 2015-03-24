@@ -4,7 +4,8 @@ class UserAuthTest extends TestCase {
 
 	public function setUp() {
 		parent::setUp();
-		$this->mock = Mockery::mock('App\User2');
+		$this->mock = Mockery::mock('App\User');
+        $this->seed('UserTableSeeder');
 	}
 
 	public function tearDown() {
@@ -12,11 +13,15 @@ class UserAuthTest extends TestCase {
 		Mockery::close();
 	}
 
-	public function test_mock() {
-		$this->mock->shouldReceive('all')->once();
-		$this->app->instance('User', $this->mock);
-		$this->call('GET', 'users');
-		$this->assertResponseOk();
-	}
+    public function test_authentication() {
+        $cres = ['username'=>'test', 'password'=>'failpassword'];
+        $this->assertFalse(Auth::attempt($cres));
+        $cres['password'] = 'test';
+        $this->assertTrue(Auth::attempt($cres));
+    }
+
+    public function test_login() {
+
+    }
 
 }
