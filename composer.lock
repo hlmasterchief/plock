@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b76e70e8232dcf4afb05a4034e14b33c",
+    "hash": "8a5c41b37b777e5ab230afa35da7db39",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -410,16 +410,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.0.18",
+            "version": "v5.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "b21be29a1fb12c84ab4e0b723e9c11492d0b25fe"
+                "reference": "419d3f485ce7946cace4325ef19a30e1d5543951"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/b21be29a1fb12c84ab4e0b723e9c11492d0b25fe",
-                "reference": "b21be29a1fb12c84ab4e0b723e9c11492d0b25fe",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/419d3f485ce7946cace4325ef19a30e1d5543951",
+                "reference": "419d3f485ce7946cace4325ef19a30e1d5543951",
                 "shasum": ""
             },
             "require": {
@@ -532,7 +532,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-03-21 16:10:01"
+            "time": "2015-03-24 13:36:37"
         },
         {
             "name": "league/flysystem",
@@ -2337,16 +2337,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.5.0",
+            "version": "4.5.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "5b578d3865a9128b9c209b011fda6539ec06e7a5"
+                "reference": "10f6685ca2cf5d8662b43a225ab853699821690b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/5b578d3865a9128b9c209b011fda6539ec06e7a5",
-                "reference": "5b578d3865a9128b9c209b011fda6539ec06e7a5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/10f6685ca2cf5d8662b43a225ab853699821690b",
+                "reference": "10f6685ca2cf5d8662b43a225ab853699821690b",
                 "shasum": ""
             },
             "require": {
@@ -2357,7 +2357,7 @@
                 "ext-spl": "*",
                 "php": ">=5.3.3",
                 "phpspec/prophecy": "~1.3.1",
-                "phpunit/php-code-coverage": "~2.0",
+                "phpunit/php-code-coverage": "~2.0,>=2.0.11",
                 "phpunit/php-file-iterator": "~1.3.2",
                 "phpunit/php-text-template": "~1.2",
                 "phpunit/php-timer": "~1.0.2",
@@ -2405,7 +2405,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-02-05 15:51:19"
+            "time": "2015-03-02 06:58:30"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2887,6 +2887,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "phpunit/phpunit": 20,
         "phpspec/phpspec": 20
     },
     "prefer-stable": false,
