@@ -20,7 +20,7 @@
 3. ...
 
 ### Database
-1. DBName = plock; auth = plock:plock  
+1. Edit .env.example and rename it to .env
 2. ...
 
 ### Configuration
