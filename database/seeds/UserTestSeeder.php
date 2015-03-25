@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class UserTableSeeder extends Seeder {
+class UserTestSeeder extends Seeder {
 
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class UserTableSeeder extends Seeder {
         DB::table('users')->delete();
 
         $user = new App\User();
-        $user->username = "test";
+        $user->slugname = "test";
         $user->email = "test@gmail.com";
         $user->password = bcrypt("test");
         $user->save();

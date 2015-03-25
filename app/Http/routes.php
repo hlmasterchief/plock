@@ -12,3 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+
+// Authenticaion Controller
+Route::get('/login', 'AuthenticationController@getLogin');
+Route::post('/login', 'AuthenticationController@postLogin');

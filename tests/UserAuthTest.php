@@ -4,8 +4,9 @@ class UserAuthTest extends TestCase {
 
 	public function setUp() {
 		parent::setUp();
-		$this->mock = Mockery::mock('App\User');
-        $this->seed('UserTableSeeder');
+        $this->user = Mockery::mock('\App\User');
+        $this->view = Mockery::mock('Illuminate\View\Factory');
+        $this->seed('UserTestSeeder');
 	}
 
 	public function tearDown() {
@@ -13,15 +14,54 @@ class UserAuthTest extends TestCase {
 		Mockery::close();
 	}
 
-    public function test_authentication() {
-        $cres = ['username'=>'test', 'password'=>'failpassword'];
-        $this->assertFalse(Auth::attempt($cres));
-        $cres['password'] = 'test';
-        $this->assertTrue(Auth::attempt($cres));
+    /**
+     * @test
+     */
+    public function it_shows_the_login_form() {
+        $this->view->shouldReceive('make')->once();
+        $this->app->instance('Illuminate\View\Factory', $this->view);
+        $response = $this->call('GET', '/login');
+        $this->assertResponseOk();
     }
 
-    public function test_login() {
+    /**
+     * @test
+     */
+    public function it_redirects_back_to_form_if_login_fail() {
+        $credentials = [
+            'email'     => 'test@gmail.com',
+            'password'  => 'failpassword',
+        ];
 
+        Auth::shouldReceive('attempt')
+                ->once()
+                ->with($credentials)
+                ->andReturn(false);
+
+        $this->call('POST', '/login', $credentials);
+
+        $this->assertRedirectedTo(
+            'login',
+            [],
+            ['message']
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function it_redirects_back_to_form_if_login_success() {
+        $credentials = [
+            'email'     => 'test@gmail.com',
+            'password'  => 'test',
+        ];
+
+        Auth::shouldReceive('attempt')
+                ->once()
+                ->with($credentials)
+                ->andReturn(true);
+
+        $this->call('POST', '/login', $credentials);
     }
 
 }
