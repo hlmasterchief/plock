@@ -58,7 +58,7 @@ class AuthenticationController extends Controller {
 		$credentials = $request->only('email', 'password');
 
 		if ($this->auth->attempt($credentials)) {
-			return redirect('/');
+			return redirect()->back();
 		} else {
 			return redirect()->action('AuthenticationController@getLogin')
 								->withInput($request->only('email'))

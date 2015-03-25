@@ -62,6 +62,8 @@ class UserAuthTest extends TestCase {
                     ->andReturn(true);
 
         $this->call('POST', '/login', $credentials);
+
+        $this->assertResponseStatus(302);
     }
 
 }

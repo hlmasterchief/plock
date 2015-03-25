@@ -13,6 +13,10 @@
 
 Route::get('/', 'WelcomeController@index');
 
-// Authenticaion Controller
+/**
+ * Authentication
+ */
 Route::get('/login', 'AuthenticationController@getLogin');
 Route::post('/login', 'AuthenticationController@postLogin');
+
+Route::get('/logout', 'AuthenticationController@getLogout');
