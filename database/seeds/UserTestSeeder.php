@@ -11,10 +11,8 @@ class UserTestSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('users')->delete();
-
         $user = new App\User();
-        $user->slugname = "test";
+        $user->username = "test";
         $user->email = "test@gmail.com";
         $user->password = bcrypt("test");
         $user->save();

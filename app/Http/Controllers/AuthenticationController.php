@@ -8,35 +8,16 @@ use Illuminate\Http\Request;
 class AuthenticationController extends Controller {
 
 	/**
-	 * Inject User model
-	 * @var \App\User
-	 */
-	protected $user;
-
-	/**
-	 * Inject View factory
-	 * @var \Illuminate\View\Factory
-	 */
-	protected $view;
-
-	/**
-	 * Inject Auth manager
-	 * @var \Illuminate\Auth\AuthManager
-	 */
-	protected $auth;
-
-	/**
 	 * Create a new controller instance.
 	 *
 	 * @return void
 	 */
 	public function __construct(\App\User $user,
-								\Illuminate\View\Factory $view,
-								\Illuminate\Auth\AuthManager $auth) {
+								\Illuminate\Auth\AuthManager $auth,
+								\Illuminate\View\Factory $view) {
 		$this->user = $user;
-		$this->view = $view;
 		$this->auth = $auth;
-
+		$this->view = $view;
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
@@ -55,13 +36,13 @@ class AuthenticationController extends Controller {
 	 * @return Response
 	 */
 	public function postLogin(\App\Http\Requests\LoginRequest $request) {
-		$credentials = $request->only('email', 'password');
+		$credentials = $request->only('username', 'password');
 
 		if ($this->auth->attempt($credentials)) {
-			return redirect()->back();
+			return redirect('/');
 		} else {
 			return redirect()->action('AuthenticationController@getLogin')
-								->withInput($request->only('email'))
+								->withInput($request->only('username'))
 								->with('flash_message', trans('authentication.not_matched'));
 		}
 	}

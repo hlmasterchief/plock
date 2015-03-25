@@ -7,7 +7,6 @@ class UserAuthTest extends TestCase {
         $this->user = $this->mock('\App\User');
         $this->view = $this->mock('Illuminate\View\Factory');
         $this->auth = $this->mock('Illuminate\Auth\AuthManager');
-        $this->seed('UserTestSeeder');
 	}
 
 	public function tearDown() {
@@ -29,8 +28,8 @@ class UserAuthTest extends TestCase {
      */
     public function it_redirects_back_to_form_if_login_fail() {
         $credentials = [
-            'email'     => 'test@gmail.com',
-            'password'  => 'failpassword',
+            'username'  => 'test',
+            'password'  => 'test',
         ];
 
         $this->auth->shouldReceive('attempt')
@@ -52,7 +51,7 @@ class UserAuthTest extends TestCase {
      */
     public function it_redirects_back_to_form_if_login_success() {
         $credentials = [
-            'email'     => 'test@gmail.com',
+            'username'  => 'test',
             'password'  => 'test',
         ];
 
@@ -63,7 +62,7 @@ class UserAuthTest extends TestCase {
 
         $this->call('POST', '/login', $credentials);
 
-        $this->assertResponseStatus(302);
+        $this->assertRedirectedTo('/');
     }
 
 }
