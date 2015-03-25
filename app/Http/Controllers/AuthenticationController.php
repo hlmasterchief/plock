@@ -18,6 +18,7 @@ class AuthenticationController extends Controller {
 		$this->user = $user;
 		$this->auth = $auth;
 		$this->view = $view;
+
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
@@ -39,7 +40,7 @@ class AuthenticationController extends Controller {
 		$credentials = $request->only('username', 'password');
 
 		if ($this->auth->attempt($credentials)) {
-			return redirect('/');
+			return redirect()->back();
 		} else {
 			return redirect()->action('AuthenticationController@getLogin')
 								->withInput($request->only('username'))

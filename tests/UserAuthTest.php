@@ -4,9 +4,9 @@ class UserAuthTest extends TestCase {
 
 	public function setUp() {
 		parent::setUp();
-        $this->user = $this->mock('\App\User');
-        $this->view = $this->mock('Illuminate\View\Factory');
+        $this->user = $this->mock('App\User');
         $this->auth = $this->mock('Illuminate\Auth\AuthManager');
+        $this->view = $this->mock('Illuminate\View\Factory');
 	}
 
 	public function tearDown() {
@@ -60,9 +60,9 @@ class UserAuthTest extends TestCase {
                     ->with($credentials)
                     ->andReturn(true);
 
-        $this->call('POST', '/login', $credentials);
+        Redirect::shouldReceive('back')->once();
 
-        $this->assertRedirectedTo('/');
+        $this->call('POST', '/login', $credentials);
     }
 
 }
