@@ -31,4 +31,10 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		Artisan::call('migrate');
 	}
 
+	protected function mock($class) {
+		$mock = Mockery::mock($class);
+		$this->app->instance($class, $mock);
+		return $mock;
+	}
+
 }

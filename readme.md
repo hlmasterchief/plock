@@ -6,6 +6,7 @@
 3. Controller:
   - Controller action naming: actionType + actionName (ex: postBookmark, getUser, ...)  
   - Comment each block inside action, encourage using commands bus
+  - Must have __construct() method with injection, even for using facades (see AuthenticationController for example)
 4. Model:
   - ...
 5. View:

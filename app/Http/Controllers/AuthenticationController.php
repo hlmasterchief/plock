@@ -20,13 +20,24 @@ class AuthenticationController extends Controller {
 	protected $view;
 
 	/**
+	 * Inject Auth manager
+	 * @var \Illuminate\Auth\AuthManager
+	 */
+	protected $auth;
+
+	/**
 	 * Create a new controller instance.
 	 *
 	 * @return void
 	 */
-	public function __construct(\App\User $user, \Illuminate\View\Factory $view) {
+	public function __construct(\App\User $user,
+								\Illuminate\View\Factory $view,
+								\Illuminate\Auth\AuthManager $auth) {
 		$this->user = $user;
 		$this->view = $view;
+		$this->auth = $auth;
+
+		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
 	/**
@@ -38,8 +49,31 @@ class AuthenticationController extends Controller {
 		return $this->view->make('authentication.login');
 	}
 
-	public function postLogin() {
+	/**
+	 * Authentication attempt
+	 *
+	 * @return Response
+	 */
+	public function postLogin(\App\Http\Requests\LoginRequest $request) {
+		$credentials = $request->only('email', 'password');
 
+		if ($this->auth->attempt($credentials)) {
+			return redirect('/');
+		} else {
+			return redirect()->action('AuthenticationController@getLogin')
+								->withInput($request->only('email'))
+								->with('flash_message', trans('authentication.not_matched'));
+		}
+	}
+
+	/**
+	 * Logout
+	 *
+	 * @return Response
+	 */
+	public function getLogout() {
+		$this->auth->logout();
+		return redirect()->back();
 	}
 
 }

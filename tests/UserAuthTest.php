@@ -4,8 +4,9 @@ class UserAuthTest extends TestCase {
 
 	public function setUp() {
 		parent::setUp();
-        $this->user = Mockery::mock('\App\User');
-        $this->view = Mockery::mock('Illuminate\View\Factory');
+        $this->user = $this->mock('\App\User');
+        $this->view = $this->mock('Illuminate\View\Factory');
+        $this->auth = $this->mock('Illuminate\Auth\AuthManager');
         $this->seed('UserTestSeeder');
 	}
 
@@ -19,7 +20,6 @@ class UserAuthTest extends TestCase {
      */
     public function it_shows_the_login_form() {
         $this->view->shouldReceive('make')->once();
-        $this->app->instance('Illuminate\View\Factory', $this->view);
         $response = $this->call('GET', '/login');
         $this->assertResponseOk();
     }
@@ -33,17 +33,17 @@ class UserAuthTest extends TestCase {
             'password'  => 'failpassword',
         ];
 
-        Auth::shouldReceive('attempt')
-                ->once()
-                ->with($credentials)
-                ->andReturn(false);
+        $this->auth->shouldReceive('attempt')
+                    ->once()
+                    ->with($credentials)
+                    ->andReturn(false);
 
         $this->call('POST', '/login', $credentials);
 
-        $this->assertRedirectedTo(
-            'login',
+        $this->assertRedirectedToAction(
+            'AuthenticationController@getLogin',
             [],
-            ['message']
+            ['flash_message']
         );
     }
 
@@ -56,10 +56,10 @@ class UserAuthTest extends TestCase {
             'password'  => 'test',
         ];
 
-        Auth::shouldReceive('attempt')
-                ->once()
-                ->with($credentials)
-                ->andReturn(true);
+        $this->auth->shouldReceive('attempt')
+                    ->once()
+                    ->with($credentials)
+                    ->andReturn(true);
 
         $this->call('POST', '/login', $credentials);
     }
