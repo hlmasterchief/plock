@@ -20,3 +20,6 @@ Route::get('/login', 'AuthenticationController@getLogin');
 Route::post('/login', 'AuthenticationController@postLogin');
 
 Route::get('/logout', 'AuthenticationController@getLogout');
+
+Route::get('/signup', 'AuthenticationController@getSignup');
+Route::post('/signup', 'AuthenticationController@postSignup');

@@ -58,4 +58,25 @@ class AuthenticationController extends Controller {
 		return redirect()->back();
 	}
 
+	/**
+	 * Display signup form
+	 *
+	 * @return Response
+	 */
+	public function getSignup() {
+		return $this->view->make('authentication.signup');
+	}
+
+	/**
+	 * Save user
+	 *
+	 * @return Response
+	 */
+	public function postSignup(\App\Http\Requests\SignupRequest $request) {
+		$credentials = $request->only('username', 'email', 'password');
+
+		User::create($credentials->all());
+
+		return redirect('/');
+	}
 }
