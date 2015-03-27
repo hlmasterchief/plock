@@ -20,9 +20,9 @@ class SignupRequest extends Request {
      */
     public function rules() {
         return [
-            'username'  =>  'required|unique:users',
-            'email'     =>  'required|email|unique:users'
-            'password'  =>  'required|confirmed',
+            'username'  =>  'required|min:4|unique:users',
+            'email'     =>  'required|email|unique:users',
+            'password'  =>  'required|min:6|confirmed',
         ];
     }
 

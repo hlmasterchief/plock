@@ -75,9 +75,10 @@ class AuthenticationController extends Controller {
      */
     public function postSignup(\App\Http\Requests\SignupRequest $request) {
         $credentials = $request->only('username', 'email');
-        $credentials['password'] = bcrypt($request->input('password'));
 
-        User::create($credentials->all());
+        $user = \App\User::create($credentials);
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
 
         return redirect()->action('AuthenticationController@getLogin')
                             ->with('flash_message', trans('authentication.signup_success'));
