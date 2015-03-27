@@ -55,7 +55,8 @@ class AuthenticationController extends Controller {
      */
     public function getLogout() {
         $this->auth->logout();
-        return redirect()->back();
+        return redirect()->action('AuthenticationController@getLogin')
+                            ->with('flash_message', trans('authentication.logout_success'));
     }
 
     /**
@@ -78,6 +79,7 @@ class AuthenticationController extends Controller {
 
         User::create($credentials->all());
 
-        return redirect('/')->with('flash_message', trans('authentication.signup_success'));
+        return redirect()->action('AuthenticationController@getLogin')
+                            ->with('flash_message', trans('authentication.signup_success'));
     }
 }

@@ -10,6 +10,11 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		$this->prepareForTests();
 	}
 
+	public function tearDown() {
+		$this->endIntegrateTests();
+		parent::tearDown();
+	}
+
 	/**
 	 * Creates the application.
 	 *
@@ -28,6 +33,10 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	 * Prepare for tests: Migration
 	 */
 	private function prepareForTests() {
+		Artisan::call('migrate:refresh');
+	}
+
+	private function endIntegrateTests() {
 		Artisan::call('migrate:refresh');
 	}
 

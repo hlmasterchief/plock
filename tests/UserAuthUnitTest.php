@@ -1,6 +1,6 @@
 <?php
 
-class UserAuthTest extends TestCase {
+class UserAuthUnitTest extends TestCase {
 
 	public function setUp() {
 		parent::setUp();
@@ -49,7 +49,7 @@ class UserAuthTest extends TestCase {
     /**
      * @test
      */
-    public function it_redirects_back_to_form_if_login_success() {
+    public function it_redirects_back_to_last_url_if_login_success() {
         $credentials = [
             'username'  => 'test',
             'password'  => 'test',
