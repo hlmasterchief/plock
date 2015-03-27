@@ -76,7 +76,7 @@ class AuthenticationController extends Controller {
     public function postSignup(\App\Http\Requests\SignupRequest $request) {
         $credentials = $request->only('username', 'email');
 
-        $user = \App\User::create($credentials);
+        $user = $this->user->create($credentials);
         $user->password = bcrypt($request->input('password'));
         $user->save();
 
