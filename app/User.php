@@ -26,4 +26,12 @@ class User extends Model implements AuthenticatableContract {
      */
     protected $guarded = ['id', 'password'];
 
+    /**
+     * Get relationship - Profile
+     * @return App\Profile
+     */
+    public function profile() {
+        return $this->hasOne('App\Profile');
+    }
+
 }
