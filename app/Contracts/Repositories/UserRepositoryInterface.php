@@ -6,7 +6,7 @@ interface UserRepositoryInterface {
      * @param  int $id
      * @return App\Models\User
      */
-    public function getUserById($id);
+    public function find($id);
 
     /**
      * Get User by Column
@@ -14,12 +14,19 @@ interface UserRepositoryInterface {
      * @param  mixes  $value
      * @return App\Models\User
      */
-    public function getUserByColumn($col, $value);
+    public function findByColumn($col, $value);
 
     /**
      * Store User in Database
      * @param  array  $modifiers
      * @return App\Models\User
      */
-    public function storeUser(array $modifiers);
+    public function create(array $modifiers);
+
+    /**
+     * Update User in Database
+     * @param  array  $modifiers
+     * @return App\Models\User
+     */
+    public function update(array $modifiers);
 }

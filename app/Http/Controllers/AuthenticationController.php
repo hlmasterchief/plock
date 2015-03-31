@@ -74,7 +74,7 @@ class AuthenticationController extends Controller {
      * @return Response
      */
     public function postSignup(\App\Http\Requests\SignupRequest $request) {
-        $this->user->storeUser($request->all());
+        $this->user->create($request->all());
 
         return redirect()->action('AuthenticationController@getLogin')
                             ->with('flash_message', trans('authentication.signup_success'));

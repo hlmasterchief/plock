@@ -17,7 +17,7 @@ class UserRepository implements UserRepositoryInterface {
      * @param  int $id
      * @return App\Models\User
      */
-    public function getUserById($id) {
+    public function find($id) {
         return $this->user->find($id);
     }
 
@@ -26,7 +26,7 @@ class UserRepository implements UserRepositoryInterface {
      * @param  array $modifiers
      * @return App\Models\User
      */
-    public function getUserByColumn($col, $value) {
+    public function findByColumn($col, $value) {
         return $this->user->where($col, '=',$value)->first();
     }
 
@@ -35,7 +35,7 @@ class UserRepository implements UserRepositoryInterface {
      * @param  array  $modifiers
      * @return App\Models\User
      */
-    public function storeUser(array $modifiers) {
+    public function create(array $modifiers) {
         $credentials = array_only($modifiers, ['username', 'email']);
 
         $user = $this->user->create($credentials);
@@ -43,5 +43,14 @@ class UserRepository implements UserRepositoryInterface {
         $user->save();
 
         return $user;
+    }
+
+    /**
+     * Update User in Database
+     * @param  array  $modifiers
+     * @return App\Models\User
+     */
+    public function update(array $modifiers) {
+
     }
 }
