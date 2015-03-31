@@ -4,7 +4,7 @@ class UserAuthUnitTest extends TestCase {
 
 	public function setUp() {
 		parent::setUp();
-        $this->user = $this->mock('App\User');
+        $this->user = $this->mock('App\Contracts\Repositories\UserRepositoryInterface');
         $this->auth = $this->mock('Illuminate\Auth\AuthManager');
         $this->view = $this->mock('Illuminate\View\Factory');
 	}

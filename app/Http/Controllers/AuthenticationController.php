@@ -12,7 +12,7 @@ class AuthenticationController extends Controller {
      *
      * @return void
      */
-    public function __construct(\App\User $user,
+    public function __construct(\App\Contracts\Repositories\UserRepositoryInterface $user,
                                 \Illuminate\Auth\AuthManager $auth,
                                 \Illuminate\View\Factory $view) {
         $this->user = $user;
@@ -74,11 +74,7 @@ class AuthenticationController extends Controller {
      * @return Response
      */
     public function postSignup(\App\Http\Requests\SignupRequest $request) {
-        $credentials = $request->only('username', 'email');
-
-        $user = $this->user->create($credentials);
-        $user->password = bcrypt($request->input('password'));
-        $user->save();
+        $this->user->storeUser($request->all());
 
         return redirect()->action('AuthenticationController@getLogin')
                             ->with('flash_message', trans('authentication.signup_success'));

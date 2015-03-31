@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -27,11 +27,17 @@ class User extends Model implements AuthenticatableContract {
     protected $guarded = ['id', 'password'];
 
     /**
+     * Properties not allowed to be shown in array or JSON
+     * @var array[string]
+     */
+    protected $hidden  = ['password'];
+
+    /**
      * Get relationship - Profile
      * @return App\Profile
      */
     public function profile() {
-        return $this->hasOne('App\Profile');
+        return $this->hasOne('App\Models\Profile');
     }
 
 }

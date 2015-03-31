@@ -11,7 +11,7 @@ class UserTestSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        $user = new App\User();
+        $user = new App\Models\User();
         $user->username = "test";
         $user->email = "test@gmail.com";
         $user->password = bcrypt("test");
