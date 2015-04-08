@@ -51,6 +51,14 @@ class UserRepository implements UserRepositoryInterface {
      * @return App\Models\User
      */
     public function update(array $modifiers) {
+        if ($modifiers['email']) {
+            $user->email = $modifiers['email'];
+        }
+        if ($modifiers['password']) {
+            $user->password = bcrypt($modifiers['password']);
+        }
+        $user->save();
 
+        return $user;
     }
 }

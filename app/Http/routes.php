@@ -23,3 +23,6 @@ Route::get('/logout', 'AuthenticationController@getLogout');
 
 Route::get('/signup', 'AuthenticationController@getSignup');
 Route::post('/signup', 'AuthenticationController@postSignup');
+
+Route::get('/update', 'AuthenticationController@getUpdate');
+Route::post('/update', 'AuthenticationController@postUpdate');

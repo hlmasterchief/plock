@@ -79,4 +79,31 @@ class AuthenticationController extends Controller {
         return redirect()->action('AuthenticationController@getLogin')
                             ->with('flash_message', trans('authentication.signup_success'));
     }
+
+    /**
+     * Display update form
+     *
+     * @return Response
+     */
+    public function getSignup() {
+        return $this->view->make('authentication.update');
+    }
+
+    /**
+     * Update user
+     *
+     * @return Response
+     */
+    public function postSignup(\App\Http\Requests\UpdateRequest $request) {
+        if (Auth::user()->password == bcrypt($request['old_password'])) {
+			$this->user->update($request->only('email', 'password'));
+
+        	return redirect()->action('AuthenticationController@getUpdate')
+								->with('flash_message', trans('authentication.update_success'));
+        } else {
+            return redirect()->action('AuthenticationController@getUpdate')
+                                ->withInput($request->only('email'))
+                                ->with('flash_message', trans('authentication.not_matched'));
+        }
+    }
 }
