@@ -28,5 +28,5 @@ interface UserRepositoryInterface {
      * @param  array  $modifiers
      * @return App\Models\User
      */
-    public function update(array $modifiers);
+    public function update($id, array $modifiers);
 }
