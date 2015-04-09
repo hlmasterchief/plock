@@ -24,6 +24,7 @@
 5. Edit **gulpfile.js** to implement more of your own javascript files
 6. Run **gulp watch** for development, **gulp --production** for production
 7. Do not put anything inside public, except using **gulp**
+8. Should have default values for yield and for printing variable in blade templates  
 
 ### Database
 1. Edit .env.example and rename it to .env

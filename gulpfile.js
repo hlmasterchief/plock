@@ -13,14 +13,23 @@ var elixir = require('laravel-elixir');
 
 var paths = {
     'bootstrap': './node_modules/bootstrap-sass/assets/',
+    'jquery': './node_modules/jquery/dist/',
+    'underscore': './node_modules/underscore/',
+    'backbone': './node_modules/backbone/',
+    'app': './resources/js/'
 };
 
 elixir(function (mix) {
     mix.rubySass('app.scss', 'public/css/')
         .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts')
         .scripts([
-            //"example.js",
-            "app.js"
-        ], 'public/js/app.js');
+            // necessary components
+            paths.jquery + "jquery.js",
+            paths.bootstrap + "javascripts/bootstrap.js",
+            paths.underscore + "underscore.js",
+            paths.backbone + "backbone.js",
+            // app
+            paths.app + "app.js"
+        ], 'public/js/app.js', './');
 
 });
