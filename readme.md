@@ -2,7 +2,7 @@
 
 ### Coding Convention
 1. Always use spaces for indent, spaces size = 4  
-2. Use *NIX line ending  
+2. Use UNIX line ending  
 3. Controller:
   - Controller action naming: actionType + actionName (ex: postBookmark, getUser, ...)  
   - Comment each block inside action, encourage using commands bus
@@ -16,9 +16,14 @@
   - Split block with one empty line, **return** counted as a block
 
 ### Template (Frontend)
-1. Template should be extended from include/main  
-2. Split CSS and JS as many as possible  
-3. ...
+0. In project root folder, run **npm install** for necessary components
+1. All templates should be extended from a main template. A template has been made for this purpose: **layout.master**
+2. Always puts CSS (SASS/LESS) and JavaScript (CoffeeScript...) inside resources (SASS in assets/sass, LESS in assets/less, JavaScript in js)
+3. Theming bootstrap by editing **\_custom-variable.scss** and **\_custom-bootstrap.scss**
+4. Put your own import SASS inside **app.scss**
+5. Edit **gulpfile.js** to implement more of your own javascript files
+6. Run **gulp watch** for development, **gulp --production** for production
+7. Do not put anything inside public, except using **gulp**
 
 ### Database
 1. Edit .env.example and rename it to .env

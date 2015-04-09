@@ -1,5 +1,9 @@
 /vendor
 /node_modules
 .env
+/.sass-cache
+/public/css
+/public/fonts
+/public/js
 
 *.sublime*
