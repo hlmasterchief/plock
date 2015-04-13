@@ -39,3 +39,6 @@
 2. As rule 1, DO NOT checkout MERGED BRANCH again.  
 3. DO NOT modify exist file, especially testing files, if your tasks do not require.  
 4. Write commit message as clear as possible.  
+
+### Note
+1. USE ELASTICSEARCH WITH MYSQL FOR EASE OF MIND FUCK YOU
