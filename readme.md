@@ -41,4 +41,4 @@
 4. Write commit message as clear as possible.  
 
 ### Note
-1. USE ELASTICSEARCH WITH MYSQL FOR EASE OF MIND FUCK YOU
+1. ...
