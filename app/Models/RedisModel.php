@@ -10,7 +10,7 @@ class RedisModel {
     protected $id   = "unique_id";
 
     protected $cast  = [];
-    protected $index = ["title"];
+    protected $index = [];
 
     public function __construct() {
         $this->redis = \App::make('redis');
@@ -23,13 +23,21 @@ class RedisModel {
 
     public function save(array $array) {
         $id = $this->getUniqueId();
+        $array["id"] = $id;
         $this->redis->hmset("$this->root:$this->type:$id", $array);
 
         $this->index($id);
     }
 
     public function delete($id) {
-        $this->redis->hdel("$this->root:$this->type:$id");
+        $param = [
+            "index" =>  "$this->root",
+            "type"  =>  "$this->type",
+            "id"    =>  "$this->id"
+        ];
+
+        $this->redis->del("$this->root:$this->type:$id");
+        $this->es->delete($param);
     }
 
     public function index($id) {
@@ -51,6 +59,8 @@ class RedisModel {
         $param["body"]["id"] = $id;
 
         $response = $this->es->index($param);
+
+        return $response;
     }
 
     public function get($id) {
@@ -84,7 +94,7 @@ class RedisModel {
                 case 'json':
                     $array[$key] = json_decode($value, true);
                 case 'collection':
-                    $array[$key] = $this->newCollection(json_decode($value, true));
+                    $array[$key] = collect(json_decode($value, true));
                 default:
                     $array[$key] = $value;
             }
@@ -111,6 +121,23 @@ class RedisModel {
         foreach ($array as $key => $value) {
             $param["body"]["query"]["bool"]["must"][] = ["match" => [$key => $value]];
         }
+
+        $search = $this->es->search($param);
+
+        foreach ($search["hits"]["hits"] as $key => $value) {
+            $results[] = $this->get($value["_source"]["id"]);
+        }
+
+        return collect($results);
+    }
+
+    public function all() {
+        $param = [
+            "index" =>  "$this->root",
+            "type"  =>  "$this->type"
+        ];
+
+        $results = [];
 
         $search = $this->es->search($param);
 

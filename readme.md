@@ -42,3 +42,9 @@
 
 ### Note
 1. ...
+
+### Redis Model
+1. Extends from \App\Models\RedisModel
+2. Change $root to table name (interest, data, ...)
+3. Change $type to type of data (music, movie, anime...)
+4. ...
