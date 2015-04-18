@@ -60,6 +60,40 @@ class IndexModel extends Model {
     }
 
     /**
+     * Search by elasticsearch
+     * @return Model
+     */
+    public function elasticSearch(array $options) {
+        $es = \App::make('elasticsearch');
+
+        $params = [
+            "index" =>  DB::connection()->getDatabaseName(),
+            "type"  =>  $this->table,
+            "body"  =>  [
+                "query" => [
+                    "bool" => [
+                        "must" => []
+                    ] // bool
+                ] // query
+            ] // body
+        ];
+
+        $results = [];
+
+        foreach ($options as $key => $value) {
+            $params["body"]["query"]["bool"]["must"][] = ["match" => [$key => $value]];
+        }
+
+        $search = $es->search($param);
+
+        foreach ($search["hits"]["hits"] as $key => $value) {
+            $results[] = $this->find($value["_source"]["id"]);
+        }
+
+        return collect($results);
+    }
+
+    /**
      * @override
      * Finish processing on a successful save operation.
      *
