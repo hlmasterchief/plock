@@ -6,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="stylesheet" href="/css/app.css">
+
+    {{-- custom css --}}
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cabin:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,600,700' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
-    <div class="container">
-        @yield('content', '')
-    </div>
+    @yield('page', '')
 
     <script src="/js/app.js"></script>
 </body>

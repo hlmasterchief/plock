@@ -21,7 +21,7 @@ var paths = {
 
 elixir(function (mix) {
     mix.rubySass('app.scss', 'public/css/')
-        .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts')
+        .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap')
         .scripts([
             // necessary components
             paths.jquery + "jquery.js",
