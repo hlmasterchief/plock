@@ -8,19 +8,13 @@ class Bookmark extends Model {
      * Set table for model
      * @var string
      */
-    protected $table = 'bookmarks';
+    protected $table = 'movies';
 
     /**
      * Mass assignment allow
      * @var array[string]
      */
-    protected $fillable = ['description'];
-
-    /**
-     * Properties not allowed for mass assignment
-     * @var array[string]
-     */
-    protected $guarded = ['id'];
+    protected $fillable = ['plot', 'release_date'];
 
     /**
      * Get relationship - Favourite
@@ -28,14 +22,6 @@ class Bookmark extends Model {
      */
     public function favourite() {
         return $this->belongsTo('App\Models\Favourite');
-    }
-
-    /**
-     * Get relationship - User
-     * @return App\User
-     */
-    public function user() {
-        return $this->belongsTo('App\Models\User');
     }
 
 }
