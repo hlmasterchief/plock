@@ -14,9 +14,10 @@
 Route::get('/', 'WelcomeController@index');
 
 //set route for basic view
-Route::get('/home', 'WelcomeController@home');
+Route::get('/home', 'WelcomeController@posts_list');
 Route::get('/box', 'WelcomeController@box');
 Route::get('/boxs-list', 'WelcomeController@boxs_list');
+Route::get('/posts-list', 'WelcomeController@posts_list');
 
 
 /**

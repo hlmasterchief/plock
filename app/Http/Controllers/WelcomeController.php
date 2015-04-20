@@ -49,4 +49,8 @@ class WelcomeController extends Controller {
 		return view('template.boxs-list');
 	}
 
+	public function posts_list() {
+		return view('template.posts-list');
+	}
+
 }

@@ -3,32 +3,7 @@
 @section('page')
 
 {{-- navagation --}}
-<div class="container-fluid">
-
-<nav class="row main-navbar" role="navigation">
-    <div class="col-md-3 col-xs-5">
-        <div class="navbar-wrap">
-            <a href="{{ url("/home") }}" class="logo">Clever Croblmask</a>
-        </div>
-    </div>
-    <div class="col-md-6 col-xs-6 text-center">
-        <div class="navbar-wrap">
-            <div class="heading">
-                {{-- <h4 class="title"><a href="/home">Box content</a></h4>
-                <p class="sub-title">Created by <a href="/home">CroblMask</a></p> --}}
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-xs-1 text-right">
-        <div class="navbar-wrap">
-            <div class="search">
-                <span class="glyphicon glyphicon-search"></span>
-            </div>
-        </div>
-    </div>
-</nav> <!-- /.navigation -->
-
-</div>
+@include('layout.header')
 
 {{-- home-content --}}
 <div class="home">
@@ -63,18 +38,18 @@
 
         <div class="col-md-2 col-xs-2 text-center">
             <div class="tmenu-wrap">
-            <a class="tmenu-middle" href="/box">
-                <h5 class="menu-name">Boxs</h5>
-                <p class="menu-data">23</p>
+            <a class="tmenu-middle" href="/posts-list">
+                <h5 class="menu-name">Posts</h5>
+                <p class="menu-data">78</p>
             </a>
             </div>
         </div>
 
         <div class="col-md-2 col-xs-2 text-center">
             <div class="tmenu-wrap">
-            <a class="tmenu-middle" href="/box">
-                <h5 class="menu-name">Posts</h5>
-                <p class="menu-data">78</p>
+            <a class="tmenu-middle" href="/boxs-list">
+                <h5 class="menu-name">Boxs</h5>
+                <p class="menu-data">23</p>
             </a>
             </div>
         </div>
@@ -106,5 +81,10 @@
 @yield('home-content', '')
 
 </div><!-- /home -->
+
+
+{{-- fixed create-button --}}
+@include('layout.create-button')
+
 @stop
 
