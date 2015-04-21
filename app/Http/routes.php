@@ -26,3 +26,12 @@ Route::post('/signup', 'AuthenticationController@postSignup');
 
 Route::get('/update', 'AuthenticationController@getUpdate');
 Route::post('/update', 'AuthenticationController@postUpdate');
+
+Route::get('/comment/create', 'CommentController@getCreate');
+Route::post('/comment/create', 'CommentController@postCreate');
+
+Route::get('/comment/update/{id}', 'CommentController@getUpdate');
+Route::post('/comment/update/{id}', 'CommentController@postUpdate');
+
+Route::get('/comment/delete/{id}', 'CommentController@getDelete');
+Route::post('/comment/delete/{id}', 'CommentController@postDelete');
