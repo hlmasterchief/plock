@@ -13,9 +13,11 @@ class BookmarkController extends Controller {
      * @return void
      */
     public function __construct(\App\Contracts\Repositories\BookmarkRepositoryInterface $bookmark,
+                                \App\Contracts\Repositories\FavouriteRepositoryInterface $favourite,
                                 \Illuminate\Auth\AuthManager $auth,
                                 \Illuminate\View\Factory $view) {
         $this->bookmark = $bookmark;
+        $this->favourite = $favourite;
         $this->auth = $auth;
         $this->view = $view;
 
@@ -37,6 +39,18 @@ class BookmarkController extends Controller {
      * @return Response
      */
     public function postCreate(\App\Http\Requests\BookmarkRequest $request) {
+        $favourite_id = $request->only('favourite_id');
+
+        if (!isset($favourite_id) or is_null($favourite_id)) {
+            return redirect()->action('BookmarkController@getUpdate')
+                                ->with('flash_message', trans('favourite.not_valid'));
+        }
+        $favourite = $this->favourite->find($favourite_id);
+        if (is_null($favourite)) {
+            return redirect()->action('BookmarkController@getUpdate')
+                                ->with('flash_message', trans('favourite.not_found'));
+        }
+
         $this->bookmark->create(Auth::id(), $request->all());
 
         return redirect()->action('BookmarkController@getCreate')
