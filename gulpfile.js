@@ -20,8 +20,7 @@ var paths = {
 };
 
 elixir(function (mix) {
-    mix.rubySass('app.scss', 'public/css/')
-        .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap')
+    mix.sass('app.scss', 'public/css/')
         .scripts([
             // necessary components
             paths.jquery + "jquery.js",
@@ -30,6 +29,7 @@ elixir(function (mix) {
             paths.backbone + "backbone.js",
             // app
             paths.app + "app.js"
-        ], 'public/js/app.js', './');
+        ], 'public/js/app.js', './')
+        .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap');
 
 });
