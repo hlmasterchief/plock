@@ -23,12 +23,12 @@ class FavouriteController extends Controller {
     }
 
     /**
-     * Display favourite
+     * Display create favourite form
      *
      * @return Response
      */
-    public function getFavourite() {
-        return $this->view->make('favourite');
+    public function getCreate() {
+        return $this->view->make('favourite.create');
     }
 
     /**
@@ -36,10 +36,96 @@ class FavouriteController extends Controller {
      *
      * @return Response
      */
-    public function postFavourite(\App\Http\Requests\FavouriteRequest $request) {
+    public function postCreate(\App\Http\Requests\FavouriteRequest $request) {
         $this->favourite->create($request->all());
 
-        return redirect()->action('FavouriteController@getFavourite')
+        return redirect()->action('FavouriteController@getCreate')
                             ->with('flash_message', trans('favourite.add_success'));
+    }
+
+    /**
+     * Display update favourite form
+     *
+     * @return Response
+     */
+    public function getUpdate($id = null) {
+        if (!isset($id) or is_null($id)) {
+            return redirect()->action('FavouriteController@getUpdate')
+                                ->with('flash_message', trans('favourite.not_valid'));
+        }
+
+        $favourite = $this->favourite->find($id);
+        if (is_null($favourite)) {
+            return redirect()->action('FavouriteController@getUpdate')
+                                ->with('flash_message', trans('favourite.not_found'));
+        }
+
+        return $this->view->make('favourite.update')->with('favourite' => $favourite);
+    }
+
+    /**
+     * Update favourite
+     *
+     * @return Response
+     */
+    public function postUpdate($id = null, \App\Http\Requests\FavouriteRequest $request) {
+        if (!isset($id) or is_null($id)) {
+            return redirect()->action('FavouriteController@getUpdate')
+                                ->with('flash_message', trans('favourite.not_valid'));
+        }
+
+        $favourite = $this->favourite->find($id);
+        if (is_null($favourite)) {
+            return redirect()->action('FavouriteController@getUpdate')
+                                ->with('flash_message', trans('favourite.not_found'));
+        }
+        
+        $this->favourite->update($id, $request->only('name', 'type'));
+
+        return redirect()->action('FavouriteController@getUpdate')
+                            ->with('flash_message', trans('favourite.update_success'));
+    }
+
+    /**
+     * Display delete favourite form
+     *
+     * @return Response
+     */
+    public function getdelete($id = null) {
+        if (!isset($id) or is_null($id)) {
+            return redirect()->action('FavouriteController@getDelete')
+                                ->with('flash_message', trans('favourite.not_valid'));
+        }
+
+        $favourite = $this->favourite->find($id);
+        if (is_null($favourite)) {
+            return redirect()->action('FavouriteController@getDelete')
+                                ->with('flash_message', trans('favourite.not_found'));
+        }
+
+        return $this->view->make('favourite.delete')->with('favourite' => $favourite);
+    }
+
+    /**
+     * Delete favourite
+     *
+     * @return Response
+     */
+    public function postDelete($id = null) {
+        if (!isset($id) or is_null($id)) {
+            return redirect()->action('FavouriteController@getDelete')
+                                ->with('flash_message', trans('favourite.not_valid'));
+        }
+
+        $favourite = $this->favourite->find($id);
+        if (is_null($favourite)) {
+            return redirect()->action('FavouriteController@getDelete')
+                                ->with('flash_message', trans('favourite.not_found'));
+        }
+        
+        $this->favourite->delete($id);
+
+        return redirect()->action('FavouriteController@getDelete')
+                            ->with('flash_message', trans('favourite.delete_success'));
     }
 }

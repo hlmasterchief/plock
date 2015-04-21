@@ -27,8 +27,20 @@ Route::post('/signup', 'AuthenticationController@postSignup');
 Route::get('/update', 'AuthenticationController@getUpdate');
 Route::post('/update', 'AuthenticationController@postUpdate');
 
-Route::get('/bookmark', 'BookmarkController@getBookmark');
-Route::post('/bookmark', 'BookmarkController@postBookmark');
+Route::get('/bookmark/create', 'BookmarkController@getCreate');
+Route::post('/bookmark/create', 'BookmarkController@postCreate');
 
-Route::get('/favourite', 'FavouriteController@getFavourite');
-Route::post('/favourite', 'FavouriteController@postFavourite');
+Route::get('/bookmark/update/{id}', 'BookmarkController@getUpdate');
+Route::post('/bookmark/update/{id}', 'BookmarkController@postUpdate');
+
+Route::get('/bookmark/delete/{id}', 'BookmarkController@getDelete');
+Route::post('/bookmark/delete/{id}', 'BookmarkController@postDelete');
+
+Route::get('/favourite/create', 'FavouriteController@getCreate');
+Route::post('/favourite/create', 'FavouriteController@postCreate');
+
+Route::get('/favourite/update/{id}', 'FavouriteController@getUpdate');
+Route::post('/favourite/update/{id}', 'FavouriteController@postUpdate');
+
+Route::get('/favourite/delete/{id}', 'FavouriteController@getDelete');
+Route::post('/favourite/delete/{id}', 'FavouriteController@postDelete');
