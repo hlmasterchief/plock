@@ -12,25 +12,25 @@ class CreateRedisMovies extends Migration {
 	 */
 	public function up()
 	{
-		$redis = \App::make('redis');
-		$es    = \App::make('elasticsearch');
+		// $redis = \App::make('redis');
+		// $es    = \App::make('elasticsearch');
 
-		$param = [];
+		// $param = [];
 
-		$param['index'] = 'plock';
-		$param['type']  = 'movies';
-		$param['body']  = [];
-		$param['body']['movies'] = [];
+		// $param['index'] = 'plock';
+		// $param['type']  = 'movies';
+		// $param['body']  = [];
+		// $param['body']['movies'] = [];
 
-		$param['body']['movies']['properties'] = [
-			'title' => [
-				'type'				=>	'string',
-				'index_analyzer'	=>	'nGram_analyzer',
-				'search_analyzer'	=>	'whitespace_analyzer'
-			]
-		];
+		// $param['body']['movies']['properties'] = [
+		// 	'title' => [
+		// 		'type'				=>	'string',
+		// 		'index_analyzer'	=>	'nGram_analyzer',
+		// 		'search_analyzer'	=>	'whitespace_analyzer'
+		// 	]
+		// ];
 
-		$es->indices()->putMapping($param);
+		// $es->indices()->putMapping($param);
 	}
 
 	/**
@@ -40,16 +40,16 @@ class CreateRedisMovies extends Migration {
 	 */
 	public function down()
 	{
-		$redis = \App::make('redis');
-		$es    = \App::make('elasticsearch');
+		// $redis = \App::make('redis');
+		// $es    = \App::make('elasticsearch');
 
-		$keys = $redis->keys('plock:movies:*');
+		// $keys = $redis->keys('plock:movies:*');
 
-		foreach ($keys as $index => $key) {
-			$redis->del($key);
-		}
+		// foreach ($keys as $index => $key) {
+		// 	$redis->del($key);
+		// }
 
-		$es->indices()->deleteMapping(['index' => 'plock', 'type' => 'movies']);
+		// $es->indices()->deleteMapping(['index' => 'plock', 'type' => 'movies']);
 	}
 
 }

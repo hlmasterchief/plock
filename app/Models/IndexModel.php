@@ -15,7 +15,32 @@ class IndexModel extends Model {
      * @return mixed
      */
     public function getKeyValue() {
-        return $this->($this->getKeyName());
+        $keyName = $this->getKeyName();
+        return $this->$keyName;
+    }
+
+    /**
+     * Help for getting elastic index
+     * @return mixed
+     */
+    public function getElasticIndex() {
+        return \DB::connection()->getDatabaseName();
+    }
+
+    /**
+     * Help for getting elastic type
+     * @return mixed
+     */
+    public function getElasticType() {
+        return $this->table;
+    }
+
+    /**
+     * Help for getting elastic id
+     * @return mixed
+     */
+    public function getElasticId() {
+        return $this->getKeyValue();
     }
 
     /**
@@ -26,9 +51,9 @@ class IndexModel extends Model {
         $es = \App::make('elasticsearch');
 
         $params = [
-            "index" =>  DB::connection()->getDatabaseName(),
-            "type"  =>  $this->table,
-            "id"    =>  $this->getKeyValue(),
+            "index" =>  $this->getElasticIndex(),
+            "type"  =>  $this->getElasticType(),
+            "id"    =>  $this->getElasticId(),
             "body"  =>  []
         ];
 
@@ -38,9 +63,19 @@ class IndexModel extends Model {
             $params["body"][$attr] = $this->attributes[$attr];
         }
 
-        $params["body"]["id"] = $this->getKeyValue();
+        $exists = $es->exists(array_only($params, ['index', 'type', 'id']));
 
-        $es->index($params);
+        if ($exists) {
+            $doc = array_except($params["body"], ['doc']);
+            $params["body"]["doc"] = $doc;
+            $params["body"] = array_only($params["body"], ['doc']);
+
+            $es->update($params);
+        } else {
+            $es->index($params);
+        }
+
+        return true;
     }
 
     /**
@@ -51,12 +86,18 @@ class IndexModel extends Model {
         $es = \App::make('elasticsearch');
 
         $params = [
-            "index" =>  DB::connection()->getDatabaseName(),
-            "type"  =>  $this->table,
-            "id"    =>  $this->getKeyValue()
+            "index" =>  $this->getElasticIndex(),
+            "type"  =>  $this->getElasticType(),
+            "id"    =>  $this->getElasticId()
         ];
 
-        $es->delete($param);
+        try {
+            $es->delete($param);
+        } catch (Exception $e) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -67,8 +108,8 @@ class IndexModel extends Model {
         $es = \App::make('elasticsearch');
 
         $params = [
-            "index" =>  DB::connection()->getDatabaseName(),
-            "type"  =>  $this->table,
+            "index" =>  $this->getElasticIndex(),
+            "type"  =>  $this->getElasticType(),
             "body"  =>  [
                 "query" => [
                     "bool" => [
@@ -84,7 +125,11 @@ class IndexModel extends Model {
             $params["body"]["query"]["bool"]["must"][] = ["match" => [$key => $value]];
         }
 
-        $search = $es->search($param);
+        try {
+            $search = $es->search($params);
+        } catch (Exception $e) {
+            return mull;
+        }
 
         foreach ($search["hits"]["hits"] as $key => $value) {
             $results[] = $this->find($value["_source"]["id"]);

@@ -26,12 +26,9 @@ class AppServiceProvider extends ServiceProvider {
 			'App\Repositories\Eloquent\UserRepository'
 		);
 
-		$this->app->singleton('redis', function() {
-			return Redis::connection();
-		});
-
 		$this->app->singleton('elasticsearch', function() {
-			return \Elasticsearch\ClientBuilder::create()->build();
+			// return \Elasticsearch\ClientBuilder::create()->build();
+			return new \Elasticsearch\Client();
 		});
 	}
 

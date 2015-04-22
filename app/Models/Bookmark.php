@@ -20,7 +20,7 @@ class Bookmark extends Model {
      * Properties not allowed for mass assignment
      * @var array[string]
      */
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'user_id', 'favourite_id'];
 
     /**
      * Get relationship - Favourite

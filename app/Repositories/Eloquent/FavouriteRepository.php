@@ -27,7 +27,7 @@ class FavouriteRepository implements FavouriteRepositoryInterface {
      * @return App\Models\Favourite
      */
     public function create(array $modifiers) {
-        $data = array_only($modifiers, ['name', 'type']);
+        $data = array_only($modifiers, ['name', 'data_type']);
 
         $favourite = $this->favourite->create($data);
         $favourite->save();

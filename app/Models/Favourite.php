@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Favourite extends App\Models\IndexModel {
+class Favourite extends IndexModel {
 
     /**
      * Set table for model
@@ -14,13 +14,27 @@ class Favourite extends App\Models\IndexModel {
      * Mass assignment allow
      * @var array[string]
      */
-    protected $fillable = ['name', 'type'];
+    protected $fillable = ['name'];
 
     /**
      * Properties not allowed for mass assignment
      * @var array[string]
      */
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'type'];
+
+    /**
+     * Key collection for elasticsearch index
+     * @var array[string]
+     */
+    protected $index = ['id', 'name'];
+
+    /**
+     * Help for getting elastic type
+     * @return mixed
+     */
+    public function getElasticType() {
+        return $this->type;
+    }
 
     /**
      * Get relationship - Bookmark
@@ -31,10 +45,19 @@ class Favourite extends App\Models\IndexModel {
     }
 
     /**
-     * Get relationship - Movie
-     * @return App\Movie
+     * Get data based on type
+     * @return App\Models\$this->type
      */
-    public function movie() {
+    public function data() {
+        $type = $this->type;
+        return $this->$type();
+    }
+
+    /**
+     * Movie relation
+     * @return App\Models\Movie
+     */
+    public function movies() {
         return $this->hasOne('App\Models\Movie');
     }
 
