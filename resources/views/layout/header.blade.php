@@ -18,6 +18,7 @@
         <div class="navbar-wrap">
             <div class="search">
                 <span class="glyphicon glyphicon-search"></span>
+                <input type="text" placeholder="Search">
             </div>
             <div class="setting">
                 <span class="glyphicon glyphicon-option-vertical"></span>
