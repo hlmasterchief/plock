@@ -19,6 +19,9 @@ Route::get('/box', 'WelcomeController@box');
 Route::get('/boxs-list', 'WelcomeController@boxs_list');
 Route::get('/posts-list', 'WelcomeController@posts_list');
 
+Route::get('/post-test', function () {
+    return view('template.post');
+});
 
 /**
  * Authentication

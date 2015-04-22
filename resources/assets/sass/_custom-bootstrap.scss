@@ -4,3 +4,78 @@
     padding:0;
     border-radius: 50%;
 }
+
+/**
+ * dl man ~
+ */
+.dl-inline {
+    dd {
+        @include clearfix; // Clear the floated `dt` if an empty `dd` is present
+    }
+
+    dt {
+        clear: both;
+        min-width: 120px;
+        margin-bottom: 4px;
+    }
+
+    dt, dd {
+        float: left;
+    }
+}
+
+dl {
+    dt.strong {
+        margin-top: 16px;
+        font-size: $font-size-large;
+    }
+
+    dt, dd {
+        vertical-align: bottom;
+        font-family: "Roboto", Helvetica, Arial, sans-serif;
+    }
+
+    dt {
+        font-weight: $headings-font-weight;
+    }
+}
+
+/**
+ * panel
+ */
+
+.panel-title {
+    font-size: $font-size-extra-large;
+}
+
+/**
+ * crop
+ */
+
+.crop-64 {
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+
+    img {
+        max-height: 64px;
+    }
+}
+
+.crop-48 {
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+
+    img {
+        max-height: 48px;
+    }
+}
+
+.height-48 {
+    height: 48px;
+
+    * {
+        min-height: 48px;
+    }
+}

@@ -5,10 +5,12 @@
 @import "welcome";
 @import "home";
 @import "box";
+@import "post";
 
 body {
     background-color: #ecf0f1;
     margin-bottom: 44px;
+    font-weight: 300;
 }
 
 a {
