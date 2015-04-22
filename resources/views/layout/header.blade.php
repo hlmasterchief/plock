@@ -3,7 +3,7 @@
 <nav class="row main-navbar" role="navigation">
     <div class="col-md-3 col-xs-5">
         <div class="navbar-wrap">
-            <a href="{{ url("/home") }}" class="logo">Clever Croblmask</a>
+            <a href="{{ url("/home") }}" class="logo"><h4>Clever Croblmask</h4></a>
         </div>
     </div>
     <div class="col-md-6 col-xs-6 text-center">

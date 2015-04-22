@@ -5,6 +5,13 @@
     border-radius: 50%;
 }
 
+.transition {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
 /**
  * dl man ~
  */
@@ -79,3 +86,106 @@ dl {
         min-height: 48px;
     }
 }
+
+/**
+ * thumbnails
+ */
+
+.thumbnails {
+    .thumbnail {
+        position: relative;
+        padding: 0;
+        background-color: rgba(255,255,255,0);
+        border: none;
+        overflow: hidden;
+        box-shadow: $box-shadow-level1;
+
+        &:hover {
+            box-shadow: $box-shadow-level2;
+        }
+
+        .thumbnail-wrap {
+
+            img {
+                z-index: 1;
+            }
+
+            .thumbnail-overlay {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(1,1,1, 0.1);
+                z-index: 2;
+
+                &:hover {
+                    background-color: rgba(1,1,1, 0.01);
+                }
+
+                a {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .thumbnail-title {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                padding: 10px 15px;
+                background-color: rgba(0, 0, 0, 0.3);
+                z-index: 4;
+                overflow: hidden;
+                display: block;
+
+                a {
+                    display: block;
+                    color: #eeeeee;
+                    font-size: 1.2em;
+                    font-weight: 500;
+                    font-family: "Montserrat";
+
+                    &:hover {
+                        color: #ffffff;
+                    }
+
+                    .text-right {
+                        float: right;
+                    }
+                }
+            }
+
+        }// /.thumbnail-wrap
+    } // /.thumbnail
+} // /.thumbnails
+
+/**
+ * dropdown
+ */
+
+.dropdown {
+        background-color: #fff;
+        color: #111;
+        z-index: 101;
+
+        .dropdown-menu {
+            display: block;
+            position: relative;
+            top: 0;
+            margin: 0;
+            z-index: 100;
+            border: none;
+            box-shadow: $box-shadow-level2;
+
+            > li > a {
+                padding: 12px 20px;
+                color: #4a4a4a;
+                border: none;
+
+                &:hover {
+                    background-color: #eaeaea;
+                }
+            }
+        }
+    }

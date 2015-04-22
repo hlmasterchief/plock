@@ -34,9 +34,9 @@ class WelcomeController extends Controller {
 	}
 
 	// set route for sample basic view
-	public function home()
+	public function user()
 	{
-		return view('template.home');
+		return view('template.profile');
 	}
 
 	public function box()

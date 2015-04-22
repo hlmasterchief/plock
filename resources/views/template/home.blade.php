@@ -1,90 +1,33 @@
-@extends('layout.master')
+@extends('template.template')
 
-@section('page')
+@section('main-content')
 
-{{-- navagation --}}
-@include('layout.header')
+<div class="homepage">
 
-{{-- home-content --}}
-<div class="home">
+    <div class="thumbnails">
+    <div class="row">
 
-<div class="cover-photo">
-    <div class="row cover-wrap">
-    <div class="container">
-        <div class="col-md-2 col-xs-2 profile-img">
-            <img src="">
-        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6">
+            <div class="thumbnail transition">
+                <div class="thumbnail-wrap">
+                    <div class="thumbnail-img">
+                        <img class="img-responsive" src="http://www.oamk.fi/english/info/schools/business/images/ulkokuva19_800x533.jpg">
+                    </div>
 
-        <div class="col-md-4 col-xs-4 profile-info">
-            <h2>Clever Croblmask</h2>
-            <div class="profile-location">
-                <span class="glyphicon glyphicon-map-marker"></span>
-                <span>Oulu, Finland</span>
-            </div>
-            <div class="profile-start-date">
-                <span class="glyphicon glyphicon-time"></span>
-                <span>Join on May, 2013</span>
-            </div>
-        </div>
-    </div>
-    </div>
-</div> <!-- /.cover-photo -->
+                    <div class="thumbnail-overlay transition"><a href="#"></a></div>
+                    <div class="thumbnail-title">
+                        <a href="/box">Box content</a>
+                    </div>
+                    <div class="thumbnail-data">
 
-{{-- menu horizontal --}}
-<div class="row profile-menu-horizontal">
-    <div class="container">
-
-        <div class="col-md-2 col-xs-2"></div>
-
-        <div class="col-md-2 col-xs-2 text-center">
-            <div class="tmenu-wrap">
-            <a class="tmenu-middle" href="/posts-list">
-                <h5 class="menu-name">Posts</h5>
-                <p class="menu-data">78</p>
-            </a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-2 col-xs-2 text-center">
-            <div class="tmenu-wrap">
-            <a class="tmenu-middle" href="/boxs-list">
-                <h5 class="menu-name">Boxs</h5>
-                <p class="menu-data">23</p>
-            </a>
-            </div>
-        </div>
+    </div> <!-- /.list post-->
+    </div> <!-- /.thumbnail box-->
 
-        <div class="col-md-2 col-xs-2 text-center">
-            <div class="tmenu-wrap">
-            <a class="tmenu-middle" href="/box">
-                <h5 class="menu-name">Followers</h5>
-                <p class="menu-data">40</p>
-            </a>
-            </div>
-        </div>
-
-        <div class="col-md-2 col-xs-2 text-center">
-            <div class="tmenu-wrap">
-            <a class="tmenu-middle" href="/box">
-                <h5 class="menu-name">Followings</h5>
-                <p class="menu-data">40</p>
-            </a>
-            </div>
-        </div>
-
-        <div class="col-md-2 col-xs-2"></div>
-
-    </div>
-</div><!-- /.menu-horizontal -->
-
-{{-- boxs-list.html --}}
-@yield('home-content', '')
-
-</div><!-- /home -->
-
-
-{{-- fixed create-button --}}
-@include('layout.create-button')
+</div> <!-- /.homepage -->
 
 @stop
-

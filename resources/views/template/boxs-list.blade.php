@@ -1,28 +1,28 @@
-@extends('template.home')
+@extends('template.profile')
 
-@section('home-content')
+@section('menu-content')
 
-<div class="container">
+<div class="boxs-list">
 
-<div class="thumbnails boxs-list">
+<div class="thumbnails">
 <div class="row">
 
     <div class="col-md-3 col-sm-4 col-xs-6">
-        <div class="thumbnail">
+        <div class="thumbnail transition">
             <div class="thumbnail-wrap">
                 <div class="thumbnail-img">
-                    <img src="http://www.oamk.fi/english/info/schools/business/images/ulkokuva19_800x533.jpg">
+                    <img src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfa1/t31.0-8/c0.127.851.315/p851x315/1040582_471078919646380_2139153270_o.jpg">
                 </div>
 
-                <div class="thumbnail-overlay"></div>
+                <div class="thumbnail-overlay transition"><a href="/box"></a></div>
                 <div class="thumbnail-title">
-                    <a href="/box">Box content</a>
+                    <a href="/box">
+                        <span class="text-left">Box content</span>
+                        <span class="text-right">115</span>
+                    </a>
                 </div>
                 <div class="thumbnail-data">
 
-                </div>
-                <div class="thumbnail-a">
-                    <a href="/box"></a>
                 </div>
             </div>
         </div>
@@ -30,8 +30,8 @@
 
 
 </div>
-</div>
+</div><!-- /.boxs-list -->
 
-</div>
+</div><!-- /.boxs-list page -->
 
 @stop
