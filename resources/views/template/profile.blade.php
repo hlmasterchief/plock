@@ -11,6 +11,7 @@
 <div class="cover-photo">
     <div class="row cover-wrap">
     <div class="container">
+
         <div class="col-md-2 col-xs-2 profile-img">
             <img src="" class="img-circle img-responsive">
         </div>
@@ -26,6 +27,7 @@
                 <span>Join on May, 2013</span>
             </div>
         </div>
+
     </div>
     </div>
 </div> <!-- /.cover-photo -->

@@ -193,21 +193,26 @@
 .boxs-list {
     padding-top: $profile-top-padding;
 
-    .thumbnail, .thumbnail-wrap {
+    .thumbnail-img {
         height: 229px;
 
         img {
             position: absolute;
-            left: -100%;
-            right: -100%;
-            top: -100%;
-            bottom: -100%;
+            top: 0;
+            // left: -100%;
+            // right: -100%;
+            // top: -100%;
+            // bottom: -100%;
             margin: auto;
 
-            max-height: 100%;// width > height
+            max-height: 229px;// width > height
             //for height > width
             //max-width: 100%;
         }
+    }
+
+    .caption .text-right {
+        float: right;
     }
 }
 
@@ -216,4 +221,8 @@
  */
 .posts-list {
     padding-top: $profile-top-padding;
+}
+
+.posts-list .thumbnails .caption, .box .thumbnails .caption {
+    padding-bottom: 24px;
 }
