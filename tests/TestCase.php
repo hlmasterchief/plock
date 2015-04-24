@@ -33,11 +33,12 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	 * Prepare for tests: Migration
 	 */
 	private function prepareForTests() {
-		Artisan::call('migrate:refresh');
+		Artisan::call('migrate');
+		// Artisan::call('migrate:refresh');
 	}
 
 	private function endIntegrateTests() {
-		Artisan::call('migrate:refresh');
+		Artisan::call('migrate:reset');
 	}
 
 	protected function mock($class) {

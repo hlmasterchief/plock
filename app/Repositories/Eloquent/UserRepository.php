@@ -46,7 +46,9 @@ class UserRepository implements UserRepositoryInterface {
         $user->save();
 
         //create profile
-        $user->profile->create($user->id);
+        $profile_credentials = array_only($modifiers, ['display_name']);
+        $profile = $this->profile->create($profile_credentials);
+        $user->profile()->save($profile);
 
         return $user;
     }
@@ -113,7 +115,7 @@ class UserRepository implements UserRepositoryInterface {
         $filename    = md5(time());
         $random      = rand(11111,99999);
         $extension   = $modifiers->getClientOriginalExtension();
-        
+
         $modifiers->move($destination, $filename.$random.".".$extension);
 
         $profile->avatar = $modifiers->getRealPath();
@@ -135,7 +137,7 @@ class UserRepository implements UserRepositoryInterface {
         $filename    = md5(time());
         $random      = rand(11111,99999);
         $extension   = $modifiers->getClientOriginalExtension();
-        
+
         $modifiers->move($destination, $filename.$random.".".$extension);
 
         $profile->cover = $modifiers->getRealPath();

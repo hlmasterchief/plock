@@ -16,13 +16,13 @@ class CreateBookmarksTable extends Migration {
         {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
+            // $table->foreign('user_id')
+            //       ->references('id')->on('users')
+            //       ->onDelete('cascade');
             $table->integer('favourite_id')->unsigned();
-            $table->foreign('favourite_id')
-                  ->references('id')->on('favourites')
-                  ->onDelete('cascade');
+            // $table->foreign('favourite_id')
+            //       ->references('id')->on('favourites')
+            //       ->onDelete('cascade');
             $table->text('description');
             $table->timestamps();
         });
