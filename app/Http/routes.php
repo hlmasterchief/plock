@@ -44,3 +44,9 @@ Route::post('/favourite/update/{id}', 'FavouriteController@postUpdate');
 
 Route::get('/favourite/delete/{id}', 'FavouriteController@getDelete');
 Route::post('/favourite/delete/{id}', 'FavouriteController@postDelete');
+
+Route::get('/upload/avatar', 'AuthenticationController@getAvatar');
+Route::post('/upload/avatar', 'AuthenticationController@postAvatar');
+
+Route::get('/upload/cover', 'AuthenticationController@getCover');
+Route::post('/upload/cover', 'AuthenticationController@postCover');
