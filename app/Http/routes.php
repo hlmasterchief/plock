@@ -53,3 +53,13 @@ Route::post('/follow/create/{id}', 'FollowerController@postCreate');
 
 Route::get('/follow/delete/{id}', 'FollowerController@getDelete');
 Route::post('/follow/delete/{id}', 'FollowerController@postDelete');
+
+Route::get('/comment/create', 'CommentController@getCreate');
+Route::post('/comment/create', 'CommentController@postCreate');
+
+Route::get('/comment/update/{id}', 'CommentController@getUpdate');
+Route::post('/comment/update/{id}', 'CommentController@postUpdate');
+
+Route::get('/comment/delete/{id}', 'CommentController@getDelete');
+Route::post('/comment/delete/{id}', 'CommentController@postDelete');
+
