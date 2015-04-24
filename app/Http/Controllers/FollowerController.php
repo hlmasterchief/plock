@@ -65,6 +65,12 @@ class FollowerController extends Controller {
                                 ->with('flash_message', trans('follower.not_found'));
         }
 
+        $user = $this->user->find(Auth::id());
+        if ($user->isFollow($id)) {
+            return redirect()->action('FollowerController@getCreate')
+                                ->with('flash_message', trans('follower.had_follow'));
+        }
+
         return $this->view->make('follower.create')->with('follower' => $follower);
     }
 
@@ -73,7 +79,7 @@ class FollowerController extends Controller {
      *
      * @return Response
      */
-    public function postCreate($id = null, \App\Http\Requests\FollowerRequest $request) {
+    public function postCreate($id = null) {
         if (!isset($id) or is_null($id)) {
             return redirect()->action('FollowerController@getCreate')
                                 ->with('flash_message', trans('follower.not_valid'));
@@ -87,6 +93,11 @@ class FollowerController extends Controller {
 
         //$this->follower->create(Auth::id(), $id);
         $user = $this->user->find(Auth::id());
+        if ($user->isFollow($id)) {
+            return redirect()->action('FollowerController@getCreate')
+                                ->with('flash_message', trans('follower.had_follow'));
+        }
+
         $user->following()->save($follower);
 
         return redirect()->action('FollowerController@getCreate')
@@ -108,6 +119,12 @@ class FollowerController extends Controller {
         if (is_null($follower)) {
             return redirect()->action('FollowerController@getDelete')
                                 ->with('flash_message', trans('follower.not_found'));
+        }
+
+        $user = $this->user->find(Auth::id());
+        if (!$user->isFollow($id)) {
+            return redirect()->action('FollowerController@getDelete')
+                                ->with('flash_message', trans('follower.not_follow'));
         }
 
         return $this->view->make('follower.delete')->with('follower' => $follower);
@@ -132,6 +149,11 @@ class FollowerController extends Controller {
         
         //$this->follower->delete(Auth::id(), $id);
         $user = $this->user->find(Auth::id());
+        if (!$user->isFollow($id)) {
+            return redirect()->action('FollowerController@getDelete')
+                                ->with('flash_message', trans('follower.not_follow'));
+        }
+
         $user->following()->delete($follower);
 
         return redirect()->action('FollowerController@getDelete')

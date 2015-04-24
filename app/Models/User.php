@@ -50,4 +50,8 @@ class User extends Model implements AuthenticatableContract {
         return $this->belongsToMany('App\Models\User', 'followers', 'user_id', 'follow_id');
     }
 
+    // Check follow
+    public function isFollow($id) {
+        return $this->following->contains($id);
+    }
 }
