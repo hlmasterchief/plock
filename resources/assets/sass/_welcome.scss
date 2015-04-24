@@ -1,0 +1,40 @@
+.welcome {
+    header {
+        position: fixed;
+        right: 0;
+    }
+
+    .menu-right {
+        position: fixed;
+        top: 40%;
+
+        > ul {
+            margin-bottom: 0;
+            > li {
+                margin-bottom: 14px;
+            }
+        }
+    }
+
+    .fullpage {
+        section {
+            height: 800px;
+            .content {
+                max-width: 520px;
+                margin: 0 auto;
+            }
+        }
+
+        form {
+            max-width: 340px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-1 {
+            #page-logo, .scroll-down {
+                text-align: center;
+            }
+        }
+    }
+}

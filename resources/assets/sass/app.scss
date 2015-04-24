@@ -1,3 +1,30 @@
 @import "custom-variables";
 @import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "custom-bootstrap";
+
+@import "welcome";
+@import "home";
+@import "profile";
+@import "box";
+@import "post";
+
+body {
+    background-color: #ecf0f1;
+    margin-bottom: 44px;
+    font-weight: 300;
+}
+
+a {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+ul li {
+    list-style-type: none;
+}

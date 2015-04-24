@@ -33,4 +33,24 @@ class WelcomeController extends Controller {
 		return view('welcome');
 	}
 
+	// set route for sample basic view
+	public function user()
+	{
+		return view('template.profile');
+	}
+
+	public function box()
+	{
+		return view('template.box');
+	}
+
+	public function boxs_list()
+	{
+		return view('template.boxs-list');
+	}
+
+	public function posts_list() {
+		return view('template.posts-list');
+	}
+
 }

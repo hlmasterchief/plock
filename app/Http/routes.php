@@ -13,6 +13,19 @@
 
 Route::get('/', 'WelcomeController@index');
 
+//set route for basic view
+Route::get('/home', function () {
+    return view('template.home');
+});
+Route::get('/profile', 'WelcomeController@posts_list');
+Route::get('/box', 'WelcomeController@box');
+Route::get('/boxs-list', 'WelcomeController@boxs_list');
+Route::get('/posts-list', 'WelcomeController@posts_list');
+
+Route::get('/post-test', function () {
+    return view('template.post');
+});
+
 /**
  * Authentication
  */
