@@ -31,7 +31,7 @@ class FollowerController extends Controller {
      */
     public function getFollower() {
         $user = $this->user->find(Auth::id());
-        $followers = $user->follower();
+        $followers = $user->followers();
 
         return $this->view->make('follower.follower')->with('followers' => $followers);
     }
@@ -85,7 +85,9 @@ class FollowerController extends Controller {
                                 ->with('flash_message', trans('follower.not_found'));
         }
 
-        $this->follower->create(Auth::id(), $id);
+        //$this->follower->create(Auth::id(), $id);
+        $user = $this->user->find(Auth::id());
+        $user->following()->save($follower);
 
         return redirect()->action('FollowerController@getCreate')
                             ->with('flash_message', trans('follower.add_success'));
@@ -128,7 +130,9 @@ class FollowerController extends Controller {
                                 ->with('flash_message', trans('follower.not_found'));
         }
         
-        $this->follower->delete(Auth::id(), $id);
+        //$this->follower->delete(Auth::id(), $id);
+        $user = $this->user->find(Auth::id());
+        $user->following()->delete($follower);
 
         return redirect()->action('FollowerController@getDelete')
                             ->with('flash_message', trans('follower.delete_success'));
