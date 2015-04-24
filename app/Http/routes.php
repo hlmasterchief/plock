@@ -44,3 +44,12 @@ Route::post('/favourite/update/{id}', 'FavouriteController@postUpdate');
 
 Route::get('/favourite/delete/{id}', 'FavouriteController@getDelete');
 Route::post('/favourite/delete/{id}', 'FavouriteController@postDelete');
+
+Route::get('/follower', 'FollowerController@getFollower');
+Route::get('/following', 'FollowerController@getFollowing');
+
+Route::get('/follow/create/{id}', 'FollowerController@getCreate');
+Route::post('/follow/create/{id}', 'FollowerController@postCreate');
+
+Route::get('/follow/delete/{id}', 'FollowerController@getDelete');
+Route::post('/follow/delete/{id}', 'FollowerController@postDelete');
