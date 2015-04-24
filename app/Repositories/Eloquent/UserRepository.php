@@ -100,4 +100,48 @@ class UserRepository implements UserRepositoryInterface {
 
         return $profile;
     }
+
+    /**
+     * Update Profile avatar in Database
+     * @param  array  $modifiers
+     * @return App\Models\Profile
+     */
+    public function updateAvatar($id, array $modifiers) {
+        $profile = $this->find($id);
+
+        $destination = public_path() . "/upload-avatar";
+        $filename    = md5(time());
+        $random      = rand(11111,99999);
+        $extension   = $modifiers->getClientOriginalExtension();
+        
+        $modifiers->move($destination, $filename.$random.".".$extension);
+
+        $profile->avatar = $modifiers->getRealPath();
+
+        $profile->save();
+
+        return $profile;
+    }
+
+    /**
+     * Update Profile cover in Database
+     * @param  array  $modifiers
+     * @return App\Models\Profile
+     */
+    public function updateCover($id, array $modifiers) {
+        $profile = $this->find($id);
+
+        $destination = public_path() . "/upload-cover";
+        $filename    = md5(time());
+        $random      = rand(11111,99999);
+        $extension   = $modifiers->getClientOriginalExtension();
+        
+        $modifiers->move($destination, $filename.$random.".".$extension);
+
+        $profile->cover = $modifiers->getRealPath();
+
+        $profile->save();
+
+        return $profile;
+    }
 }
