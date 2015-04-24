@@ -29,4 +29,11 @@ interface UserRepositoryInterface {
      * @return App\Models\User
      */
     public function update($id, array $modifiers);
+
+    /**
+     * Update Profile in Database
+     * @param  array  $modifiers
+     * @return App\Models\Profile
+     */
+    public function updateProfile($id, array $modifiers);
 }

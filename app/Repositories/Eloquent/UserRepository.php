@@ -7,9 +7,12 @@ class UserRepository implements UserRepositoryInterface {
     /**
      * Inject User eloquent
      * @param \App\Models\User $user
+     * @param \App\Models\Profile $profile
      */
-    public function __construct(\App\Models\User $user) {
+    public function __construct(\App\Models\User $user,
+                                \App\Models\Profile $profile) {
         $this->user = $user;
+        $this->profile = $profile;
     }
 
     /**
@@ -42,6 +45,9 @@ class UserRepository implements UserRepositoryInterface {
         $user->password = bcrypt($modifiers['password']);
         $user->save();
 
+        //create profile
+        $user->profile->create($user->id);
+
         return $user;
     }
 
@@ -64,5 +70,34 @@ class UserRepository implements UserRepositoryInterface {
         $user->save();
 
         return $user;
+    }
+
+    /**
+     * Update Profile in Database
+     * @param  array  $modifiers
+     * @return App\Models\Profile
+     */
+    public function updateProfile($id, array $modifiers) {
+        $profile = $this->find($id);
+
+        if ($modifiers['display_name']) {
+            $profile->display_name = $modifiers['display_name'];
+        }
+
+        if ($modifiers['location']) {
+            $profile->location = $modifiers['location'];
+        }
+
+        if ($modifiers['homepage']) {
+            $profile->homepage = $modifiers['homepage'];
+        }
+
+        if ($modifiers['description']) {
+            $profile->description = $modifiers['description'];
+        }
+
+        $profile->save();
+
+        return $profile;
     }
 }
