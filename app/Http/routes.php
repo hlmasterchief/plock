@@ -76,3 +76,11 @@ Route::post('/comment/update/{id}', 'CommentController@postUpdate');
 Route::get('/comment/delete/{id}', 'CommentController@getDelete');
 Route::post('/comment/delete/{id}', 'CommentController@postDelete');
 
+Route::get('/profile/update', 'UserController@getUpdate');
+Route::post('/profile/update', 'UserController@postUpdate');
+
+Route::get('/upload/avatar', 'UserController@getAvatar');
+Route::post('/upload/avatar', 'UserController@postAvatar');
+
+Route::get('/upload/cover', 'UserController@getCover');
+Route::post('/upload/cover', 'UserController@postCover');

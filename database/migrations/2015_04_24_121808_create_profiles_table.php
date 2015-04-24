@@ -20,6 +20,8 @@ class CreateProfilesTable extends Migration {
             $table->string('location');
             $table->string('homepage');
             $table->string('description');
+            $table->string('avatar');
+            $table->string('cover');
             $table->timestamps();
         });
     }

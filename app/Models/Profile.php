@@ -20,7 +20,7 @@ class Profile extends Model {
      * Properties not allowed for mass assignment
      * @var array[string]
      */
-    protected $guarded = ['user_id'];
+    protected $guarded = ['user_id', 'avatar', 'cover'];
 
     /**
      * Get relationship - User

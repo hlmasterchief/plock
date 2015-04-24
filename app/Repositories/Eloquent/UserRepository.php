@@ -7,9 +7,12 @@ class UserRepository implements UserRepositoryInterface {
     /**
      * Inject User eloquent
      * @param \App\Models\User $user
+     * @param \App\Models\Profile $profile
      */
-    public function __construct(\App\Models\User $user) {
+    public function __construct(\App\Models\User $user,
+                                \App\Models\Profile $profile) {
         $this->user = $user;
+        $this->profile = $profile;
     }
 
     /**
@@ -42,6 +45,9 @@ class UserRepository implements UserRepositoryInterface {
         $user->password = bcrypt($modifiers['password']);
         $user->save();
 
+        //create profile
+        $user->profile->create($user->id);
+
         return $user;
     }
 
@@ -64,5 +70,78 @@ class UserRepository implements UserRepositoryInterface {
         $user->save();
 
         return $user;
+    }
+
+    /**
+     * Update Profile in Database
+     * @param  array  $modifiers
+     * @return App\Models\Profile
+     */
+    public function updateProfile($id, array $modifiers) {
+        $profile = $this->find($id);
+
+        if ($modifiers['display_name']) {
+            $profile->display_name = $modifiers['display_name'];
+        }
+
+        if ($modifiers['location']) {
+            $profile->location = $modifiers['location'];
+        }
+
+        if ($modifiers['homepage']) {
+            $profile->homepage = $modifiers['homepage'];
+        }
+
+        if ($modifiers['description']) {
+            $profile->description = $modifiers['description'];
+        }
+
+        $profile->save();
+
+        return $profile;
+    }
+
+    /**
+     * Update Profile avatar in Database
+     * @param  array  $modifiers
+     * @return App\Models\Profile
+     */
+    public function updateAvatar($id, array $modifiers) {
+        $profile = $this->find($id);
+
+        $destination = public_path() . "/upload-avatar";
+        $filename    = md5(time());
+        $random      = rand(11111,99999);
+        $extension   = $modifiers->getClientOriginalExtension();
+        
+        $modifiers->move($destination, $filename.$random.".".$extension);
+
+        $profile->avatar = $modifiers->getRealPath();
+
+        $profile->save();
+
+        return $profile;
+    }
+
+    /**
+     * Update Profile cover in Database
+     * @param  array  $modifiers
+     * @return App\Models\Profile
+     */
+    public function updateCover($id, array $modifiers) {
+        $profile = $this->find($id);
+
+        $destination = public_path() . "/upload-cover";
+        $filename    = md5(time());
+        $random      = rand(11111,99999);
+        $extension   = $modifiers->getClientOriginalExtension();
+        
+        $modifiers->move($destination, $filename.$random.".".$extension);
+
+        $profile->cover = $modifiers->getRealPath();
+
+        $profile->save();
+
+        return $profile;
     }
 }
