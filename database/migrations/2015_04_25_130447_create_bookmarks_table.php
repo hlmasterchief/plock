@@ -24,6 +24,7 @@ class CreateBookmarksTable extends Migration {
             //       ->references('id')->on('favourites')
             //       ->onDelete('cascade');
             $table->text('description');
+            $table->integer('box_id')->unsigned()->default(0);
             $table->timestamps();
         });
     }

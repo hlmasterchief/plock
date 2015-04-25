@@ -80,7 +80,7 @@ class FavouriteController extends Controller {
                                 ->with('flash_message', trans('favourite.not_found'));
         }
 
-        $this->favourite->update($id, $request->only('name', 'type'));
+        $this->favourite->update($id, $request->all());
 
         return redirect()->action('FavouriteController@getUpdate')
                             ->with('flash_message', trans('favourite.update_success'));
@@ -127,5 +127,16 @@ class FavouriteController extends Controller {
 
         return redirect()->action('FavouriteController@getDelete')
                             ->with('flash_message', trans('favourite.delete_success'));
+    }
+
+    /**
+     * Search for favourites
+     * @param  \App\Http\Requests\FavouriteRequest $request
+     * @return Response
+     */
+    public function postSearch(\App\Http\Requests\FavouriteRequest $request) {
+        $favourites = $this->favourite->search($request->all());
+
+        return $this->view->make('favourite.search_result')->with('favourites', $favourites);
     }
 }

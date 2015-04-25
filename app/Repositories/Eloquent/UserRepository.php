@@ -183,7 +183,7 @@ class UserRepository implements UserRepositoryInterface {
      * @return Collection[\App\Models\User]
      */
     public function getFollowers($id) {
-        return $this->find($id)->followers->get();
+        return $this->find($id)->followers();
     }
 
     /**
@@ -192,26 +192,15 @@ class UserRepository implements UserRepositoryInterface {
      * @return Collection[\App\Models\User]
      */
     public function getFollowings($id) {
-        return $this->find($id)->following->get();
+        return $this->find($id)->following();
     }
 
     /**
-     * Get user's followers
-     * @param  string $username
+     * Get user's boxes
+     * @param  int $id
      * @return Collection[\App\Models\User]
      */
-    public function getFollowersByName($username) {
-        return $this->findByColumn('username', $username)
-                    ->followers;
-    }
-
-    /**
-     * Get user's followings
-     * @param  string $username
-     * @return Collection[\App\Models\User]
-     */
-    public function getFollowingsByName($username) {
-        return $this->findByColumn('username', $username)
-                    ->following;
+    public function getBoxes($id) {
+        return $this->find($id)->boxes();
     }
 }

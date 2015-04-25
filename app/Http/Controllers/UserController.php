@@ -107,7 +107,6 @@ class UserController extends Controller {
             $id = $this->auth->user()->id;
         }
 
-        // TODO: check if user id exists
         $user = $this->user->find($id);
         if (is_null($user)) {
             return redirect('/')->with('flash_message', trans('user.not_found'));
@@ -129,7 +128,6 @@ class UserController extends Controller {
             $id = $this->auth->user()->id;
         }
 
-        // TODO: check if user id exists
         $user = $this->user->find($id);
         if (is_null($user)) {
             return redirect('/')->with('flash_message', trans('user.not_found'));
@@ -147,13 +145,12 @@ class UserController extends Controller {
      * @return Response
      */
     public function getFollowersByName($username) {
-        // TODO: check if user id exists
         $user = $this->user->findByColumn('username', $username);
         if (is_null($user)) {
             return redirect('/')->with('flash_message', trans('user.not_found'));
         }
 
-        $followers = $this->user->getFollowersByName($username);
+        $followers = $this->user->getFollowers($user['id']);
 
         return $this->view->make('user.followers')
                             ->with('followers', $followers);
@@ -165,15 +162,53 @@ class UserController extends Controller {
      * @return Response
      */
     public function getFollowingsByName($username) {
-        // TODO: check if user id exists
         $user = $this->user->findByColumn('username', $username);
         if (is_null($user)) {
             return redirect('/')->with('flash_message', trans('user.not_found'));
         }
 
-        $followings = $this->user->getFollowingsByName($username);
+        $followers = $this->user->getFollowings($user['id']);
 
         return $this->view->make('user.followings')
                             ->with('followings', $followings);
+    }
+
+    /**
+     * Get user's boxes
+     * @param  int $id
+     * @return Response
+     */
+    public function getBoxes($id = null) {
+        if (is_null($id)) {
+            $id = $this->auth->user()->id;
+        }
+
+        $user = $this->user->find($id);
+        if (is_null($user)) {
+            return redirect('/')->with('flash_message', trans('user.not_found'));
+        }
+
+        $boxes = $this->user->getBoxes($id);
+
+        return $this->view->make('user.boxes')
+                            ->with('boxes', $boxes);
+    }
+
+    /**
+     * Get user's boxes by name
+     * @param  string $username
+     * @return Response
+     */
+    public function getBoxesByName($username) {
+        $user = $this->user->findByColumn('username', $username);
+        if (is_null($user)) {
+            return redirect('/')->with('flash_message', trans('user.not_found'));
+        }
+
+        //$boxes = $this->user->getBoxesByName($username);
+        $boxes = $this->user->getBoxes($user['id']);
+
+        return $this->view->make('user.boxes')
+                            ->with('boxes', $boxes);
     }
 }

@@ -58,6 +58,8 @@ Route::post('/favourite/update/{id}', 'FavouriteController@postUpdate');
 Route::get('/favourite/delete/{id}', 'FavouriteController@getDelete');
 Route::post('/favourite/delete/{id}', 'FavouriteController@postDelete');
 
+Route::post('/favourite/search', 'FavouriteController@postSearch');
+
 Route::post('/follow/toggle', 'UserController@postToggleFollow');
 
 Route::get('/{username}/followers', 'UserController@getFollowersByName');
@@ -85,3 +87,18 @@ Route::post('/upload/avatar', 'UserController@postAvatar');
 
 Route::get('/upload/cover', 'UserController@getCover');
 Route::post('/upload/cover', 'UserController@postCover');
+
+Route::get('/{username}/boxes', 'UserController@getBoxesByName');
+Route::get('/boxes/{id}', 'UserController@getBoxes');
+Route::get('/boxes', 'UserController@getBoxes');
+
+Route::get('/box/{id}', 'BoxController@getRead');
+
+Route::get('/box/create', 'BoxController@getCreate');
+Route::post('/box/create', 'BoxController@postCreate');
+
+Route::get('/box/update/{id}', 'BoxController@getUpdate');
+Route::post('/box/update/{id}', 'BoxController@postUpdate');
+
+Route::get('/box/delete/{id}', 'BoxController@getDelete');
+Route::post('/box/delete/{id}', 'BoxController@postDelete');
