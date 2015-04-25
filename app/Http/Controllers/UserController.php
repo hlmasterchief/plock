@@ -110,6 +110,10 @@ class UserController extends Controller {
         }
 
         // TODO: check if user id exists
+        $user = $this->user->find($id);
+        if (is_null($user)) {
+            return redirect('/')->with('flash_message', trans('user.not_found'));
+        }
 
         $followers = $this->user->getFollowers($id);
 
@@ -128,6 +132,10 @@ class UserController extends Controller {
         }
 
         // TODO: check if user id exists
+        $user = $this->user->find($id);
+        if (is_null($user)) {
+            return redirect('/')->with('flash_message', trans('user.not_found'));
+        }
 
         $followings = $this->user->getFollowings($id);
 
@@ -142,6 +150,10 @@ class UserController extends Controller {
      */
     public function getFollowersByName($username) {
         // TODO: check if user id exists
+        $user = $this->user->findByColumn('username', $username);
+        if (is_null($user)) {
+            return redirect('/')->with('flash_message', trans('user.not_found'));
+        }
 
         $followers = $this->user->getFollowersByName($username);
 
@@ -156,6 +168,10 @@ class UserController extends Controller {
      */
     public function getFollowingsByName($username) {
         // TODO: check if user id exists
+        $user = $this->user->findByColumn('username', $username);
+        if (is_null($user)) {
+            return redirect('/')->with('flash_message', trans('user.not_found'));
+        }
 
         $followings = $this->user->getFollowingsByName($username);
 
