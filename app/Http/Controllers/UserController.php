@@ -18,8 +18,6 @@ class UserController extends Controller {
         $this->user = $user;
         $this->auth = $auth;
         $this->view = $view;
-
-        $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     /**

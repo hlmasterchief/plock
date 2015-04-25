@@ -1,16 +1,21 @@
 <div class="login-form">
+
     {!! Form::open(array('url'=>'/login', 'autocomplete' => 'off')) !!}
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <h4>Please Login</h4>
-    {{-- <ul>
+
+    <ul>
         @foreach($errors->all() as $error)
             <li>{{ $error }}</li>
         @endforeach
     </ul>
-    @if(Session::has('message'))
-        <p class="alert">{{ Session::get('message') }}</p>
-    @endif --}}
+
+    @if(Session::has('flash_message'))
+        <p class="alert">{{ Session::get('flash_message') }}</p>
+    @endif
+
     <div class="form-group">
-        {!! Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'Email')) !!}
+        {!! Form::text('username', null, array('class'=>'form-control', 'placeholder'=>'Username')) !!}
         {!! Form::password('password', array('class'=>'form-control', 'placeholder'=>'Password')) !!}
     </div>
     {!! Form::submit('Login', array('class'=>'btn btn-primary btn-block')) !!}

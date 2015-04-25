@@ -19,7 +19,7 @@ class AuthenticationController extends Controller {
         $this->auth = $auth;
         $this->view = $view;
 
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => ['getLogout', 'getUpdate', 'postUpdate']]);
     }
 
     /**
@@ -40,7 +40,9 @@ class AuthenticationController extends Controller {
         $credentials = $request->only('username', 'password');
 
         if ($this->auth->attempt($credentials)) {
-            return redirect()->back();
+            //return redirect()->back();
+            return redirect()->action('AuthenticationController@getUpdate')
+                                ->with('flash_message', trans('authentication.login_success'));
         } else {
             return redirect()->action('AuthenticationController@getLogin')
                                 ->withInput($request->only('username'))
@@ -86,7 +88,7 @@ class AuthenticationController extends Controller {
      * @return Response
      */
     public function getUpdate() {
-        return $this->view->make('authentication.update');
+        return $this->view->make('authentication.update')->with('email', $this->auth->user()->email);
     }
 
     /**
@@ -95,11 +97,18 @@ class AuthenticationController extends Controller {
      * @return Response
      */
     public function postUpdate(\App\Http\Requests\UpdateRequest $request) {
-        if (Auth::user()->password == bcrypt($request['old_password'])) {
-			$this->user->update(Auth::id(), $request->only('email', 'password'));
+        $user = $this->auth->user();
 
-        	return redirect()->action('AuthenticationController@getUpdate')
-								->with('flash_message', trans('authentication.update_success'));
+        $credentials = [
+            'username' => $user->username,
+            'password' => $request['old_password']
+        ];
+
+        if ($this->auth->validate($credentials)) {
+            $this->user->update($user->id, $request->only('email', 'password'));
+
+            return redirect()->action('AuthenticationController@getUpdate')
+                                ->with('flash_message', trans('authentication.update_success'));
         }
 
         return redirect()->action('AuthenticationController@getUpdate')

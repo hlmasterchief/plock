@@ -1,6 +1,7 @@
 <?php namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Auth;
 
 class UpdateRequest extends Request {
 
@@ -20,8 +21,8 @@ class UpdateRequest extends Request {
      */
     public function rules() {
         return [
-            'old_password'  =>  'required',
-            'email'         =>  'required|email|unique:users|confirmed',
+            'old_password'  =>  'required|min:6',
+            'email'         =>  'required|email|confirmed|unique:users,email,'.Auth::id(),
             'password'      =>  'min:6|confirmed',
         ];
     }
