@@ -38,8 +38,8 @@
 
         <div class="col-md-2 col-xs-2"></div>
 
-        <div class="col-md-2 col-xs-2 text-center">
-            <div class="tmenu-wrap">
+        <div class="col-md-2 col-xs-2 text-center row">
+            <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap ">
             <a class="tmenu-middle" href="/posts-list">
                 <h5 class="menu-name">Posts</h5>
                 <p class="menu-data">78</p>
@@ -47,8 +47,8 @@
             </div>
         </div>
 
-        <div class="col-md-2 col-xs-2 text-center">
-            <div class="tmenu-wrap">
+        <div class="col-md-2 col-xs-2 text-center row">
+            <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap ">
             <a class="tmenu-middle" href="/boxs-list">
                 <h5 class="menu-name">Boxs</h5>
                 <p class="menu-data">23</p>
@@ -56,8 +56,8 @@
             </div>
         </div>
 
-        <div class="col-md-2 col-xs-2 text-center">
-            <div class="tmenu-wrap">
+        <div class="col-md-2 col-xs-2 text-center row">
+            <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap">
             <a class="tmenu-middle" href="/box">
                 <h5 class="menu-name">Followers</h5>
                 <p class="menu-data">40</p>
@@ -65,8 +65,8 @@
             </div>
         </div>
 
-        <div class="col-md-2 col-xs-2 text-center">
-            <div class="tmenu-wrap">
+        <div class="col-md-2 col-xs-2 text-center row">
+            <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap">
             <a class="tmenu-middle" href="/box">
                 <h5 class="menu-name">Followings</h5>
                 <p class="menu-data">40</p>

@@ -54,43 +54,6 @@
     }
 }
 
-/**
- * create-button
- */
-
-.create-button-fixed {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    width: 52px;
-    height: 52px;
-    background-color: rgba(0,0,0, 0.15);
-    border-radius: 50%;
-    z-index: 100;
-
-    .create-icon {
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        line-height: 52px;
-        font-size: 1.2em;
-        border-radius: 50%;
-        box-shadow: $box-shadow-level1;
-
-        &:hover {
-            box-shadow: $box-shadow-level2;
-        }
-    }
-}
-
-.menu-create {
-    position: fixed;
-    bottom: 62px;
-    right: 48px;
-    z-index: 101;
-    display: none;
-}
-
 
 /**
  * profile-page
@@ -135,7 +98,7 @@
     color: #2a2a2a;
 
     .tmenu-wrap {
-        width: 100%;
+        margin: 0 auto;
         height: 52px;
         display: table;
 
@@ -154,30 +117,12 @@
     }
 
     a {
+        display: block;
         color: #4a4a4a;
         border: solid 2px #f5f5f5;
 
         &:hover {
-            color: #2a2a2a;
-        }
-
-        &:hover:before {
-            content : "";
-            position: absolute;
-            left    : 25%;
-            bottom  : 0;
-            height  : 1px;
-            width   : 50%;  /* or 100px */
-            border-bottom: solid 2px #2a2a2a;
-        }
-
-        &:hover:after {
-            content : "";
-            position: absolute;
-            right   : 25%;
-            bottom  : 0;
-            height  : 1px;
-            width   : 50%;  /* or 100px */
+            color: #1a1a1a;
             border-bottom: solid 2px #2a2a2a;
         }
     }

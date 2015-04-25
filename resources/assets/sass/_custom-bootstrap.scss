@@ -156,13 +156,10 @@ dl {
  */
 
 .dropdown {
-    background-color: #fff;
-    color: #111;
     z-index: 101;
 
     .dropdown-menu {
-        display: block;
-        position: relative;
+        position: absolute;
         top: 0;
         margin: 0;
         z-index: 100;
@@ -179,4 +176,33 @@ dl {
             }
         }
     }
+}
+
+/**
+ * file input
+ */
+
+.file-button {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.file-button input.input-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    // opacity: 0;
+    // filter: alpha(opacity=0);
+}
+
+/**
+ * modal
+ */
+
+.modal-dialog {
+
 }
