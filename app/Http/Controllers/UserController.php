@@ -195,7 +195,8 @@ class UserController extends Controller {
             return redirect('/')->with('flash_message', trans('user.not_found'));
         }
 
-        $boxes = $this->user->getBoxesByName($username);
+        //$boxes = $this->user->getBoxesByName($username);
+        $boxes = $this->user->getBoxes($user['id']);
 
         return $this->view->make('user.boxes')
                             ->with('boxes', $boxes);

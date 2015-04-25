@@ -50,4 +50,11 @@ interface UserRepositoryInterface {
      * @return App\Models\Profile
      */
     public function updateCover($id, array $modifiers);
+
+    /**
+     * Get user's boxes in Database
+     * @param  array  $modifiers
+     * @return App\Models\Box
+     */
+    public function getBoxes($id);
 }

@@ -38,7 +38,7 @@ class BoxController extends Controller {
             return redirect()->action('BoxController@getUpdate')
                                 ->with('flash_message', trans('box.not_found'));
         }
-        
+
         return $this->view->make('box.read')->with('box' => $box);;
     }
 
@@ -57,7 +57,7 @@ class BoxController extends Controller {
      * @return Response
      */
     public function postCreate(\App\Http\Requests\BoxRequest $request) {
-        $this->box->create($request->all());
+        $this->box->create(Auth::id(), $request->all());
 
         return redirect()->action('BoxController@getCreate')
                             ->with('flash_message', trans('box.add_success'));

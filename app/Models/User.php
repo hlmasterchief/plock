@@ -54,4 +54,13 @@ class User extends Model implements AuthenticatableContract {
     public function isFollow($id) {
         return $this->following->contains($id);
     }
+
+    /**
+     * Get relationship - Box
+     * @return App\Box
+     */
+    public function boxes()
+    {
+        return $this->hasMany('App\Models\Box');
+    }
 }
