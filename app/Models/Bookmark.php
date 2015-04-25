@@ -20,7 +20,7 @@ class Bookmark extends Model {
      * Properties not allowed for mass assignment
      * @var array[string]
      */
-    protected $guarded = ['id', 'user_id', 'favourite_id'];
+    protected $guarded = ['id', 'user_id', 'favourite_id', 'box_id'];
 
     /**
      * Get relationship - Favourite
@@ -36,6 +36,14 @@ class Bookmark extends Model {
      */
     public function user() {
         return $this->belongsTo('App\Models\User');
+    }
+
+    /**
+     * Get relationship - Box
+     * @return App\Box
+     */
+    public function box() {
+        return $this->belongsTo('App\Models\Box');
     }
 
 }

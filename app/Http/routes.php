@@ -85,3 +85,22 @@ Route::post('/upload/avatar', 'UserController@postAvatar');
 
 Route::get('/upload/cover', 'UserController@getCover');
 Route::post('/upload/cover', 'UserController@postCover');
+
+Route::get('/box', 'BoxController@getIndex');
+
+Route::get('/box/{id}', 'BoxController@getRead');
+
+Route::get('/box/create', 'BoxController@getCreate');
+Route::post('/box/create', 'BoxController@postCreate');
+
+Route::get('/box/update/{id}', 'BoxController@getUpdate');
+Route::post('/box/update/{id}', 'BoxController@postUpdate');
+
+Route::get('/box/add/{id}', 'BoxController@getAdd');
+Route::post('/box/add/{id}', 'BoxController@postAdd');
+
+Route::get('/box/remove/{id}', 'BoxController@getRemove');
+Route::post('/box/remove/{id}', 'BoxController@postRemove');
+
+Route::get('/box/delete/{id}', 'BoxController@getDelete');
+Route::post('/box/delete/{id}', 'BoxController@postDelete');
