@@ -98,4 +98,68 @@ class UserController extends Controller {
 
         return response()->json(['is_follow' => $is_follow]);
     }
+
+    /**
+     * Get user's followers
+     * @param  int $id
+     * @return Response
+     */
+    public function getFollowers($id = null) {
+        if (is_null($id)) {
+            $id = $this->auth->user()->id;
+        }
+
+        // TODO: check if user id exists
+
+        $followers = $this->user->getFollowers($id);
+
+        return $this->view->make('user.followers')
+                            ->with('followers', $followers);
+    }
+
+    /**
+     * Get user's followings
+     * @param  int $id
+     * @return Response
+     */
+    public function getFollowings($id = null) {
+        if (is_null($id)) {
+            $id = $this->auth->user()->id;
+        }
+
+        // TODO: check if user id exists
+
+        $followings = $this->user->getFollowings($id);
+
+        return $this->view->make('user.followings')
+                            ->with('followings', $followings);
+    }
+
+    /**
+     * Get user's followers by name
+     * @param  string $username
+     * @return Response
+     */
+    public function getFollowersByName($username) {
+        // TODO: check if user id exists
+
+        $followers = $this->user->getFollowersByName($username);
+
+        return $this->view->make('user.followers')
+                            ->with('followers', $followers);
+    }
+
+    /**
+     * Get user's followings by name
+     * @param  string $username
+     * @return Response
+     */
+    public function getFollowingsByName($username) {
+        // TODO: check if user id exists
+
+        $followings = $this->user->getFollowingsByName($username);
+
+        return $this->view->make('user.followings')
+                            ->with('followings', $followings);
+    }
 }

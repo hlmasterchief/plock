@@ -58,16 +58,15 @@ Route::post('/favourite/update/{id}', 'FavouriteController@postUpdate');
 Route::get('/favourite/delete/{id}', 'FavouriteController@getDelete');
 Route::post('/favourite/delete/{id}', 'FavouriteController@postDelete');
 
-// Route::get('/follower', 'FollowerController@getFollower');
-// Route::get('/following', 'FollowerController@getFollowing');
-
-// Route::get('/follow/create/{id}', 'FollowerController@getCreate');
-// Route::post('/follow/create/{id}', 'FollowerController@postCreate');
-
-// Route::get('/follow/delete/{id}', 'FollowerController@getDelete');
-// Route::post('/follow/delete/{id}', 'FollowerController@postDelete');3
-
 Route::post('/follow/toggle', 'UserController@postToggleFollow');
+
+Route::get('/{username}/followers', 'UserController@getFollowersByName');
+Route::get('/followers/{id}', 'UserController@getFollowers');
+Route::get('/followers', 'UserController@getFollowers');
+
+Route::get('/{username}/followings', 'UserController@getFollowingsByName');
+Route::get('/followings/{id}', 'UserController@getFollowings');
+Route::get('/followings', 'UserController@getFollowings');
 
 Route::get('/comment/create', 'CommentController@getCreate');
 Route::post('/comment/create', 'CommentController@postCreate');

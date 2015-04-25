@@ -8,8 +8,12 @@ class CommentRepository implements CommentRepositoryInterface {
      * Inject Comment eloquent
      * @param \App\Models\Comment $comment
      */
-    public function __construct(\App\Models\Comment $comment) {
+    public function __construct(\App\Models\Comment $comment,
+                                \App\Models\User $user,
+                                \App\Models\Bookmark $bookmark) {
         $this->comment = $comment;
+        $this->user = $user;
+        $this->bookmark = $bookmark;
     }
 
     /**
@@ -27,10 +31,15 @@ class CommentRepository implements CommentRepositoryInterface {
      * @return App\Models\Comment
      */
     public function create($user_id, array $modifiers) {
-        $data = array_only($modifiers, ['bookmark_id', 'content']);
+        $data = array_only($modifiers, ['content']);
+
+        $user     = $this->user->find($user_id);
+        $bookmark = $this->bookmark->find($modifiers['bookmark_id']);
 
         $comment = $this->comment->create($data);
-        $comment->user_id = $user_id;
+        $comment->user()->associate($user);
+        $comment->bookmark()->associate($bookmark);
+
         $comment->save();
 
         return $comment;
