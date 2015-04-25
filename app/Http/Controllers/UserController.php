@@ -162,4 +162,42 @@ class UserController extends Controller {
         return $this->view->make('user.followings')
                             ->with('followings', $followings);
     }
+
+    /**
+     * Get user's boxes
+     * @param  int $id
+     * @return Response
+     */
+    public function getBoxes($id = null) {
+        if (is_null($id)) {
+            $id = $this->auth->user()->id;
+        }
+
+        $user = $this->user->find($id);
+        if (is_null($user)) {
+            return redirect('/')->with('flash_message', trans('user.not_found'));
+        }
+
+        $boxes = $this->user->getBoxes($id);
+
+        return $this->view->make('user.boxes')
+                            ->with('boxes', $boxes);
+    }
+
+    /**
+     * Get user's boxes by name
+     * @param  string $username
+     * @return Response
+     */
+    public function getBoxesByName($username) {
+        $user = $this->user->findByColumn('username', $username);
+        if (is_null($user)) {
+            return redirect('/')->with('flash_message', trans('user.not_found'));
+        }
+
+        $boxes = $this->user->getBoxesByName($username);
+
+        return $this->view->make('user.boxes')
+                            ->with('boxes', $boxes);
+    }
 }
