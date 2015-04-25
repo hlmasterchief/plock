@@ -50,4 +50,26 @@ interface UserRepositoryInterface {
      * @return App\Models\Profile
      */
     public function updateCover($id, array $modifiers);
+
+    /**
+     * Toggle follow user in Database
+     * @param  int $follower_id
+     * @param  int $followee_id
+     * @return App\Models\User
+     */
+    public function toggleFollow($follower_id, $followee_id);
+
+    /**
+     * Get user's followers in Database
+     * @param  int $id
+     * @return App\Models\User
+     */
+    public function getFollowers($id);
+
+    /**
+     * Get user's followings in Database
+     * @param  int $id
+     * @return App\Models\User
+     */
+    public function getFollowings($id);
 }
