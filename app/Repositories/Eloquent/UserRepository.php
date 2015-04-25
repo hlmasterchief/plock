@@ -10,9 +10,11 @@ class UserRepository implements UserRepositoryInterface {
      * @param \App\Models\Profile $profile
      */
     public function __construct(\App\Models\User $user,
-                                \App\Models\Profile $profile) {
+                                \App\Models\Profile $profile,
+                                \App\Models\Follower $follower) {
         $this->user = $user;
         $this->profile = $profile;
+        $this->follower = $follower;
     }
 
     /**
@@ -145,5 +147,33 @@ class UserRepository implements UserRepositoryInterface {
         $profile->save();
 
         return $profile;
+    }
+
+    /**
+     * Toggle follow user
+     * @param  int $follower_id
+     * @param  int $followee_id
+     * @return boolean isFollow
+     */
+    public function toggleFollow($follower_id, $followee_id) {
+        $follower = $this->find($follower_id);
+        $followee = $this->find($followee_id);
+
+        if (is_null($follower) || is_null($followee)) {
+            return false;
+        }
+
+        $follow = $this->follower->where('user_id', '=', $follower_id)
+                                    ->where('follow_id', '=', $followee_id)
+                                    ->first();
+
+        // if follow then set to unfollow
+        if ($follow) {
+            $follower->following()->detach($followee_id);
+            return false;
+        }
+
+        $follower->following()->attach($followee_id);
+        return true;
     }
 }

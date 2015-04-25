@@ -84,4 +84,18 @@ class UserController extends Controller {
         return redirect()->action('UserController@getCover')
                     ->with('flash_message', trans('user.updateCover_success'));
     }
+
+    /**
+     * Toggle follower
+     *
+     * @return Response
+     */
+    public function postToggleFollow(\App\Http\Requests\FollowRequest $request) {
+        $follower_id = $request->input('follower_id');
+        $followee_id = $request->input('followee_id');
+
+        $is_follow = $this->user->toggleFollow($follower_id, $followee_id);
+
+        return response()->json(['is_follow' => $is_follow]);
+    }
 }

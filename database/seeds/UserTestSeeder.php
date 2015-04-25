@@ -16,6 +16,24 @@ class UserTestSeeder extends Seeder {
         $user->email = "test@gmail.com";
         $user->password = bcrypt("test");
         $user->save();
+
+        $user = new App\Models\User();
+        $user->username = "test2";
+        $user->email = "test2@gmail.com";
+        $user->password = bcrypt("test");
+        $user->save();
+
+        $user = new App\Models\User();
+        $user->username = "test3";
+        $user->email = "test3@gmail.com";
+        $user->password = bcrypt("test");
+        $user->save();
+
+        $user = new App\Models\User();
+        $user->username = "test4";
+        $user->email = "test4@gmail.com";
+        $user->password = bcrypt("test");
+        $user->save();
     }
 
 }
