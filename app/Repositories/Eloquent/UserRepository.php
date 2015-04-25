@@ -194,4 +194,13 @@ class UserRepository implements UserRepositoryInterface {
     public function getFollowings($id) {
         return $this->find($id)->following();
     }
+
+    /**
+     * Get user's boxes
+     * @param  int $id
+     * @return Collection[\App\Models\User]
+     */
+    public function getBoxes($id) {
+        return $this->find($id)->boxes();
+    }
 }

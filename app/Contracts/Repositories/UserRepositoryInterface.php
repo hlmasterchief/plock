@@ -72,4 +72,10 @@ interface UserRepositoryInterface {
      * @return App\Models\User
      */
     public function getFollowings($id);
-}
+
+    /**
+     * Get user's boxes in Database
+     * @param  array  $modifiers
+     * @return App\Models\Box
+     */
+    public function getBoxes($id);
