@@ -94,4 +94,24 @@ class FavouriteRepository implements FavouriteRepositoryInterface {
 
         return $favourite->delete();
     }
+
+    /**
+     * Full-text search favourite
+     * @param  array  $modifiers
+     * @return Collection
+     */
+    public function search(array $modifiers) {
+        $type = $modifiers['type'];
+        $model = "";
+
+        switch ($type) {
+            case 'movies':
+                $model = "movie";
+                break;
+            default:
+                return collect([]);
+        }
+
+        return $this->$model->elasticSearch(array_except($modifiers, ['type']));
+    }
 }

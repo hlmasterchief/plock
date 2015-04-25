@@ -25,4 +25,17 @@ class FavouriteFuncTest extends TestCase {
         $this->assertNotNull($movie->all()->first());
     }
 
+    /**
+     * @test
+     */
+    public function it_has_to_search_successfully_a_movie() {
+        $credentials = [
+            'name' =>  'Dark',
+            'type' =>  'movies',
+        ];
+
+        $response = $this->action('POST', 'FavouriteController@postSearch', [], $credentials);
+        $this->assertViewHas('favourites');
+    }
+
 }
