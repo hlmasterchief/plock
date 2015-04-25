@@ -11,12 +11,6 @@ class Movie extends IndexModel {
     protected $table = 'movies';
 
     /**
-     * Set primary key
-     * @var string
-     */
-    protected $primaryKey = 'favourite_id';
-
-    /**
      * Mass assignment allow
      * @var array[string]
      */

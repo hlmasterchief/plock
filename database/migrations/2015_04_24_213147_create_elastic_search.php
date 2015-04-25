@@ -22,14 +22,17 @@ class CreateElasticSearch extends Migration {
         $param['body']  = [];
         $param['body']['settings'] = \Config::get('search.settings');
 
-        $param['body']['movies'] = [];
-        $param['body']['movies']['properties'] = [
+        $param['body']['mappings'] = [];
+        $param['body']['mappings']['movies'] = [];
+        $param['body']['mappings']['movies']['properties'] = [
             'name' => [
                 'type'              =>  'string',
                 'index_analyzer'    =>  'nGram_analyzer',
                 'search_analyzer'   =>  'whitespace_analyzer'
             ]
         ];
+
+        // dd($param);
 
         $es->indices()->create($param);
 	}

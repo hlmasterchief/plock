@@ -26,6 +26,21 @@ class AppServiceProvider extends ServiceProvider {
 			'App\Repositories\Eloquent\UserRepository'
 		);
 
+		$this->app->bind(
+			'App\Contracts\Repositories\BookmarkRepositoryInterface',
+			'App\Repositories\Eloquent\BookmarkRepository'
+		);
+
+		$this->app->bind(
+			'App\Contracts\Repositories\CommentRepositoryInterface',
+			'App\Repositories\Eloquent\CommentRepository'
+		);
+
+		$this->app->bind(
+			'App\Contracts\Repositories\FavouriteRepositoryInterface',
+			'App\Repositories\Eloquent\FavouriteRepository'
+		);
+
 		$this->app->singleton('elasticsearch', function() {
 			// return \Elasticsearch\ClientBuilder::create()->build();
 			return new \Elasticsearch\Client();

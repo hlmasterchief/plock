@@ -14,13 +14,13 @@ class Favourite extends IndexModel {
      * Mass assignment allow
      * @var array[string]
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'type'];
 
     /**
      * Properties not allowed for mass assignment
      * @var array[string]
      */
-    protected $guarded = ['id', 'type'];
+    protected $guarded = ['id'];
 
     /**
      * Key collection for elasticsearch index

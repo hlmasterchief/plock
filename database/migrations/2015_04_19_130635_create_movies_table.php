@@ -14,8 +14,9 @@ class CreateMoviesTable extends Migration {
     {
         Schema::create('movies', function(Blueprint $table)
         {
+            $table->increments('id');
             $table->integer('favourite_id')->unsigned();
-            $table->primary('favourite_id');
+            // $table->primary('favourite_id');
             // $table->foreign('favourite_id')
             //       ->references('id')->on('favourites')
             //       ->onDelete('cascade');

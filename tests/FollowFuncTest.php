@@ -4,7 +4,7 @@ class FollowFuncTest extends TestCase {
 
     public function setUp() {
         parent::setUp();
-        $this->seed('UserTestSeeder');
+        // $this->seed('UserTestSeeder');
     }
 
     /**

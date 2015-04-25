@@ -60,7 +60,7 @@ class FavouriteController extends Controller {
                                 ->with('flash_message', trans('favourite.not_found'));
         }
 
-        return $this->view->make('favourite.update')->with('favourite' => $favourite);
+        return $this->view->make('favourite.update')->with('favourite', $favourite);
     }
 
     /**
@@ -79,7 +79,7 @@ class FavouriteController extends Controller {
             return redirect()->action('FavouriteController@getUpdate')
                                 ->with('flash_message', trans('favourite.not_found'));
         }
-        
+
         $this->favourite->update($id, $request->only('name', 'type'));
 
         return redirect()->action('FavouriteController@getUpdate')
@@ -103,7 +103,7 @@ class FavouriteController extends Controller {
                                 ->with('flash_message', trans('favourite.not_found'));
         }
 
-        return $this->view->make('favourite.delete')->with('favourite' => $favourite);
+        return $this->view->make('favourite.delete')->with('favourite', $favourite);
     }
 
     /**
@@ -122,7 +122,7 @@ class FavouriteController extends Controller {
             return redirect()->action('FavouriteController@getDelete')
                                 ->with('flash_message', trans('favourite.not_found'));
         }
-        
+
         $this->favourite->delete($id);
 
         return redirect()->action('FavouriteController@getDelete')

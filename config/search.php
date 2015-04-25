@@ -6,7 +6,7 @@ return [
         'analysis' => [
             'filter' => [
                 'nGram_filter' => [
-                    'type'        => 'nGram',
+                    'type'        => 'ngram',
                     'min_gram'    => 3,
                     'max_gram'    => 8,
                     'token_chars' => ["letter", "digit"]
