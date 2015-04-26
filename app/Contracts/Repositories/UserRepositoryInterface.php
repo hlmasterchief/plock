@@ -79,3 +79,4 @@ interface UserRepositoryInterface {
      * @return App\Models\Box
      */
     public function getBoxes($id);
+}

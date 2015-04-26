@@ -62,4 +62,4 @@ class User extends Model implements AuthenticatableContract {
     public function boxes() {
         return $this->hasMany('App\Models\Box');
     }
-
+}

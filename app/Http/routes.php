@@ -92,8 +92,6 @@ Route::get('/{username}/boxes', 'UserController@getBoxesByName');
 Route::get('/boxes/{id}', 'UserController@getBoxes');
 Route::get('/boxes', 'UserController@getBoxes');
 
-Route::get('/box/{id}', 'BoxController@getRead');
-
 Route::get('/box/create', 'BoxController@getCreate');
 Route::post('/box/create', 'BoxController@postCreate');
 
@@ -102,3 +100,5 @@ Route::post('/box/update/{id}', 'BoxController@postUpdate');
 
 Route::get('/box/delete/{id}', 'BoxController@getDelete');
 Route::post('/box/delete/{id}', 'BoxController@postDelete');
+
+Route::get('/box/{id}', 'BoxController@getRead');

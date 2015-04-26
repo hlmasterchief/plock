@@ -19,7 +19,7 @@ class BoxController extends Controller {
         $this->auth = $auth;
         $this->view = $view;
 
-        $this->middleware('guest', ['except' => 'getLogout']);
+        // $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     /**
@@ -39,7 +39,7 @@ class BoxController extends Controller {
                                 ->with('flash_message', trans('box.not_found'));
         }
 
-        return $this->view->make('box.read')->with('box' => $box);;
+        return $this->view->make('box.read')->with('box', $box);;
     }
 
     /**
@@ -57,7 +57,9 @@ class BoxController extends Controller {
      * @return Response
      */
     public function postCreate(\App\Http\Requests\BoxRequest $request) {
-        $this->box->create(Auth::id(), $request->all());
+        $id = $this->auth->user()->id;
+
+        $this->box->create($id, $request->all());
 
         return redirect()->action('BoxController@getCreate')
                             ->with('flash_message', trans('box.add_success'));
@@ -80,7 +82,7 @@ class BoxController extends Controller {
                                 ->with('flash_message', trans('box.not_found'));
         }
 
-        return $this->view->make('box.update')->with('box' => $box);
+        return $this->view->make('box.update')->with('box', $box);
     }
 
     /**
@@ -123,7 +125,7 @@ class BoxController extends Controller {
                                 ->with('flash_message', trans('box.not_found'));
         }
 
-        return $this->view->make('box.delete')->with('box' => $box);
+        return $this->view->make('box.delete')->with('box', $box);
     }
 
     /**
