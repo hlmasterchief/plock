@@ -14,7 +14,7 @@ class Movie extends IndexModel {
      * Mass assignment allow
      * @var array[string]
      */
-    protected $fillable = ['plot', 'release_date'];
+    protected $fillable = ['genre', 'country', 'director', 'plot', 'year'];
 
     /**
      * Properties not allowed for mass assignment
@@ -37,7 +37,10 @@ class Movie extends IndexModel {
     }
 
     public function getData() {
-        return ["Plot" => $this->plot, "Release date" => $this->release_date];
+        return ["Genre" => $this->genre,
+                "Country" => $this->country,
+                "Director" => $this->director,
+                "Year" => $this->year];
     }
 
 }

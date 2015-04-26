@@ -21,8 +21,11 @@ class CreateMoviesTable extends Migration {
             //       ->references('id')->on('favourites')
             //       ->onDelete('cascade');
 
+            $table->text('genre');
+            $table->text('country');
+            $table->text('director');
             $table->text('plot');
-            $table->date('release_date');
+            $table->integer('year');
             $table->timestamps();
         });
     }
