@@ -20,7 +20,6 @@
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                             Select a category <span class="caret"></span>
                             </button>
-                            <span> Music</span>
                         </div>
                         <ul class="dropdown-menu">
                             <li>Music</li>

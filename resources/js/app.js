@@ -18,6 +18,10 @@ $(document).ready(function(){
         $("#inputEditBox").modal('show');
     });
 
+    $("#addPost").click(function(){
+        $("#inputAddPost").modal('show');
+    });
+
     // Add fadeToggle animation to dropdown
     $('.dropdown').on('show.bs.dropdown', function(e) {
         $(this).find('.dropdown-menu').first().stop(true, true).fadeToggle(500);

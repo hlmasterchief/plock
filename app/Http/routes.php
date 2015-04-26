@@ -31,6 +31,9 @@ Route::get('/edit-post', function () {
 Route::get('/edit-box', function () {
     return view('template.edit_box');
 });
+Route::get('/addToBox', function () {
+    return view('template.box-addPost');
+});
 
 /**
  * Authentication
