@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="box-addPost" style="padding-top: 70px;">
+<div class="box-addPost">
     <button class="btn btn-primary" id="addPost">Add to Box</button>
 
     <div class="modal fade" id="inputAddPost" tabindex="-1" role="dialog" aria-labelledby="editBox" aria-hidden="true">

@@ -390,3 +390,16 @@ button.btn-block {
     border: none;
     color: rgba(255,255,255,1);
 }
+
+.update-account .form-group {
+    label {
+        margin: 0;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+        padding-top: 8px;
+    }
+}

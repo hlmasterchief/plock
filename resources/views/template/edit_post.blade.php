@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="edit-box" style="padding-top: 70px;">
+<div class="edit-box">
     <button class="btn btn-primary" id="editBox">Edit post</button>
 
     <div class="modal fade" id="inputEditBox" tabindex="-1" role="dialog" aria-labelledby="editBox" aria-hidden="true">

@@ -34,6 +34,12 @@ Route::get('/edit-box', function () {
 Route::get('/addToBox', function () {
     return view('template.box-addPost');
 });
+Route::get('/update-account', function () {
+    return view('authentication.update_account');
+});
+Route::get('/update-profile', function () {
+    return view('template.update_profile');
+});
 
 /**
  * Authentication

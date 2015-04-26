@@ -23,6 +23,20 @@ ul li {
     list-style-type: none;
 }
 
+.update-account,
+.update-profile,
+.box-addPost,
+.edit-box,
+.edit-post,
+.box,
+.homepage,
+.post {
+    padding-top: $top-padding;
+}
+
+
+
+
 /**
  * header-navigation
  */
