@@ -25,6 +25,12 @@ Route::get('/posts-list', 'WelcomeController@posts_list');
 Route::get('/post-test', function () {
     return view('template.post');
 });
+Route::get('/edit-post', function () {
+    return view('template.edit_post');
+});
+Route::get('/edit-box', function () {
+    return view('template.edit_box');
+});
 
 /**
  * Authentication
