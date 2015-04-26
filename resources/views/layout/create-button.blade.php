@@ -20,4 +20,4 @@
 </div>
 
 @include('template.create_post')
-@include('template.create_box')
+@include('box.create')

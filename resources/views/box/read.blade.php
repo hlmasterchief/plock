@@ -10,8 +10,8 @@
 
             <div class="col-md-8 col-sm-8">
                 <blockquote class="panel panel-default">
-                    <p class="panel-body">Saepe ipsum assumenda voluptatem aut. Ut rerum enim qui facere. Et quod ipsam id amet. Error id molestiae aut ut sit ducimus. Et doloremque odio et amet. Itaque totam modi aspernatur repudiandae quis qui sapiente. Officia quia dolores repudiandae consectetur consequatur optio suscipit. Facilis et assumenda adipisci voluptatibus deserunt. Itaque sed doloribus nisi accusantium harum. Possimus nulla quae nihil vero nam. Amet nobis dolores in blanditiis et quo cumque.</p>
-                    <footer>May 10, 2015</footer>
+                    <p class="panel-body">{{ $box->description }}</p>
+                    <footer>{{ $box->created_at }}</footer>
                 </blockquote>
 
             </div>

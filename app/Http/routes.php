@@ -11,6 +11,8 @@
 |
 */
 
+// Route::pattern('id', '[0-9]+');
+
 Route::get('/', 'WelcomeController@index');
 
 //set route for basic view

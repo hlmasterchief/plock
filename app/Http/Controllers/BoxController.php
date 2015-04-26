@@ -39,7 +39,14 @@ class BoxController extends Controller {
                                 ->with('flash_message', trans('box.not_found'));
         }
 
-        return $this->view->make('box.read')->with('box', $box);;
+        $header = [
+            'title' => $box->title,
+            'sub-title' => $box->user()->first()->username,
+            'username' => $this->auth->user()->username
+        ];
+
+        return $this->view->make('box.read')->with('header', $header)
+                                            ->with('box', $box);
     }
 
     /**
@@ -59,9 +66,9 @@ class BoxController extends Controller {
     public function postCreate(\App\Http\Requests\BoxRequest $request) {
         $id = $this->auth->user()->id;
 
-        $this->box->create($id, $request->all());
+        $box = $this->box->create($id, $request->all());
 
-        return redirect()->action('BoxController@getCreate')
+        return redirect()->action('BoxController@getRead', array($box->id))
                             ->with('flash_message', trans('box.add_success'));
     }
 
