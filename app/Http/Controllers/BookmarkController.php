@@ -47,12 +47,12 @@ class BookmarkController extends Controller {
         ];
 
         $datas = $bookmark->favourite->data->getData();
-
-        // dd($datas['plot']);
+        $comments = $bookmark->comments()->get();
 
         return $this->view->make('bookmark.read')->with('header', $header)
                                                  ->with('bookmark', $bookmark)
-                                                 ->with('datas', $datas);
+                                                 ->with('datas', $datas)
+                                                 ->with('comments', $comments);
     }
 
     /**
