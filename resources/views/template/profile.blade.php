@@ -17,7 +17,7 @@
         </div>
 
         <div class="col-md-10 col-xs-8 profile-info">
-            <h2>Clever Croblmask</h2>
+            <h2>{{ $user->username }}</h2>
             <div class="profile-location">
                 <span class="glyphicon glyphicon-map-marker"></span>
                 <span>Oulu, Finland</span>
@@ -40,36 +40,36 @@
 
         <div class="col-md-2 col-xs-2 text-center row">
             <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap ">
-            <a class="tmenu-middle" href="/posts-list">
-                <h5 class="menu-name">Posts</h5>
-                <p class="menu-data">78</p>
+            <a class="tmenu-middle" href="{{ $user->username }}">
+                <h5 class="menu-name">Bookmarks</h5>
+                <p class="menu-data">{{ $user->bookmarks->count() }}</p>
             </a>
             </div>
         </div>
 
         <div class="col-md-2 col-xs-2 text-center row">
             <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap ">
-            <a class="tmenu-middle" href="/boxs-list">
+            <a class="tmenu-middle" href="{{ $user->username }}/boxes">
                 <h5 class="menu-name">Boxs</h5>
-                <p class="menu-data">23</p>
+                <p class="menu-data">{{ $user->boxes->count() }}</p>
             </a>
             </div>
         </div>
 
         <div class="col-md-2 col-xs-2 text-center row">
             <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap">
-            <a class="tmenu-middle" href="/box">
+            <a class="tmenu-middle" href="{{ $user->username }}/followers">
                 <h5 class="menu-name">Followers</h5>
-                <p class="menu-data">40</p>
+                <p class="menu-data">{{ $user->followers->count() }}</p>
             </a>
             </div>
         </div>
 
         <div class="col-md-2 col-xs-2 text-center row">
             <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap">
-            <a class="tmenu-middle" href="/box">
+            <a class="tmenu-middle" href="{{ $user->username }}/followings">
                 <h5 class="menu-name">Followings</h5>
-                <p class="menu-data">40</p>
+                <p class="menu-data">{{ $user->following->count() }}</p>
             </a>
             </div>
         </div>

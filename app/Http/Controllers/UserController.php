@@ -191,7 +191,8 @@ class UserController extends Controller {
         $boxes = $this->user->getBoxes($id);
 
         return $this->view->make('user.boxes')
-                            ->with('boxes', $boxes);
+                          ->with('user', $user)
+                          ->with('boxes', $boxes);
     }
 
     /**
@@ -205,10 +206,50 @@ class UserController extends Controller {
             return redirect('/')->with('flash_message', trans('user.not_found'));
         }
 
-        //$boxes = $this->user->getBoxesByName($username);
         $boxes = $this->user->getBoxes($user['id']);
 
         return $this->view->make('user.boxes')
-                            ->with('boxes', $boxes);
+                          ->with('user', $user)
+                          ->with('boxes', $boxes);
+    }
+
+    /**
+     * Get user's bookmarks
+     * @param  int $id
+     * @return Response
+     */
+    public function getBookmarks($id = null) {
+        if (is_null($id)) {
+            $id = $this->auth->user()->id;
+        }
+
+        $user = $this->user->find($id);
+        if (is_null($user)) {
+            return redirect('/')->with('flash_message', trans('user.not_found'));
+        }
+
+        $bookmarks = $this->user->getBookmarks($id);
+
+        return $this->view->make('user.profile')
+                          ->with('user', $user)
+                          ->with('bookmarks', $bookmarks);
+    }
+
+    /**
+     * Get user's bookmarks by name
+     * @param  string $username
+     * @return Response
+     */
+    public function getBookmarksByName($username) {
+        $user = $this->user->findByColumn('username', $username);
+        if (is_null($user)) {
+            return redirect('/')->with('flash_message', trans('user.not_found'));
+        }
+
+        $bookmarks = $this->user->getBookmarks($user['id']);
+
+        return $this->view->make('user.profile')
+                          ->with('user', $user)
+                          ->with('bookmarks', $bookmarks);
     }
 }

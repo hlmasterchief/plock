@@ -79,4 +79,11 @@ interface UserRepositoryInterface {
      * @return App\Models\Box
      */
     public function getBoxes($id);
+
+    /**
+     * Get user's bookmarks in Database
+     * @param  array  $modifiers
+     * @return App\Models\Bookmark
+     */
+    public function getBookmarks($id);
 }

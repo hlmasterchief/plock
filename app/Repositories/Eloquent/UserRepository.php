@@ -203,4 +203,13 @@ class UserRepository implements UserRepositoryInterface {
     public function getBoxes($id) {
         return $this->find($id)->boxes();
     }
+
+    /**
+     * Get user's bookmarks
+     * @param  int $id
+     * @return Collection[\App\Models\User]
+     */
+    public function getBookmarks($id) {
+        return $this->find($id)->bookmarks();
+    }
 }

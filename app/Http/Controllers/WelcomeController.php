@@ -20,7 +20,7 @@ class WelcomeController extends Controller {
 	 */
 	public function __construct()
 	{
-		$this->middleware('guest');
+		// $this->middleware('guest');
 	}
 
 	/**
@@ -52,5 +52,10 @@ class WelcomeController extends Controller {
 	public function posts_list() {
 		return view('template.posts-list');
 	}
+
+	public function profile() {
+		return view('template.profile');
+	}
+
 
 }

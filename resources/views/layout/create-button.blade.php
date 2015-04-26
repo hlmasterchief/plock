@@ -19,5 +19,5 @@
     </div>
 </div>
 
-@include('template.create_post')
+@include('bookmark.create')
 @include('box.create')

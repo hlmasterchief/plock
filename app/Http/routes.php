@@ -19,7 +19,7 @@ Route::get('/', 'WelcomeController@index');
 Route::get('/home', function () {
     return view('template.home');
 });
-Route::get('/profile', 'WelcomeController@posts_list');
+Route::get('/profile', 'WelcomeController@profile');
 Route::get('/box', 'WelcomeController@box');
 Route::get('/boxs-list', 'WelcomeController@boxs_list');
 Route::get('/posts-list', 'WelcomeController@posts_list');
@@ -106,3 +106,6 @@ Route::get('/box/delete/{id}', 'BoxController@getDelete');
 Route::post('/box/delete/{id}', 'BoxController@postDelete');
 
 Route::get('/box/{id}', 'BoxController@getRead');
+
+Route::get('/{username}', 'UserController@getBookmarksByName');
+Route::get('/user/{id}', 'UserController@getBookmarks');

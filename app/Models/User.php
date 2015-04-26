@@ -62,4 +62,12 @@ class User extends Model implements AuthenticatableContract {
     public function boxes() {
         return $this->hasMany('App\Models\Box');
     }
+
+    /**
+     * Get relationship - Bookmark
+     * @return App\Bookmark
+     */
+    public function bookmarks() {
+        return $this->hasMany('App\Models\Bookmark');
+    }
 }
