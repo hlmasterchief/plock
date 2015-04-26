@@ -3,7 +3,13 @@
 <nav class="row main-navbar" role="navigation">
     <div class="col-md-3 col-xs-5">
         <div class="navbar-wrap">
-            <a href="{{ url("/profile/".Auth::user()->id) }}" class="logo"><h4>{{ Auth::user()->username }}</h4></a>
+            <a href="{{ url("/profile/".Auth::user()->id) }}" class="logo">
+                @if (Auth::user()->profile->display_name == '')
+                <h4>{{ Auth::user()->username }}</h4>
+                @else
+                <h4>{{ Auth::user()->profile->display_name }}</h4>
+                @endif
+            </a>
         </div>
     </div>
 

@@ -107,5 +107,6 @@ Route::post('/box/delete/{id}', 'BoxController@postDelete');
 
 Route::get('/box/{id}', 'BoxController@getRead');
 
-Route::get('/{username}', 'UserController@getBookmarksByName');
 Route::get('/user/{id}', 'UserController@getBookmarks');
+Route::get('/user', 'UserController@getBookmarks');
+Route::get('/{username}', 'UserController@getBookmarksByName');

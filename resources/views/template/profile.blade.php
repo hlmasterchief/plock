@@ -40,7 +40,7 @@
 
         <div class="col-md-2 col-xs-2 text-center row">
             <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap ">
-            <a class="tmenu-middle" href="{{ $user->username }}">
+            <a class="tmenu-middle" href="/{{ $user->username }}">
                 <h5 class="menu-name">Bookmarks</h5>
                 <p class="menu-data">{{ $user->bookmarks->count() }}</p>
             </a>
@@ -49,7 +49,7 @@
 
         <div class="col-md-2 col-xs-2 text-center row">
             <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap ">
-            <a class="tmenu-middle" href="{{ $user->username }}/boxes">
+            <a class="tmenu-middle" href="/{{ $user->username }}/boxes">
                 <h5 class="menu-name">Boxs</h5>
                 <p class="menu-data">{{ $user->boxes->count() }}</p>
             </a>
@@ -58,7 +58,7 @@
 
         <div class="col-md-2 col-xs-2 text-center row">
             <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap">
-            <a class="tmenu-middle" href="{{ $user->username }}/followers">
+            <a class="tmenu-middle" href="/{{ $user->username }}/followers">
                 <h5 class="menu-name">Followers</h5>
                 <p class="menu-data">{{ $user->followers->count() }}</p>
             </a>
@@ -67,7 +67,7 @@
 
         <div class="col-md-2 col-xs-2 text-center row">
             <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap">
-            <a class="tmenu-middle" href="{{ $user->username }}/followings">
+            <a class="tmenu-middle" href="/{{ $user->username }}/followings">
                 <h5 class="menu-name">Followings</h5>
                 <p class="menu-data">{{ $user->following->count() }}</p>
             </a>

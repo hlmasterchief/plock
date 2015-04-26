@@ -188,7 +188,7 @@ class UserController extends Controller {
             return redirect('/')->with('flash_message', trans('user.not_found'));
         }
 
-        $boxes = $this->user->getBoxes($id);
+        $boxes = $this->user->getBoxes($id)->get();
 
         return $this->view->make('user.boxes')
                           ->with('user', $user)
@@ -206,7 +206,7 @@ class UserController extends Controller {
             return redirect('/')->with('flash_message', trans('user.not_found'));
         }
 
-        $boxes = $this->user->getBoxes($user['id']);
+        $boxes = $this->user->getBoxes($user['id'])->get();
 
         return $this->view->make('user.boxes')
                           ->with('user', $user)
@@ -228,9 +228,9 @@ class UserController extends Controller {
             return redirect('/')->with('flash_message', trans('user.not_found'));
         }
 
-        $bookmarks = $this->user->getBookmarks($id);
+        $bookmarks = $this->user->getBookmarks($id)->get();
 
-        return $this->view->make('user.profile')
+        return $this->view->make('user.bookmarks')
                           ->with('user', $user)
                           ->with('bookmarks', $bookmarks);
     }
@@ -246,9 +246,9 @@ class UserController extends Controller {
             return redirect('/')->with('flash_message', trans('user.not_found'));
         }
 
-        $bookmarks = $this->user->getBookmarks($user['id']);
+        $bookmarks = $this->user->getBookmarks($user['id'])->get();
 
-        return $this->view->make('user.profile')
+        return $this->view->make('user.bookmarks')
                           ->with('user', $user)
                           ->with('bookmarks', $bookmarks);
     }
