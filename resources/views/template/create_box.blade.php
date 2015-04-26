@@ -8,15 +8,14 @@
             </div>
 
             {{-- FORM create--}}
-            <form class="createBox-form">
+            <form class="createBox-form" autocomplete="off">
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for"boxName">Box name</label>
-                        <input type="text" class="form-control" id="boxName" placeholder="Put in here">
+                    <div class="form-group float-label">
+                        <input type="text" id="boxName" name="boxName" class="input-block" placeholder="Box name" required>
+                        <label for="boxName" class="input-icon">Box name</label>
                     </div>
                     <div class="form-group">
-                        <label for"boxDescription">Description</label>
-                        <textarea type="text" class="form-control" id="boxDescription" placeholder="What is your box about?"></textarea>
+                        <textarea class="form-control" name="boxDescription" placeholder="What is your box about?"></textarea>
                     </div>
                 </div>
 
