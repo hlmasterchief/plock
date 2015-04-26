@@ -68,6 +68,14 @@
         background-color: rgba(1,1,1, 0.5);
         z-index: 1001;
         display: none;
+
+        &:hover {
+            -webkit-filter: blur(0.5px);
+            -moz-filter: blur(0.5px);
+            -o-filter: blur(0.5px);
+            -ms-filter: blur(0.5px);
+            filter: blur(0.5px);
+        }
     }
 
     .overlay-main {
@@ -83,7 +91,7 @@
         color: #e5e5e5;
         text-align: center;
         cursor: pointer;
-        box-shadow: $box-shadow-level1;
+        box-shadow: $box-shadow-level2;
 
         span {
             line-height: 56px;
@@ -91,12 +99,7 @@
         }
 
         &:hover {
-            -webkit-filter: blur(0.5px);
-            -moz-filter: blur(0.5px);
-            -o-filter: blur(0.5px);
-            -ms-filter: blur(0.5px);
-            filter: blur(0.5px);
-            box-shadow: $box-shadow-level2;
+            box-shadow: $box-shadow-level3;
         }
     }
 }
@@ -112,7 +115,7 @@
     border-radius: 50%;
     background: rgba(255, 255, 255, .25);
 
-    .overlay-main:hover & {
+    .overlay:hover & {
         animation: ripple 0.7s ease-in;
         animation-iteration-count: 2;
     }
