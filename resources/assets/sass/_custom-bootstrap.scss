@@ -12,6 +12,10 @@
     transition: all 0.5s ease;
 }
 
+.row {
+    margin: 0;
+}
+
 /**
  * dl man ~
  */
@@ -167,13 +171,24 @@ dl {
         box-shadow: $box-shadow-level2;
 
         > li {
-            padding: 12px 20px;
+            padding: 8px 16px;
             color: #4a4a4a;
             border: none;
             cursor: pointer;
 
             &:hover {
                 background-color: #eaeaea;
+            }
+
+            &.divider {
+                padding: 0;
+            }
+
+            a {
+                padding: 0;
+                &:hover {
+                    background: none;
+                }
             }
         }
     }
@@ -269,25 +284,39 @@ textarea.form-control:focus {
 }
 
 .input-icon {
+    position: relative;
     display: flex;
     width: 100%;
+    // padding: 2px;
+    // padding-bottom: 26px;
 }
 
 .input-icon span {
+    display: inline-block;
     width: 48px;
     height: 48px;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 24px;
-    padding-top: 16px;
-    padding-bottom: 8px;
+    padding-top: 10px;
+    padding-bottom: 14px;
     // color: rgba(255,255,255,0.7);
     text-align: center;
     transition: all 0.2s ease;
 }
 
-.input-icon.focus span {
+.input-icon input[type="text"] {
+    height: 40px;
+    padding-left: 0px;
+}
+
+.input-icon input:focus {
     color: #7C4DFF;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.input-icon label.active,
+.input-icon label:hover {
+    color: #7C4DFF;
 }
 
 .float-label {

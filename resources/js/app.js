@@ -1,5 +1,15 @@
 $(document).ready(function(){
 
+    //search input
+    $("#search-icon").on('click', function(){
+        $(this).addClass("active");
+        $("#search").focus();
+    });
+
+    $("#search").focusout(function(){
+        $("#search-icon").removeClass("active");
+    });
+
     // create function
     $("#createBox").click(function(){
         $("#inputBox").modal('show');
