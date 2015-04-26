@@ -16,7 +16,8 @@ var paths = {
     'jquery': './node_modules/jquery/dist/',
     'underscore': './node_modules/underscore/',
     'backbone': './node_modules/backbone/',
-    'app': './resources/js/'
+    'app': './resources/js/',
+    'img': './resources/img/'
 };
 
 elixir(function (mix) {
@@ -30,6 +31,7 @@ elixir(function (mix) {
             // app
             paths.app + "app.js"
         ], 'public/js/app.js', './')
-        .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap');
+        .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap')
+        .copy(paths.img + '**', 'public/img');
 
 });
