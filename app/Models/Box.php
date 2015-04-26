@@ -34,8 +34,8 @@ class Box extends Model {
      * Get relationship - Bookmark
      * @return App\Bookmark
      */
-    public function bookmark() {
-        return $this->hasOne('App\Models\Bookmark');
+    public function bookmarks() {
+        return $this->hasMany('App\Models\Bookmark');
     }
 
 }

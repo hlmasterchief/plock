@@ -29,24 +29,26 @@ class BoxController extends Controller {
      */
     public function getRead($id = null) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('BoxController@getUpdate')
+            return redirect()->action('BoxController@getRead')
                                 ->with('flash_message', trans('box.not_valid'));
         }
 
         $box = $this->box->find($id);
         if (is_null($box)) {
-            return redirect()->action('BoxController@getUpdate')
+            return redirect()->action('BoxController@getRead')
                                 ->with('flash_message', trans('box.not_found'));
         }
 
         $header = [
             'title' => $box->title,
-            'sub-title' => $box->user()->first()->username,
-            'username' => $this->auth->user()->username
+            'sub-title' => $box->user()->first()->username
         ];
 
+        $bookmarks = $box->bookmarks()->get();
+
         return $this->view->make('box.read')->with('header', $header)
-                                            ->with('box', $box);
+                                            ->with('box', $box)
+                                            ->with('bookmarks', $bookmarks);
     }
 
     /**

@@ -21,7 +21,38 @@ class BookmarkController extends Controller {
         $this->auth = $auth;
         $this->view = $view;
 
-        $this->middleware('guest', ['except' => 'getLogout']);
+        // $this->middleware('guest', ['except' => 'getLogout']);
+    }
+
+    /**
+     * Display bookmark
+     *
+     * @return Response
+     */
+    public function getRead($id = null) {
+        if (!isset($id) or is_null($id)) {
+            return redirect()->action('BookmarkController@getRead')
+                                ->with('flash_message', trans('bookmark.not_valid'));
+        }
+
+        $bookmark = $this->bookmark->find($id);
+        if (is_null($bookmark)) {
+            return redirect()->action('BookmarkController@getRead')
+                                ->with('flash_message', trans('bookmark.not_found'));
+        }
+
+        $header = [
+            'title' => $bookmark->favourite->name,
+            'sub-title' => $bookmark->user()->first()->username
+        ];
+
+        $datas = $bookmark->favourite->data->getData();
+
+        // dd($datas['plot']);
+
+        return $this->view->make('bookmark.read')->with('header', $header)
+                                                 ->with('bookmark', $bookmark)
+                                                 ->with('datas', $datas);
     }
 
     /**
@@ -74,7 +105,7 @@ class BookmarkController extends Controller {
                                 ->with('flash_message', trans('bookmark.not_found'));
         }
 
-        return $this->view->make('bookmark.update')->with('bookmark' => $bookmark);
+        return $this->view->make('bookmark.update')->with('bookmark', $bookmark);
     }
 
     /**
@@ -117,7 +148,7 @@ class BookmarkController extends Controller {
                                 ->with('flash_message', trans('bookmark.not_found'));
         }
 
-        return $this->view->make('bookmark.delete')->with('bookmark' => $bookmark);
+        return $this->view->make('bookmark.delete')->with('bookmark', $bookmark);
     }
 
     /**

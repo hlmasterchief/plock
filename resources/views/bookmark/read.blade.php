@@ -14,13 +14,13 @@
             <div class="col-sm-8 col-md-9">
                 <dl class="dl-inline">
                     <dt>Title</dt>
-                    <dd>Hapymaher</dd>
-                    <dt>Original title</dt>
-                    <dd>ハピメア</dd>
-                    <dt>Developer</dt>
-                    <dd>Purple Software</dd>
-                    <dt>Publisher</dt>
-                    <dd>Purple Software</dd>
+                    <dd>{{ $bookmark->favourite->name }}</dd>
+
+                    @foreach ($datas as $key => $data)
+                        <dt>{{ $key }}</dt>
+                        <dd>{{ $data }}</dd>
+                    @endforeach
+
                     <dt class="strong">Description</dt>
                     <dd>
                     <p>After an accident, Tooru experienced lucid dreams every time he slept. Realizing that he’s in a dream all the time means that his body cannot rest, leading to him getting rest only when he collapsed from exhaustion. One day, a girl who he hadn’t seen since the accident appeared in his dream. The girl Maia was the cause of his current condition and is a nightmare to him. However, another girl named Alice wandered into his dream, vowing to save him. Maia whispered in his ear: “This is the story of a sweet happy nightmare”.

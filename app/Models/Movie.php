@@ -17,6 +17,12 @@ class Movie extends IndexModel {
     protected $fillable = ['plot', 'release_date'];
 
     /**
+     * Properties not allowed for mass assignment
+     * @var array[string]
+     */
+    protected $guarded = ['favourite_id'];
+
+    /**
      * Key collection for elasticsearch index
      * @var array[string]
      */
@@ -28,6 +34,10 @@ class Movie extends IndexModel {
      */
     public function favourite() {
         return $this->belongsTo('App\Models\Favourite');
+    }
+
+    public function getData() {
+        return ["Plot" => $this->plot, "Release date" => $this->release_date];
     }
 
 }

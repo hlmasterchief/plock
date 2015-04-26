@@ -51,6 +51,8 @@ Route::post('/bookmark/update/{id}', 'BookmarkController@postUpdate');
 Route::get('/bookmark/delete/{id}', 'BookmarkController@getDelete');
 Route::post('/bookmark/delete/{id}', 'BookmarkController@postDelete');
 
+Route::get('/bookmark/{id}', 'BookmarkController@getRead');
+
 Route::get('/favourite/create', 'FavouriteController@getCreate');
 Route::post('/favourite/create', 'FavouriteController@postCreate');
 
