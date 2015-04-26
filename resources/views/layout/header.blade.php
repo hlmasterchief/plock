@@ -9,8 +9,14 @@
     <div class="col-md-6 col-sm-6 col-xs-6 text-center">
         <div class="navbar-wrap">
             <div class="heading">
+                <div class="heading-title">
                 <h4 class="title">Box content</h4>
                 <p class="sub-title">Created by <a href="/home">CroblMask</a></p>
+                </div>
+
+                <div class="buttonLockEdit"><!-- main action -->
+                    <abbr title="Lock it"><a href="#"><span class="glyphicon glyphicon-lock"></span></a></abbr>
+                </div>
             </div>
         </div>
     </div>
@@ -22,21 +28,21 @@
             </div>
             <div class="setting">
                 <div class="dropdown">
-                        <div data-toggle="dropdown" class="dropdown-toggle" id="createButton">
-                            <button type="button" class="setting-button" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-hamburger"></span>
-                            </button>
-                        </div>
-                        <ul class="dropdown-menu">
-                            <li><a href="/home">Home page</a></li><!-- back to home page/ newfeeds -->
-                            <li><a href="/profile">An Pham</a></li><!-- back to profile page -->
-                            <li class="divider"></li>
-                            <li>Edit profile</li>
-                            <li>Log out</li>
-                            <li class="divider"></li>
-                            <li>Help</li>
-                            <li>Term & Privacy</li>
-                        </ul>
+                    <div data-toggle="dropdown" class="dropdown-toggle" id="createButton">
+                        <button type="button" class="setting-button" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-hamburger"></span>
+                        </button>
                     </div>
+                    <ul class="dropdown-menu">
+                        <li><a href="/home">Home page</a></li><!-- back to home page/ newfeeds -->
+                        <li><a href="/profile">An Pham</a></li><!-- back to profile page -->
+                        <li class="divider"></li>
+                        <li>Edit profile</li>
+                        <li>Log out</li>
+                        <li class="divider"></li>
+                        <li>Help</li>
+                        <li>Term & Privacy</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
