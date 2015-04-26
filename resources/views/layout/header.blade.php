@@ -15,7 +15,12 @@
                 </div>
 
                 <div class="buttonLockEdit"><!-- main action -->
-                    <abbr title="Lock it"><a href="#"><span class="glyphicon glyphicon-lock"></span></a></abbr>
+                    {{-- if other user page --}}
+                    {{-- <abbr title="Lock it"><a href="#"><span class="glyphicon glyphicon-lock"></span></a></abbr> --}}
+
+                    {{-- if user own page --}}
+                    <abbr title="Edit"><a href="#"><span class="glyphicon glyphicon-edit"></span></a></abbr>
+
                 </div>
             </div>
         </div>

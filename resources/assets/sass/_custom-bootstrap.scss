@@ -83,6 +83,16 @@ dl {
     }
 }
 
+.crop-140 {
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+
+    img {
+        max-height: 140px;
+    }
+}
+
 .height-48 {
     height: 48px;
 
@@ -391,7 +401,8 @@ button.btn-block {
     color: rgba(255,255,255,1);
 }
 
-.update-account .form-group {
+.update-account .form-group,
+.update-profile .form-group {
     label {
         margin: 0;
     }

@@ -44,8 +44,8 @@
                         <div class="message">
                             <div id="demo-img">
                             <img class="img-thumbnail" src="https://s.vndb.org/cv/53/15453.jpg" />
+                            </div>
                         </div>
-                    </div>
                     </div>
 
                 </div>

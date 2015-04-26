@@ -135,7 +135,7 @@
                             <input type="file" class="input-img">
                         </div>
                         <div class="message">
-                            <div id="demo-img">
+                            <div class="demo-img">
                             <img class="img-thumbnail" src="https://s.vndb.org/cv/53/15453.jpg" />
                         </div>
                     </div>
