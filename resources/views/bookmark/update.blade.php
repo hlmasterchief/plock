@@ -1,15 +1,15 @@
-<div class="edit-box">
+<div class="edit-post">
 
-    <div class="modal fade" id="inputEditBox" tabindex="-1" role="dialog" aria-labelledby="editBox" aria-hidden="true">
+    <div class="modal fade" id="inputEditBookmark" tabindex="-1" role="dialog" aria-labelledby="editPost" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">{{ $box->title }}</h4>
+                <h4 class="modal-title">{{ $bookmark->favourite->name }}</h4>
             </div>
 
             {{-- FORM create--}}
-            {!! Form::open(array('url'=>"/box/update/$box->id", 'class' => 'editBox-form', 'autocomplete' => 'off')) !!}
+            {!! Form::open(array('url'=>"/bookmark/update/$bookmark->id", 'class' => 'editPost-form', 'autocomplete' => 'off')) !!}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <ul>
@@ -19,12 +19,8 @@
                 </ul>
 
                 <div class="modal-body">
-                    <div class="form-group float-label">
-                        {!! Form::text('title', $box->title, array('class'=>'input-block', 'placeholder'=>'Box name', 'required')) !!}
-                        <label for="title" class="input-icon">Box name</label>
-                    </div>
                     <div class="form-group">
-                        {!! Form::textarea('description', $box->description, array('class'=>'form-control', 'placeholder'=>'What is your box about?')) !!}
+                        {!! Form::textarea('description', $bookmark->description, array('class'=>'form-control', 'placeholder'=>'Your review')) !!}
                     </div>
                 </div>
 

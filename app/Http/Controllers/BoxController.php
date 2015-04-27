@@ -41,7 +41,7 @@ class BoxController extends Controller {
 
         $header = [
             'title'    => $box->title,
-            'type'     => 'Box',
+            'type'     => 'box',
             'id'       => $id,
             'username' => $box->user()->first()->username,
             'user_id'  => $box->user()->first()->id,

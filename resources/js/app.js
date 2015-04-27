@@ -28,6 +28,10 @@ $(document).ready(function(){
         $("#inputEditBox").modal('show');
     });
 
+    $("#editBookmark").click(function(){
+        $("#inputEditBookmark").modal('show');
+    });
+
     $("#addPost").click(function(){
         $("#inputAddPost").modal('show');
     });

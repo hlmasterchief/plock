@@ -43,7 +43,7 @@ class BookmarkController extends Controller {
 
         $header = [
             'title'    => $bookmark->favourite->name,
-            'type'     => 'Bookmark',
+            'type'     => 'bookmark',
             'id'       => $id,
             'username' => $bookmark->user()->first()->username,
             'user_id'  => $bookmark->user()->first()->id,
@@ -88,7 +88,7 @@ class BookmarkController extends Controller {
 
         $this->bookmark->create(Auth::id(), $request->all());
 
-        return redirect()->action('BookmarkController@getCreate')
+        return redirect()->action('BookmarkController@getRead', array($bookmark->id))
                             ->with('flash_message', trans('bookmark.add_success'));
     }
 
@@ -131,7 +131,7 @@ class BookmarkController extends Controller {
         
         $this->bookmark->update($id, $request->only('description'));
 
-        return redirect()->action('BookmarkController@getUpdate')
+        return redirect()->action('BookmarkController@getRead', array($bookmark->id))
                             ->with('flash_message', trans('bookmark.update_success'));
     }
 
