@@ -198,9 +198,15 @@ class BookmarkController extends Controller {
 
         $user_id = $this->auth->user()->id;
 
-        $clone = $this->bookmark->save($id, $user_id, $request->only('description', "box_new_id"));
-
-        return redirect()->action('BoxController@getRead', array($clone->box_id))
-                            ->with('flash_message', trans('bookmark.delete_success'));
+        $clone = $this->bookmark->save($id, $user_id, $request->only('description', "box_new_id", "newbox"));
+        
+        if ($clone->box_id == 0) {
+            return redirect()->action('UserController@getBookmarks')
+                                ->with('flash_message', trans('bookmark.save_success'));
+        }
+        else {
+            return redirect()->action('BoxController@getRead', array($clone->box_id))
+                                ->with('flash_message', trans('bookmark.save_success'));
+        }
     }
 }

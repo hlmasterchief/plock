@@ -21,7 +21,7 @@
                     <div class="dropdown">
                         <div data-toggle="dropdown" class="dropdown-toggle" id="createButton">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="box_choose_selected">
-                            Move to box <span class="caret"></span>
+                            Save to box <span class="caret"></span>
                             </button>
                         </div>
                         <ul class="dropdown-menu">

@@ -27,9 +27,9 @@
 
             <div class="thumbnail-meta">
                 <ul class="row">
-                    <li class="col-md-3 col-sm-3 col-xs-3 like"><a href="#"><span class="glyphicon glyphicon-heart"></span><span>15</span></a></li>
+                    <li class="col-md-3 col-sm-3 col-xs-3 like"><a href="#"><span class="glyphicon glyphicon-heart"></span><span> 15</span></a></li>
                     <li class="col-md-3 col-sm-3 col-xs-3 comment"><a href="/bookmark/{{ $bookmark->id }}"><span class="glyphicon glyphicon-comment"></span><span> {{ $bookmark->comments->count() }}</span></a></li>
-                    <li class="col-md-3 col-sm-3 col-xs-3 sharing"><a href=""><span class="glyphicon glyphicon-lock"></span><span> 15</span></a></li>
+                   <li class="col-md-3 col-sm-3 col-xs-3 sharing"><a href="#" id="addPost" value="{{ $bookmark->id }}"><span class="glyphicon glyphicon-lock"></span><span> 15</span></a></li>
                     <li class="col-md-3 col-sm-3 col-xs-3 report text-right"><a href=""><span class="glyphicon glyphicon-cog"></span></a></li>
                 </ul>
             </div>
@@ -39,8 +39,10 @@
     </div>
     @endforeach
 
-</div>
+</div> <!-- /.list post-->
+</div> <!-- /.thumbnail box-->
 
 </div><!-- /.posts-list -->
 
+@include('bookmark.save')
 @stop

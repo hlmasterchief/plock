@@ -23,8 +23,9 @@ class BookmarkSaveRequest extends Request {
     {
         return [
             "bookmard_id" =>    "",
-            "box_new_id" =>     "",
+            "box_new_id"  =>    "",
             "description" =>    "",
+            "newbox"      =>    "",
         ];
     }
 

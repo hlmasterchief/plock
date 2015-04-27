@@ -20,8 +20,10 @@
                 <div class="buttonLockEdit">
                     @if (Auth::user()->profile->id == $header['user_id'])
                     <abbr title="Edit"><a href="#" id="edit{{ ucfirst($header['type']) }}"><span class="glyphicon glyphicon-edit"></span></a></abbr>
+                    @elseif ($header['type'] == 'bookmark')
+                    <abbr title="Lock it"><a href="#" id="addPost" value="{{ $bookmark->id }}"><span class="glyphicon glyphicon-lock"></span></a></abbr>
                     @else
-                    <abbr title="Lock it"><a href="#"><span class="glyphicon glyphicon-lock"></span></a></abbr>
+                    <abbr title="Lock it"><a href="#"><span class="glyphicon glyphicon-heart"></span></a></abbr>
                     @endif
                 </div>
             </div>
@@ -42,7 +44,7 @@
                     </div>
                     <ul class="dropdown-menu">
                         <li><a href="/home">Home page</a></li>
-                        <li><a href="/{{ Auth::user()->username }}">An Pham</a></li>
+                        <li><a href="/{{ Auth::user()->username }}">{{ Auth::user()->displayName() }}</a></li>
                         <li class="divider"></li>
                         <li><a href="/update">Edit account</a></li>
                         <li><a href="/profile/update">Edit profile</a></li>
@@ -60,4 +62,7 @@
 </div>
 @if (isset($header))
 @include($header['type'].'.update')
+    @if ($header['type'] == 'bookmark')
+        @include('bookmark.save')
+    @endif
 @endif
