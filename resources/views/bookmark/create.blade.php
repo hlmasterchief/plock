@@ -85,10 +85,13 @@
             </div>
 
             {{-- FORM 3 create new --}}
-            <form class="createPost-form">
+            {!! Form::open(array('url'=>"/bookmark/create", 'class' => 'createPost-form', 'autocomplete' => 'off')) !!}
                 <div class="modal-body">
-                    <h4>Hapymaher</h4>
-
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" id="type" name="type" value="" required>
+                    <div class="form-group">
+                        <input type="text" class="input-block" id="name" placeholder="Name">
+                    </div>
                     <div class="form-group">
                         <input type="text" class="input-block" id="genre" placeholder="Genre">
                     </div>
@@ -99,10 +102,10 @@
                         <input type="text" class="input-block" id="director" placeholder="Drector">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="input-block" id="published" placeholder="Published year">
+                        <input type="text" class="input-block" id="year" placeholder="Published year">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" id="review" placeholder="What is your bookmark about?"></textarea>
+                        <textarea class="form-control" id="description" placeholder="What is your bookmark about?"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -116,8 +119,8 @@
                         <div class="message">
                             <div class="demo-img">
                             <img class="img-thumbnail" src="https://s.vndb.org/cv/53/15453.jpg" />
+                            </div>
                         </div>
-                    </div>
                     </div>
 
                 </div>
@@ -126,7 +129,7 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary">Next</button>
                 </div>
-            </form>
+            {!! Form::close() !!}
             {{-- end create new --}}
 
         </div>

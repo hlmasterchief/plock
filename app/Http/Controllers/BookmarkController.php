@@ -73,20 +73,22 @@ class BookmarkController extends Controller {
      *
      * @return Response
      */
-    public function postCreate(\App\Http\Requests\BookmarkRequest $request) {
-        $favourite_id = $request->only('favourite_id');
+    public function postCreate(\App\Http\Requests\BookmarkCreateRequest $request) {
+        // $favourite_id = $request->only('favourite_id');
 
-        if (!isset($favourite_id) or is_null($favourite_id)) {
-            return redirect()->action('BookmarkController@getUpdate')
-                                ->with('flash_message', trans('favourite.not_valid'));
-        }
-        $favourite = $this->favourite->find($favourite_id);
-        if (is_null($favourite)) {
-            return redirect()->action('BookmarkController@getUpdate')
-                                ->with('flash_message', trans('favourite.not_found'));
-        }
+        // if (!isset($favourite_id) or is_null($favourite_id)) {
+        //     return redirect()->action('BookmarkController@getUpdate')
+        //                         ->with('flash_message', trans('favourite.not_valid'));
+        // }
+        // $favourite = $this->favourite->find($favourite_id);
+        // if (is_null($favourite)) {
+        //     return redirect()->action('BookmarkController@getUpdate')
+        //                         ->with('flash_message', trans('favourite.not_found'));
+        // }
 
-        $this->bookmark->create(Auth::id(), $request->all());
+        dd($request);
+        $user_id = $this->auth->user()->id;
+        $bookmark = $this->bookmark->create($user_id, $request->all());
 
         return redirect()->action('BookmarkController@getRead', array($bookmark->id))
                             ->with('flash_message', trans('bookmark.add_success'));

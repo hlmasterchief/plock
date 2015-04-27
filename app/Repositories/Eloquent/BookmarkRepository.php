@@ -27,9 +27,25 @@ class BookmarkRepository implements BookmarkRepositoryInterface {
      * @return App\Models\Bookmark
      */
     public function create($user_id, array $modifiers) {
-        $data = array_only($modifiers, ['favourite_id', 'description']);
+        // $data = array_only($modifiers, ['favourite_id', 'description']);
 
+        $favourite = new \App\Models\Favourite;
+        $favourite->name = $modifiers['name'];
+        $favourite->type = $modifiers['type'];
+        $favourite->save();
+
+        $movies = new \App\Models\Movies;
+        $movies->genre = $modifiers['genre'];
+        $movies->country = $modifiers['country'];
+        $movies->director = $modifiers['director'];
+        $movies->plot = $modifiers['plot'];
+        $movies->year = $modifiers['year'];
+        $movies->favourite_id = $favourite->id;
+        $movies->save();
+
+        $data = array_only($modifiers, ['description']);
         $bookmark = $this->bookmark->create($data);
+        $bookmark->favourite_id = $favourite->id;
         $bookmark->user_id = $user_id;
         $bookmark->save();
 

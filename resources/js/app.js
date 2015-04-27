@@ -72,6 +72,7 @@ $(document).ready(function(){
     $('#inputPost-1 .createPost-form .dropdown .dropdown-menu li').click(function() {
         $('#inputPost-1 .createPost-form .dropdown #current-category').text($(this).text());
         $('#inputPost-1 #type').val($(this).attr('value'));
+        $('#inputPost-3 #type').val($(this).attr('value'));
 
         $('#inputPost-2 #search-type').text($(this).attr('value'));
     });
