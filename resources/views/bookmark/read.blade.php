@@ -23,8 +23,10 @@
 
                     <dt class="strong">Description</dt>
                     <dd>
-                    <p>{{ $bookmark->favourite->data->plot }}</p>
-                    <p>[from <a href="https://omochikaeri.wordpress.com/2013/02/01/february-2013-eroge-releases/">Micchi's blog</a>]</p>
+                        @if ($bookmark->favourite->type == 'movies')
+                        <p>{{ $bookmark->favourite->data->plot }}</p>
+                        @endif
+                        <p>[from <a href="https://omochikaeri.wordpress.com/2013/02/01/february-2013-eroge-releases/">Micchi's blog</a>]</p>
                     </dd>
                 </dl>
             </div>

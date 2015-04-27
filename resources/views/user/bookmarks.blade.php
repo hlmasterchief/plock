@@ -20,7 +20,7 @@
 
             <div class="caption">
                 <h4>{{ $bookmark->favourite->name }}</h4>
-                @if ($bookmark->favourite->type == 'movie')
+                @if ($bookmark->favourite->type == 'movies')
                 <p>{{ $bookmark->favourite->data->director }}</p>
                 @endif
             </div>

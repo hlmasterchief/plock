@@ -57,7 +57,7 @@ class Favourite extends IndexModel {
      * Movie relation
      * @return App\Models\Movie
      */
-    public function movie() {
+    public function movies() {
         return $this->hasOne('App\Models\Movie');
     }
 
