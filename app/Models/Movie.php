@@ -29,6 +29,12 @@ class Movie extends IndexModel {
     protected $index = ['plot'];
 
     /**
+     * Append json data
+     * @var array[string]
+     */
+    protected $appends = ['short_data'];
+
+    /**
      * Polymorphic relation
      * @return App\Models\Favourite
      */
@@ -41,6 +47,13 @@ class Movie extends IndexModel {
                 "Country" => $this->country,
                 "Director" => $this->director,
                 "Year" => $this->year];
+    }
+
+    public function getShortDataAttribute() {
+        return [
+            "name"          => $this->favourite->name,
+            "description"   => $this->plot
+        ];
     }
 
 }

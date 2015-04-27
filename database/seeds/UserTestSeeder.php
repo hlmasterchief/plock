@@ -19,11 +19,17 @@ class UserTestSeeder extends Seeder {
         $user->password = bcrypt("test");
         $user->save();
 
+        $profile = new App\Models\Profile();
+        $user->profile()->save($profile);
+
         $user = new App\Models\User();
         $user->username = "test2";
         $user->email = "test2@gmail.com";
         $user->password = bcrypt("test");
         $user->save();
+
+        $profile = new App\Models\Profile();
+        $user->profile()->save($profile);
 
         $user = new App\Models\User();
         $user->username = "test3";
@@ -31,11 +37,17 @@ class UserTestSeeder extends Seeder {
         $user->password = bcrypt("test");
         $user->save();
 
+        $profile = new App\Models\Profile();
+        $user->profile()->save($profile);
+
         $user = new App\Models\User();
         $user->username = "test4";
         $user->email = "test4@gmail.com";
         $user->password = bcrypt("test");
         $user->save();
+
+        $profile = new App\Models\Profile();
+        $user->profile()->save($profile);
     }
 
 }

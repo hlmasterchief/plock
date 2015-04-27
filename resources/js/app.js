@@ -1,3 +1,7 @@
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 $(document).ready(function(){
 
     //search input
@@ -16,7 +20,7 @@ $(document).ready(function(){
     });
 
     $("#createPost").click(function(){
-        $("#inputPost").modal('show');
+        $("#inputPost-1").modal('show');
     });
 
     $("#createBox").click(function(){
@@ -56,10 +60,48 @@ $(document).ready(function(){
     });
 
     // ex-bookmark selection function
-    $('.ex-bookmark').hover(function() {
+    $('#found-list').on('mouseenter', '.ex-bookmark', function(e) {
         $(this).find('.overlay').fadeIn(500);
-    }, function() {
+    });
+
+    $('#found-list').on('mouseleave', '.ex-bookmark', function(e) {
         $(this).find('.overlay').fadeOut(500);
+    });
+
+    // create bookmark category choose
+    $('#inputPost-1 .createPost-form .dropdown .dropdown-menu li').click(function() {
+        $('#inputPost-1 .createPost-form .dropdown #current-category').text($(this).text());
+        $('#inputPost-1 #type').val($(this).attr('value'));
+
+        $('#inputPost-2 #search-type').text($(this).attr('value'));
+    });
+
+    $("#createPost-form-1").submit(function(event) {
+        event.preventDefault();
+
+        if ($('#inputPost-1 #type').val() === "") {
+            $('#inputPost-1 #warning-category').text('Please choose a category.');
+            return false;
+        }
+
+        $('#inputPost-1 #warning-category').text('');
+
+        $('#inputPost-2 #search-words').text($("#createPost-form-1 #name").val().capitalizeFirstLetter());
+
+        BookmarkSearch.fetch({
+            name: $("#createPost-form-1 #name").val(),
+            type: $("#createPost-form-1 #type").val()
+        }, function() {
+            $('#inputPost-1').modal('hide');
+
+            $('#inputPost-1').on('hidden.bs.modal', function(e) {
+                if (BookmarkFounds.length === 0) {
+                    $('#inputPost-3').modal('show');
+                } else {
+                    $('#inputPost-2').modal('show');
+                }
+            });
+        });
     });
 
 });
