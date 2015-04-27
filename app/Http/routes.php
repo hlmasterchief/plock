@@ -40,6 +40,12 @@ Route::get('/update-account', function () {
 Route::get('/update-profile', function () {
     return view('template.update_profile');
 });
+Route::get('/followings', function () {
+    return view('template.followings');
+});
+Route::get('/followers', function () {
+    return view('template.followers');
+});
 
 /**
  * Authentication
@@ -77,11 +83,11 @@ Route::post('/follow/toggle', 'UserController@postToggleFollow');
 
 Route::get('/{username}/followers', 'UserController@getFollowersByName');
 Route::get('/followers/{id}', 'UserController@getFollowers');
-Route::get('/followers', 'UserController@getFollowers');
+// Route::get('/followers', 'UserController@getFollowers');
 
 Route::get('/{username}/followings', 'UserController@getFollowingsByName');
 Route::get('/followings/{id}', 'UserController@getFollowings');
-Route::get('/followings', 'UserController@getFollowings');
+// Route::get('/followings', 'UserController@getFollowings');
 
 Route::get('/comment/create', 'CommentController@getCreate');
 Route::post('/comment/create', 'CommentController@postCreate');

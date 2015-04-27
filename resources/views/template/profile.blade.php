@@ -58,7 +58,7 @@
 
         <div class="col-md-2 col-xs-2 text-center row">
             <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap">
-            <a class="tmenu-middle" href="/box">
+            <a class="tmenu-middle" href="/followers">
                 <h5 class="menu-name">Followers</h5>
                 <p class="menu-data">40</p>
             </a>
@@ -67,7 +67,7 @@
 
         <div class="col-md-2 col-xs-2 text-center row">
             <div class="col-md-10 col-sm-10 col-xs-12 tmenu-wrap">
-            <a class="tmenu-middle" href="/box">
+            <a class="tmenu-middle" href="/followings">
                 <h5 class="menu-name">Followings</h5>
                 <p class="menu-data">40</p>
             </a>
