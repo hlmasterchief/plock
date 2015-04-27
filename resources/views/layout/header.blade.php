@@ -19,7 +19,7 @@
 
                 <div class="buttonLockEdit">
                     @if (Auth::user()->profile->id == $header['user_id'])
-                    <abbr title="Edit"><a href="update/{{ $header['id'] }}"><span class="glyphicon glyphicon-edit"></span></a></abbr>
+                    <abbr title="Edit"><a href="#" id="edit{{ $header['type'] }}"><span class="glyphicon glyphicon-edit"></span></a></abbr>
                     @else
                     <abbr title="Lock it"><a href="#"><span class="glyphicon glyphicon-lock"></span></a></abbr>
                     @endif
@@ -58,3 +58,4 @@
 </nav> <!-- /.navigation -->
 
 </div>
+@include('box.update')

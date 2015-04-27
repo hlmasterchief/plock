@@ -40,7 +40,8 @@ class BoxController extends Controller {
         }
 
         $header = [
-            'title' => $box->title,
+            'title'    => $box->title,
+            'type'     => 'Box',
             'id'       => $id,
             'username' => $box->user()->first()->username,
             'user_id'  => $box->user()->first()->id,
@@ -104,19 +105,19 @@ class BoxController extends Controller {
      */
     public function postUpdate($id = null, \App\Http\Requests\BoxRequest $request) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('BoxController@getUpdate')
+            return redirect()->action('BoxController@getRead', array($box->id))
                                 ->with('flash_message', trans('box.not_valid'));
         }
 
         $box = $this->box->find($id);
         if (is_null($box)) {
-            return redirect()->action('BoxController@getUpdate')
+            return redirect()->action('BoxController@getRead', array($box->id))
                                 ->with('flash_message', trans('box.not_found'));
         }
         
-        $this->box->update($id, $request->only('name', 'type'));
+        $this->box->update($id, $request->only('title', 'description'));
 
-        return redirect()->action('BoxController@getUpdate')
+        return redirect()->action('BoxController@getRead', array($box->id))
                             ->with('flash_message', trans('box.update_success'));
     }
 

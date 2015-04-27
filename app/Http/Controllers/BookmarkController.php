@@ -43,6 +43,7 @@ class BookmarkController extends Controller {
 
         $header = [
             'title'    => $bookmark->favourite->name,
+            'type'     => 'Bookmark',
             'id'       => $id,
             'username' => $bookmark->user()->first()->username,
             'user_id'  => $bookmark->user()->first()->id,
