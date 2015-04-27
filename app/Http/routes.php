@@ -102,4 +102,7 @@ Route::get('/box/{id}', 'BoxController@getRead');
 
 Route::get('/user/{id}', 'UserController@getBookmarks');
 Route::get('/user', 'UserController@getBookmarks');
+
+Route::get('/news', 'BookmarkController@getNewsFeed');
+
 Route::get('/{username}', 'UserController@getBookmarksByName');

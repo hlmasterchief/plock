@@ -128,7 +128,7 @@ class BookmarkController extends Controller {
             return redirect()->action('BookmarkController@getUpdate')
                                 ->with('flash_message', trans('bookmark.not_found'));
         }
-        
+
         $this->bookmark->update($id, $request->only('description'));
 
         return redirect()->action('BookmarkController@getRead', array($bookmark->id))
@@ -171,10 +171,29 @@ class BookmarkController extends Controller {
             return redirect()->action('BookmarkController@getDelete')
                                 ->with('flash_message', trans('bookmark.not_found'));
         }
-        
+
         $this->bookmark->delete($id);
 
         return redirect()->action('BookmarkController@getDelete')
                             ->with('flash_message', trans('bookmark.delete_success'));
+    }
+
+    /**
+     * Get news feed
+     *
+     * @return Response
+     */
+    public function getNewsFeed() {
+        $bookmarks = collect([]);
+
+        $this->auth->user()->following->each(function($user) {
+            $bookmarks->merge($user->bookmarks);
+        });
+
+        $bookmarks->sort(function($value) {
+            $value->id;
+        });
+
+        return $this->view->make('newsfeed')->with('bookmarks', $bookmarks);
     }
 }
