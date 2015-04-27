@@ -41,7 +41,10 @@ class BoxController extends Controller {
 
         $header = [
             'title' => $box->title,
-            'sub-title' => $box->user()->first()->username
+            'id'       => $id,
+            'username' => $box->user()->first()->username,
+            'user_id'  => $box->user()->first()->id,
+            'display_name' => $box->user()->first()->displayName()
         ];
 
         $bookmarks = $box->bookmarks()->get();

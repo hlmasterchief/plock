@@ -4,11 +4,7 @@
     <div class="col-md-3 col-sm-3 col-xs-4">
         <div class="navbar-wrap">
             <a href="/{{ Auth::user()->username }}" class="logo">
-                @if (Auth::user()->profile->display_name == '')
-                <h4>{{ Auth::user()->username }}</h4>
-                @else
-                <h4>{{ Auth::user()->profile->display_name }}</h4>
-                @endif
+                <h4>{{ Auth::user()->displayName() }}</h4>
             </a>
         </div>
     </div>
@@ -18,7 +14,7 @@
             <div class="heading">
                 <div class="heading-title">
                 <h4 class="title">{{ $header['title'] }}</h4>
-                <p class="sub-title">Created by <a href="/{{ $header['username'] }}">{{ $header['username'] }}</a></p>
+                <p class="sub-title">Created by <a href="/{{ $header['username'] }}">{{ $header['display_name'] }}</a></p>
                 </div>
 
                 <div class="buttonLockEdit">
