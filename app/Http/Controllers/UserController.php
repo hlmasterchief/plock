@@ -26,7 +26,8 @@ class UserController extends Controller {
      * @return Response
      */
     public function getUpdate() {
-        return $this->view->make('user.update');
+        $profile = $this->auth->user()->profile;
+        return $this->view->make('user.update')->with('profile', $profile);;
     }
 
     /**
@@ -34,8 +35,8 @@ class UserController extends Controller {
      *
      * @return Response
      */
-    public function postUpdate(\App\Http\Requests\UpdateRequest $request) {
-        $this->user->updateProfile(Auth::id(), $request->all());
+    public function postUpdate(\App\Http\Requests\UserRequest $request) {
+        $this->user->updateProfile($this->auth->user()->id, $request->all());
 
         return redirect()->action('UserController@getUpdate')
                     ->with('flash_message', trans('user.update_success'));

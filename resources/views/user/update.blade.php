@@ -9,18 +9,33 @@
         </div>
 
         <div class="panel-body">
-            <form class="updateProfile-form" autocomplete="off">
+            {!! Form::open(array('url'=>'/profile/update', 'class' => 'updateProfile-form', 'autocomplete' => 'off')) !!}
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+
+                @if(Session::has('flash_message'))
+                    <p class="alert">{{ Session::get('flash_message') }}</p>
+                @endif
                 <div class="form-group">
-                    <label for="displayname">Display name</label>
-                    <input type="text" id="displayname" name="displayname" class="input-block" placeholder="Displayname">
+                    <label for="display_name">Display name</label>
+                   {!! Form::text('display_name', $profile->display_name, array('class'=>'input-block', 'placeholder'=>'Display name')) !!}
                 </div>
                 <div class="form-group">
-                    <label for="repeatEmail">Location</label>
-                    <input type="text" id="repeatEmail" name="repeatEmail" class="input-block" placeholder="New location">
+                    <label for="location">Location</label>
+                   {!! Form::text('location', $profile->location, array('class'=>'input-block', 'placeholder'=>'Location')) !!}
                 </div>
                 <div class="form-group">
-                    <label for="currentPass">Your website</label>
-                    <input type="password" id="currentPass" name="currentPass" class="input-block" placeholder="Your personal page">
+                    <label for="homepage">Your website</label>
+                   {!! Form::text('homepage', $profile->homepage, array('class'=>'input-block', 'placeholder'=>'Your website')) !!}
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                   {!! Form::text('description', $profile->description, array('class'=>'input-block', 'placeholder'=>'Description')) !!}
                 </div>
                 <div class="form-group">
                     <h5>Change your profile picture</h5>
@@ -53,10 +68,10 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Done</button>
+                    {!! Form::button('Cancle', array('class'=>'btn btn-default', 'data-dismiss'=>'modal'))!!}
+                    {!! Form::submit('Done', array('class'=>'btn btn-primary'))!!}
                 </div>
-            </form>
+            {!! Form::close() !!}
         </div>
     </div>
 </div>

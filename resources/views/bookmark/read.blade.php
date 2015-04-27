@@ -61,7 +61,7 @@
             </div>
 
             <div class="media-body">
-                <h4 class="media-heading">{{ $comment->user->username }} <small><abbr title="12:26am" data-livestamp="1429651588"></abbr></small></h4>
+                <h4 class="media-heading">{{ $comment->user->displayName() }} <small><abbr title="{{ $comment->created_at }}" data-livestamp="{{ $comment->created_at }}"></abbr></small></h4>
                 <p>{{ $comment->content }}</p>
             </div>
         </div>

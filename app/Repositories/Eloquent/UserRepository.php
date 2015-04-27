@@ -82,7 +82,7 @@ class UserRepository implements UserRepositoryInterface {
      * @return App\Models\Profile
      */
     public function updateProfile($id, array $modifiers) {
-        $profile = $this->find($id);
+        $profile = $this->find($id)->profile;
 
         if ($modifiers['display_name']) {
             $profile->display_name = $modifiers['display_name'];
