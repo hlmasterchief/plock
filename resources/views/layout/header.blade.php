@@ -58,4 +58,6 @@
 </nav> <!-- /.navigation -->
 
 </div>
+@if (isset($header))
 @include($header['type'].'.update')
+@endif

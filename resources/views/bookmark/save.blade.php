@@ -1,11 +1,6 @@
-@extends('template.template')
-
-@section('main-content')
-
 <div class="box-addPost">
-    <button class="btn btn-primary" id="addPost">Add to Box</button>
 
-    <div class="modal fade" id="inputAddPost" tabindex="-1" role="dialog" aria-labelledby="editBox" aria-hidden="true">
+    <div class="modal fade" id="inputAddPost" tabindex="-1" role="dialog" aria-labelledby="savePost" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -63,5 +58,3 @@
         </div>
     </div>
 </div>
-
-@stop
