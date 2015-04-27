@@ -54,7 +54,8 @@ Route::post('/favourite/update/{id}', 'FavouriteController@postUpdate');
 Route::get('/favourite/delete/{id}', 'FavouriteController@getDelete');
 Route::post('/favourite/delete/{id}', 'FavouriteController@postDelete');
 
-Route::post('/favourite/search', 'FavouriteController@postSearch');
+Route::get('/favourite/search', 'FavouriteController@getSearch');
+Route::get('/favourite/searchJson', 'FavouriteController@getSearchJson');
 
 Route::post('/follow/toggle', 'UserController@postToggleFollow');
 

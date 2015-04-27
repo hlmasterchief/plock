@@ -112,6 +112,8 @@ class FavouriteRepository implements FavouriteRepositoryInterface {
                 return collect([]);
         }
 
-        return $this->$model->elasticSearch(array_except($modifiers, ['type']));
+        return $this->$model->elasticSearch(array_except($modifiers, ['type']))->filter(function($value) {
+            return !is_null($value);
+        });
     }
 }

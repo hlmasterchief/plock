@@ -21,7 +21,6 @@ class FavouriteTestSeeder extends Seeder {
 
         $movie = new App\Models\Movie();
         $movie->plot = "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.";
-        $movie->release_date = "1972-03-24";
         $favourite->data()->save($movie);
 
         $favourite->data->save();
@@ -34,7 +33,6 @@ class FavouriteTestSeeder extends Seeder {
 
         $movie = new App\Models\Movie();
         $movie->plot = "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.";
-        $movie->release_date = "2008-06-18";
         $favourite->data()->save($movie);
 
         $favourite->data->save();
