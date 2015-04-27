@@ -16,27 +16,20 @@
                 @endforeach
             </ul>
 
-            @if(Session::has('flash_message'))
-                <p class="alert">{{ Session::get('flash_message') }}</p>
-            @endif
-
-            <div class="modal-body">
-                <div class="form-group float-lable">
-                    {!! Form::text('title', null, array('class'=>'input-block', 'placeholder'=>'Box name', 'required')) !!}
-                    {!! Form::label('title', 'Box name', array('class'=>'input-icon')) !!}
+                <div class="modal-body">
+                    <div class="form-group float-label">
+                        {!! Form::text('title', null, array('class'=>'input-block', 'placeholder'=>'Box name', 'required')) !!}
+                        <label for="title">Box name</label>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::textarea('description', null, array('class'=>'form-control', 'placeholder'=>'What is your box about?')) !!}
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    {!! Form::textarea('description', null, array('class'=>'form-control', 'placeholder'=>'What is your box about?')) !!}
+                <div class="modal-footer">
+                    {!! Form::button('Cancle', array('class'=>'btn btn-default', 'data-dismiss'=>'modal'))!!}
+                    {!! Form::submit('Done', array('class'=>'btn btn-primary'))!!}
                 </div>
-
-            </div>
-
-            <div class="modal-footer">
-                {!! Form::button('Cancle', array('class'=>'btn btn-default', 'data-dismiss'=>'modal'))!!}
-                {!! Form::submit('Done', array('class'=>'btn btn-primary'))!!}
-            </div>
-
             {!! Form::close() !!}
 
         </div>

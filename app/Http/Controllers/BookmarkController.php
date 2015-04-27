@@ -42,8 +42,10 @@ class BookmarkController extends Controller {
         }
 
         $header = [
-            'title' => $bookmark->favourite->name,
-            'sub-title' => $bookmark->user()->first()->username
+            'title'    => $bookmark->favourite->name,
+            'id'       => $id,
+            'username' => $bookmark->user()->first()->username,
+            'user_id'  => $bookmark->user()->first()->id
         ];
 
         $datas = $bookmark->favourite->data->getData();

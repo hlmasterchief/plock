@@ -12,6 +12,10 @@
     transition: all 0.5s ease;
 }
 
+.row {
+    margin: 0;
+}
+
 /**
  * dl man ~
  */
@@ -76,6 +80,16 @@ dl {
 
     img {
         max-height: 48px;
+    }
+}
+
+.crop-140 {
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+
+    img {
+        max-height: 140px;
     }
 }
 
@@ -166,13 +180,25 @@ dl {
         border: none;
         box-shadow: $box-shadow-level2;
 
-        > li > a {
-            padding: 12px 20px;
+        > li {
+            padding: 8px 16px;
             color: #4a4a4a;
             border: none;
+            cursor: pointer;
 
             &:hover {
                 background-color: #eaeaea;
+            }
+
+            &.divider {
+                padding: 0;
+            }
+
+            a {
+                padding: 0;
+                &:hover {
+                    background: none;
+                }
             }
         }
     }
@@ -205,4 +231,186 @@ dl {
 
 .modal-dialog {
 
+}
+
+/**
+ * customize input
+ */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+    outline: none;
+    background: none;
+    border: none;
+    height: 48px;
+    line-height: 24px;
+    padding-top: 16px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    font-size: 16px;
+
+    border-bottom: #e5e5e5 solid 2px;
+    // color: rgba(255,255,255,1.0);
+
+    transition: all 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus {
+    border-bottom: #2962FF solid 2px;
+    transition: all 0.3s ease-out;
+}
+
+input.input-block {
+    width: 100%;
+}
+
+textarea.form-control {
+    outline: none;
+    background: none;
+    border: none;
+    height: 110px;
+    line-height: 24px;
+    padding-top: 16px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    box-shadow: none;
+    border: none;
+    // color: rgba(255,255,255,1.0);
+
+    transition: all 0.2s ease;
+}
+
+textarea.form-control:focus {
+    outline: none;
+    background: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border: none;
+    transition: all 0.3s ease-out;
+}
+
+.input-icon {
+    position: relative;
+    display: flex;
+    width: 100%;
+    // padding: 2px;
+    // padding-bottom: 26px;
+}
+
+.input-icon span {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    line-height: 24px;
+    padding-top: 10px;
+    padding-bottom: 14px;
+    // color: rgba(255,255,255,0.7);
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.input-icon input[type="text"] {
+    height: 40px;
+    padding-left: 0px;
+}
+
+.input-icon input:focus {
+    color: #7C4DFF;
+    transition: all 0.2s ease-out;
+}
+
+.input-icon label.active,
+.input-icon label:hover {
+    color: #7C4DFF;
+}
+
+.float-label {
+    width: 100%;
+    height: 64px;
+    position: relative;
+}
+
+.float-label input {
+    position: absolute;
+    left: 0;
+    top: 24px;
+}
+
+.float-label label {
+    position: absolute;
+    top: 40px;
+    left: 12px;
+    // color: rgba(255,255,255,0.30);
+    transition: all 0.2s ease;
+    font-size: 16px;
+}
+
+.float-label input:valid + label {
+    top: 16px;
+    transition: all 0.3s ease-out;
+    font-size: 14px;
+    color: #2962FF;
+}
+
+.float-label input:focus + label {
+    top: 16px;
+    transition: all 0.3s ease-out;
+    font-size: 14px;
+    color: #2962FF;
+}
+
+label {
+    font-weight: 500;
+}
+
+button {
+    min-width: 88px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+button:active {
+    outline: none;
+    border: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+button:focus {
+    outline:0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+button.btn-block {
+    width: 100%;
+    display: block;
+    padding: 0;
+}
+
+.btn-primary {
+    background: #2979FF;
+    outline: none;
+    border: none;
+    color: rgba(255,255,255,1);
+}
+
+.update-account .form-group,
+.update-profile .form-group {
+    label {
+        margin: 0;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+        padding-top: 8px;
+    }
 }
