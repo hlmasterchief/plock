@@ -33,7 +33,16 @@ $(document).ready(function(){
     });
 
     $("#addPost").click(function(){
+        var id = $(this).attr("value");
+        $("#bookmark_id").attr("value", id);
         $("#inputAddPost").modal('show');
+    });
+
+    $(".box_choose_save").click(function(){
+        var id = $(this).attr("value");
+        $("#box_new_id").attr("value", id);
+        var title = $(this).html();
+        $("#box_choose_selected").html(title);
     });
 
     // Add fadeToggle animation to dropdown

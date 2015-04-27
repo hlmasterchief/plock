@@ -28,4 +28,11 @@ interface BookmarkRepositoryInterface {
      * @return App\Models\Bookmark
      */
     public function delete($id);
+
+    /**
+     * Save Bookmark in Database
+     * @param  array  $modifiers
+     * @return App\Models\Bookmark
+     */
+    public function save($id, $user_id, array $modifiers);
 }

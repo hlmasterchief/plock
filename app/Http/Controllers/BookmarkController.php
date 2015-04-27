@@ -177,4 +177,30 @@ class BookmarkController extends Controller {
         return redirect()->action('BookmarkController@getDelete')
                             ->with('flash_message', trans('bookmark.delete_success'));
     }
+
+    /**
+     * Save bookmark
+     *
+     * @return Response
+     */
+    public function postSave(\App\Http\Requests\BookmarkSaveRequest $request) {
+        $id = $request->only('bookmark_id');
+        if (!isset($id) or is_null($id)) {
+            return redirect()->action('BookmarkController@getRead')
+                                ->with('flash_message', trans('bookmark.not_valid'));
+        }
+
+        $bookmark = $this->bookmark->find($id);
+        if (is_null($bookmark)) {
+            return redirect()->action('BookmarkController@getRead')
+                                ->with('flash_message', trans('bookmark.not_found'));
+        }
+
+        $user_id = $this->auth->user()->id;
+
+        $clone = $this->bookmark->save($id, $user_id, $request->only('description', "box_new_id"));
+
+        return redirect()->action('BoxController@getRead', array($clone->box_id))
+                            ->with('flash_message', trans('bookmark.delete_success'));
+    }
 }

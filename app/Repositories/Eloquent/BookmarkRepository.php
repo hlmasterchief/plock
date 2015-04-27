@@ -63,4 +63,24 @@ class BookmarkRepository implements BookmarkRepositoryInterface {
 
         return $bookmark->delete();
     }
+
+    /**
+     * Save Bookmark in Database
+     * @param  array  $modifiers
+     * @return App\Models\Bookmark
+     */
+    public function save($id, $user_id, array $modifiers) {
+        $bookmark = $this->find($id);
+
+        $clone = new \App\Models\Bookmark;
+
+        $clone->description = $modifiers['description'];
+        $clone->favourite_id = $bookmark->first()->favourite_id;
+        $clone->user_id = $user_id;
+        $clone->box_id = $modifiers['box_new_id'];
+
+        $clone->save();
+
+        return $clone;
+    }
 }
