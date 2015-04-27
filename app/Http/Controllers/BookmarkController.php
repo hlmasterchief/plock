@@ -186,14 +186,14 @@ class BookmarkController extends Controller {
     public function getNewsFeed() {
         $bookmarks = collect([]);
 
-        $this->auth->user()->following->each(function($user) {
-            $bookmarks->merge($user->bookmarks);
+        $this->auth->user()->following->each(function($user) use (&$bookmarks) {
+            $bookmarks = $bookmarks->merge($user->bookmarks);
         });
 
         $bookmarks->sort(function($value) {
             $value->id;
         });
 
-        return $this->view->make('newsfeed')->with('bookmarks', $bookmarks);
+        return $this->view->make('template.home')->with('bookmarks', $bookmarks);
     }
 }
