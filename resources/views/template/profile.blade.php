@@ -17,14 +17,22 @@
         </div>
 
         <div class="col-md-10 col-xs-8 profile-info">
-            <h2>{{ $user->username }}</h2>
+            <h2>{{ $user->displayName() }}</h2>
             <div class="profile-location">
                 <span class="glyphicon glyphicon-map-marker"></span>
-                <span>Oulu, Finland</span>
+                <span>{{ $user->profile->location }}</span>
+            </div>
+            <div class="profile-website">
+                <span class="glyphicon glyphicon-map-marker"></span>
+                <span>{{ $user->profile->homepage }}</span>
+            </div>
+            <div class="profile-description">
+                <span class="glyphicon glyphicon-map-marker"></span>
+                <span>{{ $user->profile->description }}</span>
             </div>
             <div class="profile-start-date">
                 <span class="glyphicon glyphicon-time"></span>
-                <span>Join on May, 2013</span>
+                <span>Join on {{ $user->created_at }}</span>
             </div>
         </div>
 

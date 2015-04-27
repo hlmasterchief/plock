@@ -116,6 +116,7 @@ class UserController extends Controller {
         $followers = $this->user->getFollowers($id);
 
         return $this->view->make('user.followers')
+                            ->with('user', $user)
                             ->with('followers', $followers);
     }
 
@@ -137,6 +138,7 @@ class UserController extends Controller {
         $followings = $this->user->getFollowings($id);
 
         return $this->view->make('user.followings')
+                            ->with('user', $user)
                             ->with('followings', $followings);
     }
 
@@ -154,6 +156,7 @@ class UserController extends Controller {
         $followers = $this->user->getFollowers($user['id']);
 
         return $this->view->make('user.followers')
+                            ->with('user', $user)
                             ->with('followers', $followers);
     }
 
@@ -168,9 +171,10 @@ class UserController extends Controller {
             return redirect('/')->with('flash_message', trans('user.not_found'));
         }
 
-        $followers = $this->user->getFollowings($user['id']);
+        $followings = $this->user->getFollowings($user['id']);
 
         return $this->view->make('user.followings')
+                            ->with('user', $user)
                             ->with('followings', $followings);
     }
 

@@ -183,7 +183,7 @@ class UserRepository implements UserRepositoryInterface {
      * @return Collection[\App\Models\User]
      */
     public function getFollowers($id) {
-        return $this->find($id)->followers();
+        return $this->find($id)->followers;
     }
 
     /**
@@ -192,7 +192,7 @@ class UserRepository implements UserRepositoryInterface {
      * @return Collection[\App\Models\User]
      */
     public function getFollowings($id) {
-        return $this->find($id)->following();
+        return $this->find($id)->following;
     }
 
     /**
