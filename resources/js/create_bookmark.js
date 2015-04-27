@@ -1,9 +1,14 @@
 var BookmarkFound = Backbone.Model.extend({
     defaults: function() {
         return {
+            id: 0,
             name: "empty name...",
             description: "empty description..."
         }
+    },
+
+    getId: function() {
+        return this.id;
     }
 });
 
@@ -33,7 +38,8 @@ var BookmarkFoundView = Backbone.View.extend({
     },
 
     onPlockFavourite: function(e) {
-
+        // TODO: get id cua favourite de post len server
+        // this.model.getId() => ID in database of favourite
     }
 });
 

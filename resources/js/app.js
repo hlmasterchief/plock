@@ -51,9 +51,11 @@ $(document).ready(function(){
     });
 
     // ex-bookmark selection function
-    $('.ex-bookmark').hover(function() {
+    $('#found-list').on('mouseenter', '.ex-bookmark', function(e) {
         $(this).find('.overlay').fadeIn(500);
-    }, function() {
+    });
+
+    $('#found-list').on('mouseleave', '.ex-bookmark', function(e) {
         $(this).find('.overlay').fadeOut(500);
     });
 

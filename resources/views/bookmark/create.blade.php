@@ -152,9 +152,9 @@
         </div>
         </div>
 
-        <div class="overlay">
+        <div class="overlay" id="plock-fav">
             <div class="overlay-main transition">
-                <span class="glyphicon glyphicon-lock" id="plock-fav"></span>
+                <span class="glyphicon glyphicon-lock"></span>
                 <span class="ripple"></span>
             </div>
         </div>
