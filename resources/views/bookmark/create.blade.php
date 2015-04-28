@@ -24,7 +24,6 @@
                             <span class="text-warning" id="warning-category"></span>
                         </div>
                         <ul class="dropdown-menu">
-                            <li value="musics">Music</li>
                             <li value="movies">Movie</li>
                         </ul>
                     </div>
