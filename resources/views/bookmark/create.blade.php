@@ -90,22 +90,25 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="type" name="type" value="" required>
                     <div class="form-group">
-                        <input type="text" class="input-block" id="name" placeholder="Name">
+                        <input type="text" class="input-block" name="name" placeholder="Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="input-block" id="genre" placeholder="Genre">
+                        <input type="text" class="input-block" name="genre" placeholder="Genre">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="input-block" id="country" placeholder="Country">
+                        <input type="text" class="input-block" name="country" placeholder="Country">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="input-block" id="director" placeholder="Drector">
+                        <input type="text" class="input-block" name="director" placeholder="Drector">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="input-block" id="year" placeholder="Published year">
+                        <input type="text" class="input-block" name="year" placeholder="Published year">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" id="description" placeholder="What is your bookmark about?"></textarea>
+                        <textarea class="form-control" name="description" placeholder="What is this post about?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="review" placeholder="What is your review?"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -118,7 +121,7 @@
                         </div>
                         <div class="message">
                             <div class="demo-img">
-                            <img class="img-thumbnail" src="https://s.vndb.org/cv/53/15453.jpg" />
+                            <!-- <img class="img-thumbnail" src="https://s.vndb.org/cv/53/15453.jpg" /> -->
                             </div>
                         </div>
                     </div>

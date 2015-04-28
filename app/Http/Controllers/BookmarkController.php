@@ -86,7 +86,6 @@ class BookmarkController extends Controller {
         //                         ->with('flash_message', trans('favourite.not_found'));
         // }
 
-        dd($request);
         $user_id = $this->auth->user()->id;
         $bookmark = $this->bookmark->create($user_id, $request->all());
 
@@ -201,7 +200,7 @@ class BookmarkController extends Controller {
         $user_id = $this->auth->user()->id;
 
         $clone = $this->bookmark->save($id, $user_id, $request->only('description', "box_new_id", "newbox"));
-        
+
         if ($clone->box_id == 0) {
             return redirect()->action('UserController@getBookmarks')
                                 ->with('flash_message', trans('bookmark.save_success'));
@@ -223,6 +222,8 @@ class BookmarkController extends Controller {
         $this->auth->user()->following->each(function($user) use (&$bookmarks) {
             $bookmarks = $bookmarks->merge($user->bookmarks);
         });
+
+        $bookmarks = $bookmarks->merge($this->auth->user()->bookmarks);
 
         $bookmarks->sort(function($value) {
             $value->id;

@@ -38,8 +38,14 @@ var BookmarkFoundView = Backbone.View.extend({
     },
 
     onPlockFavourite: function(e) {
-        // TODO: get id cua favourite de post len server
-        // this.model.getId() => ID in database of favourite
+        $.post("/bookmark/create", {
+            favourite_id: this.model.attributes.id,
+            review: " ",
+            type: "movies",
+            name: "this.model.attributes.short_description.name"
+        }, function (data) {
+            window.location = "/news";
+        });
     }
 });
 
