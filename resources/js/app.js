@@ -40,7 +40,7 @@ $(document).ready(function(){
         $("#inputEditBookmark").modal('show');
     });
 
-    $("#addPost").click(function(){
+    $(".addPost").click(function(){
         var id = $(this).attr("value");
         $("#bookmark_id").attr("value", id);
         $("#inputAddPost").modal('show');
