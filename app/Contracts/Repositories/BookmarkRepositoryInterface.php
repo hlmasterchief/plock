@@ -35,4 +35,11 @@ interface BookmarkRepositoryInterface {
      * @return App\Models\Bookmark
      */
     public function save($id, $user_id, array $modifiers);
+
+    /**
+     * Update Favourite image in Database
+     * @param  object  $modifiers
+     * @return App\Models\Favourite
+     */
+    public function updateImage($id, $modifiers);
 }

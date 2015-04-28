@@ -59,6 +59,28 @@ class BookmarkRepository implements BookmarkRepositoryInterface {
     }
 
     /**
+     * Update Favourite image in Database
+     * @param  object  $modifiers
+     * @return App\Models\Favourite
+     */
+    public function updateImage($id, $modifiers) {
+        $favourite = $this->find($id)->favourite;
+
+        $destination = public_path() . "/img/favourite";
+        $filename    = md5(time());
+        $random      = rand(11111,99999);
+        $extension   = $modifiers->getClientOriginalExtension();
+
+        $modifiers->move($destination, $filename.$random.".".$extension);
+
+        $favourite->image = "/img/favourite/".$filename.$random.".".$extension;
+
+        $favourite->save();
+
+        return $favourite;
+    }
+
+    /**
      * Update Bookmark in Database
      * @param  array  $modifiers
      * @return App\Models\Bookmark

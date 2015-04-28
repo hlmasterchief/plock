@@ -117,7 +117,7 @@
                         <div class="file-button btn btn-primary">
                             {{-- <button class="select-img" class="btn btn-primary">Select picture</button>--}}
                             <span>Select picture</span>
-                            <input type="file" class="input-img">
+                            <input type="file" class="input-img" name="image">
                         </div>
                         <div class="message">
                             <div class="demo-img">
