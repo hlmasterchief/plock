@@ -13,8 +13,9 @@
     <div class="container">
 
         <div class="col-md-2 col-xs-2 profile-img">
-            <img src="{{ $user->profile->avatar }}" class="img-circle img-responsive">
+            <img src="http://yami.moe/img/kudchan.jpg" class="img-circle img-responsive">
         </div>
+        {{-- {{ $user->profile->avatar }} --}}
 
         <div class="col-md-10 col-xs-8 profile-info">
             <div class="displayname">
