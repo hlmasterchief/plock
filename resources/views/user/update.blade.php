@@ -9,7 +9,7 @@
         </div>
 
         <div class="panel-body">
-            {!! Form::open(array('url'=>'/profile/update', 'class' => 'updateProfile-form', 'autocomplete' => 'off')) !!}
+            {!! Form::open(array('url'=>'/profile/update', 'class' => 'updateProfile-form', 'autocomplete' => 'off', 'files'=> true)) !!}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <ul>
@@ -37,7 +37,35 @@
                     <label for="description">Description</label>
                    {!! Form::text('description', $profile->description, array('class'=>'input-block', 'placeholder'=>'Description')) !!}
                 </div>
-
+                <div class="form-group">
+                    <h5>Change your profile picture</h5>
+                    <p class="help-block">The image size should be 50x60px</p>
+                    <div class="file-button btn btn-primary">
+                        {{-- <button class="select-img" class="btn btn-primary">Select picture</button>--}}
+                        <span>Select picture</span>
+                        <input type="file" class="input-img">
+                    </div>
+                    <div class="message">
+                        <div class="demo-img avartar crop-140">
+                        <img class="media-object" src="{{ $profile->avatar }}" />
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <h5>Change your cover picture</h5>
+                    <p class="help-block">The image size should be 50x60px</p>
+                    <div class="file-button btn btn-primary">
+                        {{-- <button class="select-img" class="btn btn-primary">Select picture</button>--}}
+                        <span>Select picture</span>
+                        <input type="file" class="input-img">
+                    </div>
+                    <div class="message">
+                        <div class="demo-img cover">
+                        <img class="img-responsive" src="{{ $profile->cover }}" />
+                        </div>
+                    </div>
+                </div>
 
                 <div class="modal-footer">
                     {!! Form::button('Cancle', array('class'=>'btn btn-default', 'data-dismiss'=>'modal'))!!}

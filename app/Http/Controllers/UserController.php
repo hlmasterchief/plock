@@ -36,7 +36,17 @@ class UserController extends Controller {
      * @return Response
      */
     public function postUpdate(\App\Http\Requests\UserRequest $request) {
-        $this->user->updateProfile($this->auth->user()->id, $request->all());
+        $user_id = $this->auth->user()->id;
+        $this->user->updateProfile($user_id, $request->all());
+
+        if ($request->hasFile('avatar'))
+        {
+            $this->user->updateAvatar($user_id, $request->file('avatar'));
+        }
+        if ($request->hasFile('cover'))
+        {
+            $this->user->updateCover($user_id, $request->file('cover'));
+        }
 
         return redirect()->action('UserController@getUpdate')
                     ->with('flash_message', trans('user.update_success'));

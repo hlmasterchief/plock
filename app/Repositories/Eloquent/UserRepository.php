@@ -107,20 +107,20 @@ class UserRepository implements UserRepositoryInterface {
 
     /**
      * Update Profile avatar in Database
-     * @param  array  $modifiers
+     * @param  object  $modifiers
      * @return App\Models\Profile
      */
-    public function updateAvatar($id, array $modifiers) {
-        $profile = $this->find($id);
+    public function updateAvatar($id, $modifiers) {
+        $profile = $this->find($id)->profile;
 
-        $destination = public_path() . "/upload-avatar";
+        $destination = public_path() . "/img/avatar";
         $filename    = md5(time());
         $random      = rand(11111,99999);
         $extension   = $modifiers->getClientOriginalExtension();
 
         $modifiers->move($destination, $filename.$random.".".$extension);
 
-        $profile->avatar = $modifiers->getRealPath();
+        $profile->avatar = "/img/avatar/".$filename.$random.".".$extension;
 
         $profile->save();
 
@@ -129,20 +129,20 @@ class UserRepository implements UserRepositoryInterface {
 
     /**
      * Update Profile cover in Database
-     * @param  array  $modifiers
+     * @param  object  $modifiers
      * @return App\Models\Profile
      */
-    public function updateCover($id, array $modifiers) {
-        $profile = $this->find($id);
+    public function updateCover($id, $modifiers) {
+        $profile = $this->find($id)->profile;
 
-        $destination = public_path() . "/upload-cover";
+        $destination = public_path() . "/img/cover";
         $filename    = md5(time());
         $random      = rand(11111,99999);
         $extension   = $modifiers->getClientOriginalExtension();
 
         $modifiers->move($destination, $filename.$random.".".$extension);
 
-        $profile->cover = $modifiers->getRealPath();
+        $profile->cover = "/img/cover/".$filename.$random.".".$extension;
 
         $profile->save();
 
