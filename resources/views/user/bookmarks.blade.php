@@ -17,7 +17,6 @@
             </div>
 
             <div class="thumbnail-a"><a href="/bookmark/{{ $bookmark->id }}">
-                <button class="btn btn-primary transition">Lock it</button>
             </a></div>
 
             <div class="caption">
@@ -31,7 +30,7 @@
                 <ul class="row">
                     <li class="col-md-3 col-sm-3 col-xs-3 like"><a href="#"><span class="glyphicon glyphicon-heart"></span><span> 15</span></a></li>
                     <li class="col-md-3 col-sm-3 col-xs-3 comment"><a href="/bookmark/{{ $bookmark->id }}"><span class="glyphicon glyphicon-comment"></span><span> {{ $bookmark->comments->count() }}</span></a></li>
-                   <li class="col-md-3 col-sm-3 col-xs-3 sharing"><a href="#" value="{{ $bookmark->id }}"><span class="glyphicon glyphicon-lock"></span><span> 15</span></a></li>
+                    <li class="col-md-3 col-sm-3 col-xs-3 sharing"><a href="#" value="{{ $bookmark->id }}"><span class="glyphicon glyphicon-lock"></span><span> 15</span></a></li>
                     <li class="col-md-3 col-sm-3 col-xs-3 report text-right"><a href="">
                         <!-- if report -->
                         {{-- <span class="glyphicon glyphicon-flag"></span> --}}
