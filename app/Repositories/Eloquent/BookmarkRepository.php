@@ -53,6 +53,7 @@ class BookmarkRepository implements BookmarkRepositoryInterface {
         $bookmark = $this->bookmark->create($data);
         $bookmark->favourite_id = $favourite_id;
         $bookmark->user_id = $user_id;
+        $bookmark->description = $modifiers['review'];
         $bookmark->save();
 
         return $bookmark;
