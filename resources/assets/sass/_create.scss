@@ -34,13 +34,13 @@
 .menu-create {
     position: fixed;
     bottom: 42px;
-    right: 42px;
+    right: 0;
 
     z-index: 101;
 
     .dropdown {
         position: relative;
-        width: 180px;
+        width: 150px;
         height: 130px;
     }
 

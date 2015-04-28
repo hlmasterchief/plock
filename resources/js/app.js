@@ -74,11 +74,17 @@ $(document).ready(function(){
     // Add fadeToggle animation to dropdown
     $('.dropdown').on('show.bs.dropdown', function(e) {
         $(this).find('.dropdown-menu').first().stop(true, true).fadeToggle(500);
+        $(this).find('.dropdown-menu').first().css('top', '0px');
     });
 
     // Add fadeToggle animation to dropdown
     $('.dropdown').on('hide.bs.dropdown', function(e) {
         $(this).find('.dropdown-menu').first().stop(true, true).fadeToggle(500);
+    });
+
+    // Add fadeToggle animation to dropdown
+    $('.dropdown').on('hidden.bs.dropdown', function(e) {
+        $(this).find('.dropdown-menu').first().css('top', '99999px');
     });
 
     // ex-bookmark selection function
