@@ -60,6 +60,17 @@ $(document).ready(function(){
         $("#favoutire_choose_selected").html(title);
     });
 
+    $('#comment_form').each(function() {
+        $(this).find('input').keypress(function(e) {
+            // Enter pressed?
+            if(e.which == 10 || e.which == 13) {
+                this.form.submit();
+            }
+        });
+
+        $(this).find('input[type=submit]').hide();
+    });
+
     // Add fadeToggle animation to dropdown
     $('.dropdown').on('show.bs.dropdown', function(e) {
         $(this).find('.dropdown-menu').first().stop(true, true).fadeToggle(500);

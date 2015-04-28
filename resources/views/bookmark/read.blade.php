@@ -80,9 +80,10 @@
 
             <div class="media-body">
                 <div class="height-48">
-                {!! Form::open(array('url'=>'/comment/create', 'autocomplete' => 'off')) !!}
+                {!! Form::open(array('url'=>'/comment/create', 'autocomplete' => 'off', 'id' => 'comment_form')) !!}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="bookmark_id" value="{{ $bookmark->id }}">
+                <input type="submit">
 
                 {!! Form::text('content', null, array('class'=>'form-control', 'placeholder'=>'Write a comment...')) !!}
 
