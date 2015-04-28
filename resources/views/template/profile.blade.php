@@ -17,23 +17,30 @@
         </div>
 
         <div class="col-md-10 col-xs-8 profile-info">
-            <h2>{{ $user->displayName() }}</h2>
+            <div class="displayname">
+                <h2>{{ $user->displayName() }}</h2>
+                {{-- if follow/unfollow --}}
+                <button class="btn follow-button transition">Follow</button>
+            </div>
             <div class="profile-location">
                 <span class="glyphicon glyphicon-map-marker"></span>
-                <span>{{ $user->profile->location }}</span>
+                <span> {{ $user->profile->location }}</span>
             </div>
             <div class="profile-website">
-                <span class="glyphicon glyphicon-map-marker"></span>
-                <span>{{ $user->profile->homepage }}</span>
+                {{-- example hoempage address: abc.com --}}
+                <a href="http://www.{{ $user->profile->homepage }}">
+                    <span class="glyphicon glyphicon-home"></span>
+                    <span> www.{{ $user->profile->homepage }}</span>
+                </a>
+                {{-- end example --}}
             </div>
             <div class="profile-description">
-                <span class="glyphicon glyphicon-map-marker"></span>
-                <span>{{ $user->profile->description }}</span>
+                <span> {{ '"'.$user->profile->description.'"' }}</span>
             </div>
-            <div class="profile-start-date">
+            {{-- <div class="profile-start-date">
                 <span class="glyphicon glyphicon-time"></span>
                 <span>Join on {{ $user->created_at }}</span>
-            </div>
+            </div> --}}
         </div>
 
     </div>

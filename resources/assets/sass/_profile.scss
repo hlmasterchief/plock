@@ -21,15 +21,60 @@
             height: 140px;
             margin-top: 70px;
             border-radius: 50%;
-            border: solid 2px #f5f5f5;
+            border: $border-level1;
             overflow: hidden;
         }
 
         .profile-info {
-            padding-top: 110px;
+            padding-top: 60px;
             padding-left: 32px;
             color: #f5f5f5;
             font-size: 0.9em;
+
+            .displayname {
+                h2, button {
+                    display: inline-block;
+                }
+
+                button.follow-button {
+                    margin-left: 16px;
+                    margin-bottom: 12px;
+                    border: solid 2px #f5f5f5;
+                    background: none;
+                    font-size: $font-size-base;
+                    font-weight: 600;
+
+                    &:hover {
+                        outline: none;
+                        background-color: #f5f5f5;
+                    }
+                }
+            }
+
+            .profile-location,
+            .profile-website {
+                display: inline-block;
+            }
+
+            .profile-website {
+                margin-left: 16px;
+                a {
+                    color: #ffffff;
+                    font-size: $font-size-small;
+                    &:hover {
+                        color: #ffffff;
+                    }
+                }
+            }
+
+            .profile-description {
+                position: relative;
+                top: 16px;
+                font-family: "PT Sans", sans-serif;
+                // font-style: italic;
+                font-size: 18px;
+                font-weight: 300;
+            }
         }
     }
 }

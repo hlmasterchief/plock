@@ -19,7 +19,7 @@ class AuthenticationController extends Controller {
         $this->auth = $auth;
         $this->view = $view;
 
-        $this->middleware('guest', ['except' => ['getLogout', 'getUpdate', 'postUpdate']]);
+        // $this->middleware('guest', ['except' => ['getLogout', 'getUpdate', 'postUpdate']]);
     }
 
     /**
