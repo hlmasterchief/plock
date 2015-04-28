@@ -27,7 +27,7 @@ Route::post('/signup', 'AuthenticationController@postSignup');
 Route::get('/update', 'AuthenticationController@getUpdate');
 Route::post('/update', 'AuthenticationController@postUpdate');
 
-// Route::get('/bookmark/create', 'BookmarkController@getCreate');
+Route::get('/bookmark/create', 'BookmarkController@getCreate');
 Route::post('/bookmark/create', 'BookmarkController@postCreate');
 
 Route::post('/bookmark/save', 'BookmarkController@postSave');

@@ -29,23 +29,29 @@ class BookmarkRepository implements BookmarkRepositoryInterface {
     public function create($user_id, array $modifiers) {
         // $data = array_only($modifiers, ['favourite_id', 'description']);
 
-        $favourite = new \App\Models\Favourite;
-        $favourite->name = $modifiers['name'];
-        $favourite->type = $modifiers['type'];
-        $favourite->save();
+        if (!isset($modifiers['favourite_id']) || is_null(\App\Models\Favourite::find($modifiers['favourite_id']))) {
+            $favourite = new \App\Models\Favourite;
+            $favourite->name = $modifiers['name'];
+            $favourite->type = $modifiers['type'];
+            $favourite->save();
 
-        $movies = new \App\Models\Movies;
-        $movies->genre = $modifiers['genre'];
-        $movies->country = $modifiers['country'];
-        $movies->director = $modifiers['director'];
-        $movies->plot = $modifiers['plot'];
-        $movies->year = $modifiers['year'];
-        $movies->favourite_id = $favourite->id;
-        $movies->save();
+            $movies = new \App\Models\Movie;
+            $movies->genre = $modifiers['genre'];
+            $movies->country = $modifiers['country'];
+            $movies->director = $modifiers['director'];
+            $movies->plot = $modifiers['description'];
+            $movies->year = $modifiers['year'];
+            $movies->favourite_id = $favourite->id;
+            $movies->save();
 
-        $data = array_only($modifiers, ['description']);
+            $favourite_id = $favourite->id;
+        } else {
+            $favourite_id = $modifiers['favourite_id'];
+        }
+
+        $data = array_only($modifiers, ['review']);
         $bookmark = $this->bookmark->create($data);
-        $bookmark->favourite_id = $favourite->id;
+        $bookmark->favourite_id = $favourite_id;
         $bookmark->user_id = $user_id;
         $bookmark->save();
 

@@ -50,6 +50,8 @@ class UserRepository implements UserRepositoryInterface {
         //create profile
         $profile_credentials = array_only($modifiers, ['display_name']);
         $profile = $this->profile->create($profile_credentials);
+        $profile->display_name = $user->username;
+        $profile->save();
         $user->profile()->save($profile);
 
         return $user;

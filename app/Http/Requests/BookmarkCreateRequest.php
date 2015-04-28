@@ -24,12 +24,6 @@ class BookmarkCreateRequest extends Request {
         return [
             "name"      =>    "required",
             "type"      =>    "required",
-            "genre"     =>    "required",
-            "country"   =>    "required",
-            "director"  =>    "required",
-            "plot"      =>    "required",
-            "year"      =>    "required",
-            "description" =>    "",
         ];
     }
 
