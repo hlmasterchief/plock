@@ -16,13 +16,14 @@
         }
 
         .profile-img {
-            background-color: rgb(192, 57, 43);
+            background-color: #bdc3c7;
             width: 140px;
             height: 140px;
             margin-top: 70px;
             border-radius: 50%;
             border: $border-level1;
             overflow: hidden;
+            padding: 0;
         }
 
         .profile-info {
