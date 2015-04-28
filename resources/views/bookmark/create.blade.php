@@ -85,7 +85,7 @@
             </div>
 
             {{-- FORM 3 create new --}}
-            {!! Form::open(array('url'=>"/bookmark/create", 'class' => 'createPost-form', 'autocomplete' => 'off')) !!}
+            {!! Form::open(array('url'=>"/bookmark/create", 'class' => 'createPost-form', 'autocomplete' => 'off', 'files'=> true)) !!}
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="type" name="type" value="" required>
@@ -148,7 +148,7 @@
         <div class="media">
             <div class="media-left">
                 <div class="comment-poster">
-                    <img class="media-object img-responsive" src="https://s.vndb.org/cv/53/15453.jpg" alt="...">
+                    <img class="media-object img-responsive" src="<%- favourite.image %>" alt="...">
                 </div>
             </div>
             <div class="media-body">

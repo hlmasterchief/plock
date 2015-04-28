@@ -86,19 +86,19 @@ class UserRepository implements UserRepositoryInterface {
     public function updateProfile($id, array $modifiers) {
         $profile = $this->find($id)->profile;
 
-        if ($modifiers['display_name']) {
+        if (isset($modifiers['display_name'])) {
             $profile->display_name = $modifiers['display_name'];
         }
 
-        if ($modifiers['location']) {
+        if (isset($modifiers['location'])) {
             $profile->location = $modifiers['location'];
         }
 
-        if ($modifiers['homepage']) {
+        if (isset($modifiers['homepage'])) {
             $profile->homepage = $modifiers['homepage'];
         }
 
-        if ($modifiers['description']) {
+        if (isset($modifiers['description'])) {
             $profile->description = $modifiers['description'];
         }
 

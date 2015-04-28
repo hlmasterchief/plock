@@ -89,10 +89,9 @@ class BookmarkController extends Controller {
         $user_id = $this->auth->user()->id;
         $bookmark = $this->bookmark->create($user_id, $request->all());
 
-        dd($request->file('image'));
         if ($request->hasFile('image'))
         {
-            $this->user->updateImage($bookmark->id, $request->file('image'));
+            $this->bookmark->updateImage($bookmark->id, $request->file('image'));
         }
 
         return redirect()->action('BookmarkController@getRead', array($bookmark->id))

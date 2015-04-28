@@ -24,6 +24,7 @@ class BookmarkCreateRequest extends Request {
         return [
             "name"      =>    "required",
             "type"      =>    "required",
+            'image'        => 'mimes:jpeg,bmp,png',
         ];
     }
 

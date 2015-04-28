@@ -22,9 +22,6 @@ class UserRequest extends Request {
     public function rules() {
         return [
             'display_name'  =>  'required|min:3',
-            'location'      =>  'required|min:3',
-            'homepage'      =>  'required|min:3',
-            'description'   =>  'required|min:3',
             'avatar'        => 'mimes:jpeg,bmp,png',
             'cover'         => 'mimes:jpeg,bmp,png',
         ];
