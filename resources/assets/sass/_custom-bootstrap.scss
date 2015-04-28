@@ -169,9 +169,9 @@ dl {
                 border-top: $setting-divider;
 
                 li a {
-                    color: #7a7a7a;
+                    color: #9a9a9a;
                     &:hover {
-                        color: #4a4a4a;
+                        color: #3a3a3a;
                     }
                 }
             }
@@ -340,7 +340,7 @@ textarea.form-control:focus {
 
 .input-icon label.active,
 .input-icon label:hover {
-    color: #7C4DFF;
+    color: #ffffff;
 }
 
 .float-label {
@@ -391,17 +391,24 @@ button {
     padding: 0 8px;
     overflow: hidden;
     position: relative;
+    box-shadow: $box-shadow-level1;
+
+    &:hover {
+        box-shadow: $box-shadow-level2;
+    }
 }
 
 button:active {
     outline: none;
     border: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    box-shadow: $box-shadow-level2;
 }
 
 button:focus {
     outline:0;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    box-shadow: $box-shadow-level2;
 }
 
 button.btn-block {
@@ -410,27 +417,27 @@ button.btn-block {
     padding: 0;
 }
 
-.btn {
-    outline: none;
-    border: none;
-    &:hover {
-        outline: none;
-        border: none;
-        box-shadow: $box-shadow-level2;
-    }
+// .btn {
+//     outline: none;
+//     border: none;
+//     &:hover {
+//         outline: none;
+//         border: none;
+//         box-shadow: $box-shadow-level2;
+//     }
 
-    &:active {
-        outline: none;
-        border: none;
-        box-shadow: $box-shadow-level2;
-    }
+//     &:active {
+//         outline: none;
+//         border: none;
+//         box-shadow: $box-shadow-level2;
+//     }
 
-    &:focus {
-        outline: none;
-        border: none;
-        box-shadow: $box-shadow-level2;
-    }
-}
+//     &:focus {
+//         outline: none;
+//         border: none;
+//         box-shadow: $box-shadow-level2;
+//     }
+// }
 
 .btn-primary {
     background: #2979FF;

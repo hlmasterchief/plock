@@ -8,22 +8,25 @@
     right: 0;
     width: 52px;
     height: 52px;
-    background-color: rgba(0,0,0, 0.15);
+    background-color: $navbar-background;
     border-radius: 50%;
     z-index: 100;
     cursor: pointer;
+    box-shadow: $box-shadow-level1;
 
     .create-icon {
         width: 100%;
         height: 100%;
         text-align: center;
         line-height: 52px;
-        font-size: 1.2em;
+        font-size: $font-size-base;
         border-radius: 50%;
         box-shadow: $box-shadow-level1;
+        color: $navbar-text;
 
         &:hover {
             box-shadow: $box-shadow-level2;
+            background-color: $icon-button-hover;
         }
     }
 }
@@ -38,7 +41,7 @@
     .dropdown {
         position: relative;
         width: 180px;
-        height: 140px;
+        height: 130px;
     }
 
 }
