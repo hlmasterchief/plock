@@ -12,7 +12,7 @@
         <div class="thumbnail transition">
             <div class="thumbnail-wrap">
                 <div class="thumbnail-img transition">
-                    <img class="transition" src="{{ $box->bookmarks->first()->favourite->image or '/img/unknown.png'}}">
+                    <img class="transition img-responsive center-block" src="{{ $box->bookmarks->first()->favourite->image or '/img/unknown.png'}}">
                 </div>
 
                 <div class="thumbnail-a"><a href="/box/{{ $box->id }}"></a></div>
