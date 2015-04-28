@@ -8,7 +8,7 @@
 
         <div class="row">
             <div class="col-sm-4 col-md-3">
-                <img src="https://s.vndb.org/cv/53/15453.jpg" class="img-responsive center-block"/>
+                <img src="{{ $bookmark->favourite->image }}"/>
             </div>
 
             <div class="col-sm-8 col-md-9">

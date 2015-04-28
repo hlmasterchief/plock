@@ -13,7 +13,7 @@
         <div class="thumbnail-wrap">
 
             <div class="thumbnail-img transition">
-                <img class="img-responsive transition" src="http://www.oamk.fi/english/info/schools/business/images/ulkokuva19_800x533.jpg">
+                <img class="img-responsive transition" src="{{ $bookmark->favourite->image }}">
             </div>
 
             <div class="thumbnail-a"><a href="/bookmark/{{ $bookmark->id }}">
