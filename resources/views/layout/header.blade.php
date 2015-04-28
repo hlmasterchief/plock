@@ -38,7 +38,7 @@
             </div>
             <div class="setting">
                 <div class="dropdown">
-                    <div data-toggle="dropdown" class="dropdown-toggle" id="createButton">
+                    <div data-toggle="dropdown" class="dropdown-toggle">
                         <button type="button" class="setting-button" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-hamburger"></span>
                         </button>
                     </div>

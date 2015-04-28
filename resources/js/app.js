@@ -27,6 +27,10 @@ $(document).ready(function(){
         $("#inputBox").modal('show');
     });
 
+    $("#createFavourite").click(function(){
+        $("#inputFavourite").modal('show');
+    });
+
     // edit function
     $("#editBox").click(function(){
         $("#inputEditBox").modal('show');
@@ -47,6 +51,13 @@ $(document).ready(function(){
         $("#box_new_id").attr("value", id);
         var title = $(this).html();
         $("#box_choose_selected").html(title);
+    });
+
+    $(".favoutire_choose_create").click(function(){
+        var id = $(this).attr("value");
+        $("#favourite_create_type").attr("value", id);
+        var title = $(this).html();
+        $("#favoutire_choose_selected").html(title);
     });
 
     // Add fadeToggle animation to dropdown

@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="dropdown">
-                        <div data-toggle="dropdown" class="dropdown-toggle" id="createButton">
+                        <div data-toggle="dropdown" class="dropdown-toggle">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="box_choose_selected">
                             Save to box <span class="caret"></span>
                             </button>
