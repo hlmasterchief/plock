@@ -63,7 +63,8 @@ class UserController extends Controller {
 
         $is_follow = $this->user->toggleFollow($follower_id, $followee_id);
 
-        return response()->json(['is_follow' => $is_follow]);
+        // return response()->json(['is_follow' => $is_follow]);
+        return redirect()->back();
     }
 
     /**

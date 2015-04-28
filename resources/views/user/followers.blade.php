@@ -25,9 +25,19 @@
                         </div>
                     </div>
                     <div class="follow-button">
-                        <a href="/follow/toggle">
                         {{-- follow/unfollow --}}
-                        <button class="btn btn-primary">Follow</button></a>
+                        @if ($follower->id != Auth::id())
+                            {!! Form::open(array('url'=>'/follow/toggle', 'autocomplete' => 'off')) !!}
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="follower_id" value="{{ Auth::id() }}">
+                            <input type="hidden" name="followee_id" value="{{ $follower->id }}">
+                            @if (Auth::user()->isFollow($follower->id))
+                            <button type="submit" class="btn btn-primary">Unfollow</button>
+                            @else
+                            <button type="submit" class="btn btn-primary">Follow</button>
+                            @endif
+                            {!! Form::close() !!}
+                        @endif
                     </div>
                 </div>
 

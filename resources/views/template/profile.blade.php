@@ -20,7 +20,18 @@
             <div class="displayname">
                 <h2>{{ $user->displayName() }}</h2>
                 {{-- if follow/unfollow --}}
-                <button class="btn follow-button transition">Follow</button>
+                @if ($user->id != Auth::id())
+                    {!! Form::open(array('url'=>'/follow/toggle', 'autocomplete' => 'off')) !!}
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="follower_id" value="{{ Auth::id() }}">
+                    <input type="hidden" name="followee_id" value="{{ $user->id }}">
+                    @if (Auth::user()->isFollow($user->id))
+                    <button type="submit" class="btn follow-button transition">Unfollow</button>
+                    @else
+                    <button type="submit" class="btn follow-button transition">Follow</button>
+                    @endif
+                    {!! Form::close() !!}
+                @endif
             </div>
             <div class="profile-location">
                 <span class="glyphicon glyphicon-map-marker"></span>
