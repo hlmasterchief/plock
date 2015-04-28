@@ -40,9 +40,9 @@
             </div>
             <div class="profile-website">
                 {{-- example hoempage address: abc.com --}}
-                <a href="http://www.{{ $user->profile->homepage }}">
+                <a href="http://{{ $user->profile->homepage }}">
                     <span class="glyphicon glyphicon-home"></span>
-                    <span> www.{{ $user->profile->homepage }}</span>
+                    <span>{{ $user->profile->homepage }}</span>
                 </a>
                 {{-- end example --}}
             </div>
