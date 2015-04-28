@@ -29,13 +29,13 @@ class BoxController extends Controller {
      */
     public function getRead($id = null) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('BoxController@getRead')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_valid'));
         }
 
         $box = $this->box->find($id);
         if (is_null($box)) {
-            return redirect()->action('BoxController@getRead')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_found'));
         }
 
@@ -85,13 +85,13 @@ class BoxController extends Controller {
      */
     public function getUpdate($id = null) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('BoxController@getUpdate')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_valid'));
         }
 
         $box = $this->box->find($id);
         if (is_null($box)) {
-            return redirect()->action('BoxController@getUpdate')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_found'));
         }
 
@@ -128,13 +128,13 @@ class BoxController extends Controller {
      */
     public function getdelete($id = null) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('BoxController@getDelete')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_valid'));
         }
 
         $box = $this->box->find($id);
         if (is_null($box)) {
-            return redirect()->action('BoxController@getDelete')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_found'));
         }
 
@@ -148,19 +148,19 @@ class BoxController extends Controller {
      */
     public function postDelete($id = null) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('BoxController@getDelete')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_valid'));
         }
 
         $box = $this->box->find($id);
         if (is_null($box)) {
-            return redirect()->action('BoxController@getDelete')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_found'));
         }
         
         $this->box->delete($id);
 
-        return redirect()->action('BoxController@getDelete')
+        return redirect()->action('BookmarkController@getNewsFeed')
                             ->with('flash_message', trans('box.delete_success'));
     }
 }

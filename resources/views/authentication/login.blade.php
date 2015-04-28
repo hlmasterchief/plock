@@ -26,7 +26,7 @@
     {!! Form::submit('Login', array('class'=>'btn btn-primary btn-block')) !!}
     <div class="option">
         <a href="#">Forgot your password ?</a><br/>
-        <a href="#">Want to register new account ?</a>
+        <a href="/signup">Want to register new account ?</a>
     </div>
     {!! Form::close() !!}
 </div>

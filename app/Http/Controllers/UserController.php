@@ -78,7 +78,8 @@ class UserController extends Controller {
 
         $user = $this->user->find($id);
         if (is_null($user)) {
-            return redirect('/')->with('flash_message', trans('user.not_found'));
+            return redirect()->action('BookmarkController@getNewsFeed')
+                                ->with('flash_message', trans('user.not_found'));
         }
 
         $followers = $this->user->getFollowers($id);
@@ -100,7 +101,8 @@ class UserController extends Controller {
 
         $user = $this->user->find($id);
         if (is_null($user)) {
-            return redirect('/')->with('flash_message', trans('user.not_found'));
+            return redirect()->action('BookmarkController@getNewsFeed')
+                                ->with('flash_message', trans('user.not_found'));
         }
 
         $followings = $this->user->getFollowings($id);
@@ -118,7 +120,8 @@ class UserController extends Controller {
     public function getFollowersByName($username) {
         $user = $this->user->findByColumn('username', $username);
         if (is_null($user)) {
-            return redirect('/')->with('flash_message', trans('user.not_found'));
+            return redirect()->action('BookmarkController@getNewsFeed')
+                                ->with('flash_message', trans('user.not_found'));
         }
 
         $followers = $this->user->getFollowers($user['id']);
@@ -136,7 +139,8 @@ class UserController extends Controller {
     public function getFollowingsByName($username) {
         $user = $this->user->findByColumn('username', $username);
         if (is_null($user)) {
-            return redirect('/')->with('flash_message', trans('user.not_found'));
+            return redirect()->action('BookmarkController@getNewsFeed')
+                                ->with('flash_message', trans('user.not_found'));
         }
 
         $followings = $this->user->getFollowings($user['id']);
@@ -158,7 +162,8 @@ class UserController extends Controller {
 
         $user = $this->user->find($id);
         if (is_null($user)) {
-            return redirect('/')->with('flash_message', trans('user.not_found'));
+            return redirect()->action('BookmarkController@getNewsFeed')
+                                ->with('flash_message', trans('user.not_found'));
         }
 
         $boxes = $this->user->getBoxes($id)->get();
@@ -176,7 +181,8 @@ class UserController extends Controller {
     public function getBoxesByName($username) {
         $user = $this->user->findByColumn('username', $username);
         if (is_null($user)) {
-            return redirect('/')->with('flash_message', trans('user.not_found'));
+            return redirect()->action('BookmarkController@getNewsFeed')
+                                ->with('flash_message', trans('user.not_found'));
         }
 
         $boxes = $this->user->getBoxes($user['id'])->get();
@@ -198,7 +204,8 @@ class UserController extends Controller {
 
         $user = $this->user->find($id);
         if (is_null($user)) {
-            return redirect('/')->with('flash_message', trans('user.not_found'));
+            return redirect()->action('BookmarkController@getNewsFeed')
+                                ->with('flash_message', trans('user.not_found'));
         }
 
         $bookmarks = $this->user->getBookmarks($id)->get();
@@ -216,7 +223,8 @@ class UserController extends Controller {
     public function getBookmarksByName($username) {
         $user = $this->user->findByColumn('username', $username);
         if (is_null($user)) {
-            return redirect('/')->with('flash_message', trans('user.not_found'));
+            return redirect()->action('BookmarkController@getNewsFeed')
+                                ->with('flash_message', trans('user.not_found'));
         }
 
         $bookmarks = $this->user->getBookmarks($user['id'])->get();

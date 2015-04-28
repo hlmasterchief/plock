@@ -32,7 +32,7 @@
 
     {!! Form::submit('Sign up', array('class'=>'btn btn-primary btn-block'))!!}
     <div class="option">
-        <a href="#">Want to login ?</a>
+        <a href="/">Want to login ?</a>
     </div>
     {!! Form::close() !!}
 

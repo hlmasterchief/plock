@@ -11,14 +11,7 @@
 |
 */
 
-// Route::pattern('id', '[0-9]+');
-
 Route::get('/', 'WelcomeController@index');
-
-//set route for basic view
-Route::get('/home', function () {
-    return view('template.home');
-});
 
 /**
  * Authentication
@@ -34,12 +27,12 @@ Route::post('/signup', 'AuthenticationController@postSignup');
 Route::get('/update', 'AuthenticationController@getUpdate');
 Route::post('/update', 'AuthenticationController@postUpdate');
 
-Route::get('/bookmark/create', 'BookmarkController@getCreate');
+// Route::get('/bookmark/create', 'BookmarkController@getCreate');
 Route::post('/bookmark/create', 'BookmarkController@postCreate');
 
 Route::post('/bookmark/save', 'BookmarkController@postSave');
 
-Route::get('/bookmark/update/{id}', 'BookmarkController@getUpdate');
+// Route::get('/bookmark/update/{id}', 'BookmarkController@getUpdate');
 Route::post('/bookmark/update/{id}', 'BookmarkController@postUpdate');
 
 Route::get('/bookmark/delete/{id}', 'BookmarkController@getDelete');
@@ -69,7 +62,7 @@ Route::get('/{username}/followings', 'UserController@getFollowingsByName');
 Route::get('/followings/{id}', 'UserController@getFollowings');
 Route::get('/followings', 'UserController@getFollowings');
 
-Route::get('/comment/create', 'CommentController@getCreate');
+// Route::get('/comment/create', 'CommentController@getCreate');
 Route::post('/comment/create', 'CommentController@postCreate');
 
 Route::get('/comment/update/{id}', 'CommentController@getUpdate');
@@ -85,10 +78,10 @@ Route::get('/{username}/boxes', 'UserController@getBoxesByName');
 Route::get('/boxes/{id}', 'UserController@getBoxes');
 Route::get('/boxes', 'UserController@getBoxes');
 
-Route::get('/box/create', 'BoxController@getCreate');
+// Route::get('/box/create', 'BoxController@getCreate');
 Route::post('/box/create', 'BoxController@postCreate');
 
-Route::get('/box/update/{id}', 'BoxController@getUpdate');
+// Route::get('/box/update/{id}', 'BoxController@getUpdate');
 Route::post('/box/update/{id}', 'BoxController@postUpdate');
 
 Route::get('/box/delete/{id}', 'BoxController@getDelete');

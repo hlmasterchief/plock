@@ -31,13 +31,13 @@ class BookmarkController extends Controller {
      */
     public function getRead($id = null) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('BookmarkController@getRead')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('bookmark.not_valid'));
         }
 
         $bookmark = $this->bookmark->find($id);
         if (is_null($bookmark)) {
-            return redirect()->action('BookmarkController@getRead')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('bookmark.not_found'));
         }
 

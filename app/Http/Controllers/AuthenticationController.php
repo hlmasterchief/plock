@@ -28,7 +28,7 @@ class AuthenticationController extends Controller {
      * @return Response
      */
     public function getLogin() {
-        return $this->view->make('authentication.login');
+        return $this->view->make('welcome');
     }
 
     /**
@@ -40,8 +40,7 @@ class AuthenticationController extends Controller {
         $credentials = $request->only('username', 'password');
 
         if ($this->auth->attempt($credentials)) {
-            //return redirect()->back();
-            return redirect()->action('AuthenticationController@getUpdate')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('authentication.login_success'));
         } else {
             return redirect()->action('AuthenticationController@getLogin')
@@ -67,7 +66,7 @@ class AuthenticationController extends Controller {
      * @return Response
      */
     public function getSignup() {
-        return $this->view->make('authentication.signup');
+        return $this->view->make('signup');
     }
 
     /**

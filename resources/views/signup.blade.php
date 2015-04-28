@@ -20,8 +20,8 @@
 
             <div class="panel panel-default welcome-form">
                 <div class="panel-body">
-                    <h4>Please Login</h4>
-                    @include('authentication.login')
+                    <h4>Join Plock</h4>
+                    @include('authentication.signup')
                 </div>
             </div>
         </div>
