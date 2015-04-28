@@ -34,7 +34,7 @@
                         {{-- <span class="glyphicon glyphicon-flag"></span> --}}
 
                         <!-- if delete -->
-                        <span class="glyphicon glyphicon-remove"></span>
+
                     </a></li>
                 </ul>
             </div>
