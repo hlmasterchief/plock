@@ -16,7 +16,7 @@
                     <div class="media">
                         <div class="media-left">
                             <a href="/{{ $follower->username }}">
-                            <div class="crop-64"><img class="media-object" src="http://yami.moe/img/kudchan.jpg"></div>
+                            <div class="crop-64"><img class="media-object" src="{{ $follower->profile->avatar }}"></div>
                             </a>
                         </div>
                         <div class="media-body">

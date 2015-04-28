@@ -53,48 +53,6 @@ class UserController extends Controller {
     }
 
     /**
-     * Upload avatar form
-     *
-     * @return Response
-     */
-    public function getAvatar() {
-        return $this->view->make('user.updateAvatar');
-    }
-
-    /**
-     * Save avatar
-     *
-     * @return Response
-     */
-    public function postAvatar(\App\Http\Requests\AvatarRequest $request) {
-        $this->user->updateAvatar(Auth::id(), $request->file('image'));
-
-        return redirect()->action('UserController@getAvatar')
-                    ->with('flash_message', trans('user.updateAvatar_success'));
-    }
-
-    /**
-     * Upload cover form
-     *
-     * @return Response
-     */
-    public function getCover() {
-        return $this->view->make('user.updateCover');
-    }
-
-    /**
-     * Save cover
-     *
-     * @return Response
-     */
-    public function postCover(\App\Http\Requests\CoverRequest $request) {
-        $this->user->updateCover(Auth::id(), $request->file('image'));
-
-        return redirect()->action('UserController@getCover')
-                    ->with('flash_message', trans('user.updateCover_success'));
-    }
-
-    /**
      * Toggle follower
      *
      * @return Response

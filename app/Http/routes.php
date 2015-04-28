@@ -81,12 +81,6 @@ Route::post('/comment/delete/{id}', 'CommentController@postDelete');
 Route::get('/profile/update', 'UserController@getUpdate');
 Route::post('/profile/update', 'UserController@postUpdate');
 
-Route::get('/upload/avatar', 'UserController@getAvatar');
-Route::post('/upload/avatar', 'UserController@postAvatar');
-
-Route::get('/upload/cover', 'UserController@getCover');
-Route::post('/upload/cover', 'UserController@postCover');
-
 Route::get('/{username}/boxes', 'UserController@getBoxesByName');
 Route::get('/boxes/{id}', 'UserController@getBoxes');
 Route::get('/boxes', 'UserController@getBoxes');

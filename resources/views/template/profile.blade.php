@@ -8,12 +8,12 @@
 {{-- home-content --}}
 <div class="profile">
 
-<div class="cover-photo">
+<div class="cover-photo" style="background-image: url('{{ $user->profile->cover }}');">
     <div class="row cover-wrap">
     <div class="container">
 
         <div class="col-md-2 col-xs-2 profile-img">
-            <img src="" class="img-circle img-responsive">
+            <img src="{{ $user->profile->avatar }}" class="img-circle img-responsive">
         </div>
 
         <div class="col-md-10 col-xs-8 profile-info">

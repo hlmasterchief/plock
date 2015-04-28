@@ -57,7 +57,7 @@
             <div class="media-left">
                 <div class="crop-48">
                     <a href="#">
-                    <img class="media-object comment-avatar" src="http://yami.moe/img/kudchan.jpg" alt="...">
+                    <img class="media-object comment-avatar" src="{{ $comment->user->profile->avatar }}" alt="...">
                     </a>
                 </div>
             </div>
@@ -73,7 +73,7 @@
             <div class="media-left">
                 <div class="crop-48">
                     <a href="#">
-                    <img class="media-object" src="http://yami.moe/img/kudchan.jpg" alt="...">
+                    <img class="media-object" src="{{ Auth::user()->profile->avatar }}" alt="...">
                     </a>
                 </div>
             </div>

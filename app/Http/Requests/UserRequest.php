@@ -25,6 +25,8 @@ class UserRequest extends Request {
             'location'      =>  'required|min:3',
             'homepage'      =>  'required|min:3',
             'description'   =>  'required|min:3',
+            'avatar'        => 'mimes:jpeg,bmp,png',
+            'cover'         => 'mimes:jpeg,bmp,png',
         ];
     }
 
