@@ -169,9 +169,9 @@ dl {
                 border-top: $setting-divider;
 
                 li a {
-                    color: #7a7a7a;
+                    color: #9a9a9a;
                     &:hover {
-                        color: #4a4a4a;
+                        color: #3a3a3a;
                     }
                 }
             }
@@ -274,7 +274,7 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="tel"]:focus,
 input[type="password"]:focus {
-    border-bottom: #2962FF solid 2px;
+    border-bottom: #4a4a4a solid 2px;
     transition: all 0.3s ease-out;
 }
 
@@ -334,13 +334,13 @@ textarea.form-control:focus {
 }
 
 .input-icon input:focus {
-    color: #7C4DFF;
+    color: #ffffff;
     transition: all 0.2s ease-out;
 }
 
 .input-icon label.active,
 .input-icon label:hover {
-    color: #7C4DFF;
+    color: #ffffff;
 }
 
 .float-label {
@@ -368,7 +368,7 @@ textarea.form-control:focus {
     top: 16px;
     transition: all 0.3s ease-out;
     font-size: 14px;
-    color: #2962FF;
+    color: #4a4a4a;
     text-transform: uppercase;
 }
 
@@ -376,7 +376,7 @@ textarea.form-control:focus {
     top: 16px;
     transition: all 0.3s ease-out;
     font-size: 14px;
-    color: #2962FF;
+    color: #4a4a4a;
     text-transform: uppercase;
 }
 
@@ -410,27 +410,27 @@ button.btn-block {
     padding: 0;
 }
 
-.btn {
-    outline: none;
-    border: none;
-    &:hover {
-        outline: none;
-        border: none;
-        box-shadow: $box-shadow-level2;
-    }
+// .btn {
+//     outline: none;
+//     border: none;
+//     &:hover {
+//         outline: none;
+//         border: none;
+//         box-shadow: $box-shadow-level2;
+//     }
 
-    &:active {
-        outline: none;
-        border: none;
-        box-shadow: $box-shadow-level2;
-    }
+//     &:active {
+//         outline: none;
+//         border: none;
+//         box-shadow: $box-shadow-level2;
+//     }
 
-    &:focus {
-        outline: none;
-        border: none;
-        box-shadow: $box-shadow-level2;
-    }
-}
+//     &:focus {
+//         outline: none;
+//         border: none;
+//         box-shadow: $box-shadow-level2;
+//     }
+// }
 
 .btn-primary {
     background: #2979FF;
