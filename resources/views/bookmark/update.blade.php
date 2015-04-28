@@ -11,7 +11,6 @@
             {{-- FORM create--}}
             {!! Form::open(array('url'=>"/bookmark/update/$bookmark->id", 'class' => 'editPost-form', 'autocomplete' => 'off')) !!}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
                 <ul>
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -20,6 +19,7 @@
 
                 <div class="modal-body">
                     <div class="form-group">
+                        <label for="description">Edit review</label>
                         {!! Form::textarea('description', $bookmark->description, array('class'=>'form-control', 'placeholder'=>'Your review')) !!}
                     </div>
                 </div>
