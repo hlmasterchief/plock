@@ -50,6 +50,8 @@ class UserRepository implements UserRepositoryInterface {
         //create profile
         $profile_credentials = array_only($modifiers, ['display_name']);
         $profile = $this->profile->create($profile_credentials);
+        $profile->display_name = $user->username;
+        $profile->save();
         $user->profile()->save($profile);
 
         return $user;
@@ -82,21 +84,21 @@ class UserRepository implements UserRepositoryInterface {
      * @return App\Models\Profile
      */
     public function updateProfile($id, array $modifiers) {
-        $profile = $this->find($id);
+        $profile = $this->find($id)->profile;
 
-        if ($modifiers['display_name']) {
+        if (isset($modifiers['display_name'])) {
             $profile->display_name = $modifiers['display_name'];
         }
 
-        if ($modifiers['location']) {
+        if (isset($modifiers['location'])) {
             $profile->location = $modifiers['location'];
         }
 
-        if ($modifiers['homepage']) {
+        if (isset($modifiers['homepage'])) {
             $profile->homepage = $modifiers['homepage'];
         }
 
-        if ($modifiers['description']) {
+        if (isset($modifiers['description'])) {
             $profile->description = $modifiers['description'];
         }
 
@@ -107,20 +109,20 @@ class UserRepository implements UserRepositoryInterface {
 
     /**
      * Update Profile avatar in Database
-     * @param  array  $modifiers
+     * @param  object  $modifiers
      * @return App\Models\Profile
      */
-    public function updateAvatar($id, array $modifiers) {
-        $profile = $this->find($id);
+    public function updateAvatar($id, $modifiers) {
+        $profile = $this->find($id)->profile;
 
-        $destination = public_path() . "/upload-avatar";
+        $destination = public_path() . "/img/avatar";
         $filename    = md5(time());
         $random      = rand(11111,99999);
         $extension   = $modifiers->getClientOriginalExtension();
 
         $modifiers->move($destination, $filename.$random.".".$extension);
 
-        $profile->avatar = $modifiers->getRealPath();
+        $profile->avatar = "/img/avatar/".$filename.$random.".".$extension;
 
         $profile->save();
 
@@ -129,20 +131,20 @@ class UserRepository implements UserRepositoryInterface {
 
     /**
      * Update Profile cover in Database
-     * @param  array  $modifiers
+     * @param  object  $modifiers
      * @return App\Models\Profile
      */
-    public function updateCover($id, array $modifiers) {
-        $profile = $this->find($id);
+    public function updateCover($id, $modifiers) {
+        $profile = $this->find($id)->profile;
 
-        $destination = public_path() . "/upload-cover";
+        $destination = public_path() . "/img/cover";
         $filename    = md5(time());
         $random      = rand(11111,99999);
         $extension   = $modifiers->getClientOriginalExtension();
 
         $modifiers->move($destination, $filename.$random.".".$extension);
 
-        $profile->cover = $modifiers->getRealPath();
+        $profile->cover = "/img/cover/".$filename.$random.".".$extension;
 
         $profile->save();
 
@@ -183,7 +185,7 @@ class UserRepository implements UserRepositoryInterface {
      * @return Collection[\App\Models\User]
      */
     public function getFollowers($id) {
-        return $this->find($id)->followers();
+        return $this->find($id)->followers;
     }
 
     /**
@@ -192,7 +194,7 @@ class UserRepository implements UserRepositoryInterface {
      * @return Collection[\App\Models\User]
      */
     public function getFollowings($id) {
-        return $this->find($id)->following();
+        return $this->find($id)->following;
     }
 
     /**
@@ -202,5 +204,14 @@ class UserRepository implements UserRepositoryInterface {
      */
     public function getBoxes($id) {
         return $this->find($id)->boxes();
+    }
+
+    /**
+     * Get user's bookmarks
+     * @param  int $id
+     * @return Collection[\App\Models\User]
+     */
+    public function getBookmarks($id) {
+        return $this->find($id)->bookmarks();
     }
 }

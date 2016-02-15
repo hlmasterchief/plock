@@ -19,7 +19,7 @@ class FavouriteController extends Controller {
         $this->auth = $auth;
         $this->view = $view;
 
-        $this->middleware('guest', ['except' => 'getLogout']);
+        // $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     /**
@@ -134,9 +134,16 @@ class FavouriteController extends Controller {
      * @param  \App\Http\Requests\FavouriteRequest $request
      * @return Response
      */
-    public function postSearch(\App\Http\Requests\FavouriteRequest $request) {
+    public function getSearch(\App\Http\Requests\FavouriteRequest $request) {
         $favourites = $this->favourite->search($request->all());
 
+        // return response()->json($favourites);
         return $this->view->make('favourite.search_result')->with('favourites', $favourites);
+    }
+
+    public function getSearchJson(\App\Http\Requests\FavouriteRequest $request) {
+        $favourites = $this->favourite->search($request->all());
+
+        return response()->json($favourites);
     }
 }

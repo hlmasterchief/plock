@@ -3,39 +3,138 @@
  */
 
 .create-button-fixed {
-    // position: fixed;
-    // bottom: 28px;
-    // right: 28px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
     width: 52px;
     height: 52px;
-    background-color: rgba(0,0,0, 0.15);
+    background-color: $navbar-background;
     border-radius: 50%;
     z-index: 100;
     cursor: pointer;
+    box-shadow: $box-shadow-level1;
 
     .create-icon {
         width: 100%;
         height: 100%;
         text-align: center;
         line-height: 52px;
-        font-size: 1.2em;
+        font-size: $font-size-base;
         border-radius: 50%;
         box-shadow: $box-shadow-level1;
+        color: $navbar-text;
 
         &:hover {
             box-shadow: $box-shadow-level2;
+            background-color: $icon-button-hover;
         }
     }
 }
 
 .menu-create {
     position: fixed;
-    bottom: 62px;
-    right: 48px;
+    bottom: 42px;
+    right: 0;
+
     z-index: 101;
+
+    .dropdown {
+        position: relative;
+        width: 150px;
+        height: 130px;
+    }
+
 }
 
 .existedBookmark {
     max-height: 420px;
     overflow-y: auto;
+}
+
+.createPost-form .dropdown,
+.box-addPost .dropdown {
+    margin-top: 42px;
+}
+
+/**
+ * select ex-post
+ */
+
+.ex-bookmark {
+    position: relative;
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(1,1,1, 0.5);
+        z-index: 1001;
+        display: none;
+
+        &:hover {
+            -webkit-filter: blur(0.5px);
+            -moz-filter: blur(0.5px);
+            -o-filter: blur(0.5px);
+            -ms-filter: blur(0.5px);
+            filter: blur(0.5px);
+        }
+    }
+
+    .overlay-main {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -28px;
+        margin-left: -28px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background-color: rgba(1,1,1, 0.8);
+        color: #e5e5e5;
+        text-align: center;
+        cursor: pointer;
+        box-shadow: $box-shadow-level2;
+
+        span {
+            line-height: 56px;
+            font-size: 24px;
+        }
+
+        &:hover {
+            box-shadow: $box-shadow-level3;
+        }
+    }
+}
+
+.ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .25);
+
+    .overlay:hover & {
+        animation: ripple 0.7s ease-in;
+        animation-iteration-count: 2;
+    }
+}
+
+@keyframes ripple {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        width: 900%;
+        height: 900%;
+        padding-bottom: 300%;
+        opacity: 0;
+    }
 }

@@ -31,6 +31,14 @@ class Bookmark extends Model {
     }
 
     /**
+     * Get relationship - Comment
+     * @return App\Comment
+     */
+    public function comments() {
+        return $this->hasMany('App\Models\Comment');
+    }
+
+    /**
      * Get relationship - User
      * @return App\User
      */

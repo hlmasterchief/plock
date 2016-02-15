@@ -10,6 +10,7 @@ interface BoxRepositoryInterface {
 
     /**
      * Store Box in Database
+     * @param  int    $user_id
      * @param  array  $modifiers
      * @return App\Models\Box
      */
@@ -17,6 +18,7 @@ interface BoxRepositoryInterface {
 
     /**
      * Update Box in Database
+     * @param  int    $id
      * @param  array  $modifiers
      * @return App\Models\Box
      */
@@ -24,7 +26,7 @@ interface BoxRepositoryInterface {
 
     /**
      * Delete Box in Database
-     * @param  array  $modifiers
+     * @param  int $id
      * @return App\Models\Box
      */
     public function delete($id);

@@ -29,7 +29,8 @@ elixir(function (mix) {
             paths.underscore + "underscore.js",
             paths.backbone + "backbone.js",
             // app
-            paths.app + "app.js"
+            paths.app + "app.js",
+            paths.app + "create_bookmark.js"
         ], 'public/js/app.js', './')
         .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap')
         .copy(paths.img + '**', 'public/img');

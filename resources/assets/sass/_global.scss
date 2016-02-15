@@ -1,0 +1,176 @@
+/*
+* global
+*/
+
+body {
+    background-color: #ecf0f1;
+    // margin-bottom: 44px;
+    font-weight: 300;
+}
+
+a {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+// padding top
+.update-account,
+.update-profile,
+.box,
+.homepage,
+.post {
+    padding-top: $top-padding;
+}
+
+
+
+
+/**
+ * header-navigation
+ */
+
+.container-fluid {
+    padding-left: 0;
+}
+
+.main-navbar {
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    background-color: $navbar-background;
+    color: $navbar-text;
+    z-index: 100;
+    box-shadow: $box-shadow-level3;
+
+    .navbar-wrap {
+        width: 100%;
+        height: 70px;
+        display: table;
+
+        .logo {
+            display: table-cell;
+            vertical-align: middle;
+            padding-left: 20px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .heading {
+            position: absolute;
+            margin: auto;
+            height: 48px;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            .heading-title {
+                display:inline-block;
+            }
+
+            .title {
+                margin: 0;
+                font-family: "Montserrat", sans-serif;
+                text-transform: uppercase;
+            }
+
+            .sub-title {
+                margin: 0;
+                color: $navbar-text;
+                font-family: "Cabin", sans-serif;
+                a {
+                    font-weight: 500;
+                    padding-bottom: 2px;
+                    border-bottom: dotted 1px #fff;
+                }
+            }
+        }
+
+        .search {
+            width: auto;
+            float: right;
+            padding-top: 11px;
+
+            input[type="text"] {
+                width: 0;
+                transition: width 0.3s ease;
+            }
+
+            .input-icon input:focus {
+                color: $navbar-text;
+                transition: all 0.2s ease-out;
+
+            }
+
+            input#search:focus {
+                width: 120px;
+                color: $navbar-text;
+                border-bottom: solid 2px $icon-button-hover;
+            }
+
+            label:hover {
+                background-color: $icon-button-hover;
+            }
+        }
+
+        .setting {
+            display: table-cell;
+            vertical-align: middle;
+
+            button.setting-button {
+                min-width: 48px;
+                height: 48px;
+                padding: 0;
+                background: none;
+                outline: none;
+                border: none;
+
+                &:hover {
+                    background-color: $icon-button-hover;
+                }
+            }
+
+            span {
+                width: 48px;
+                height: 48px;
+                font-size: 24px;
+                line-height: 24px;
+                text-align: center;
+                padding-top: 11px;
+            }
+        }
+    }
+
+    a {
+        color: $navbar-text;
+    }
+
+    .buttonLockEdit {
+        display: inline-block;
+
+        a {
+            display: block;
+            &:hover {
+                color: $navbar-text;
+            }
+        }
+
+        span {
+            width: 48px;
+            height: 48px;
+            font-size: 24px;
+            line-height: 24px;
+            text-align: center;
+            padding-top: 11px;
+        }
+    }
+}

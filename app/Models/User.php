@@ -63,3 +63,24 @@ class User extends Model implements AuthenticatableContract {
         return $this->hasMany('App\Models\Box');
     }
 
+    /**
+     * Get relationship - Bookmark
+     * @return App\Bookmark
+     */
+    public function bookmarks() {
+        return $this->hasMany('App\Models\Bookmark');
+    }
+
+    /**
+     * Get display name - Profile
+     * @return App\Profile
+     */
+    public function displayName() {
+        if ($this->profile->display_name == '') {
+            return $this->username;
+        }
+        else {
+            return $this->profile->display_name;
+        }
+    }
+}

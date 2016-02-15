@@ -1,40 +1,87 @@
 .welcome {
-    header {
-        position: fixed;
-        right: 0;
-    }
+    height: 100vh;
+    width: 100%;
+    display: block;
 
-    .menu-right {
-        position: fixed;
-        top: 40%;
+    .wrapper {
+        display: block;
+        height: 100%;
+        position: relative;
 
-        > ul {
-            margin-bottom: 0;
-            > li {
-                margin-bottom: 14px;
-            }
-        }
-    }
+        .background {
+            display: block;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            background-image: url("/img/homepage.jpg");
+            background-size:cover;
 
-    .fullpage {
-        section {
-            height: 800px;
-            .content {
-                max-width: 520px;
-                margin: 0 auto;
-            }
+            z-index: 0;
         }
 
-        form {
-            max-width: 340px;
-            margin: 0 auto;
-            text-align: center;
+        .overlay {
+            display: block;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            background: rgba(44, 62, 80, 0.1);
+
+            z-index: 1;
         }
 
-        .section-1 {
-            #page-logo, .scroll-down {
+        .main {
+            display: block;
+            width: 80%;
+            // max-width: 800px;
+            max-width: 350px;
+            height: 540px;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            position: absolute;
+
+            z-index: 2;
+
+            .title {
                 text-align: center;
+                color: #F9F9F9;
+                text-shadow: 0px 0px 8px rgba(12,12,12,0.25);
+
+                h1 {
+                    font-size: 48px;
+                    font-weight: 400;
+                }
+
+                h5 {
+                    font-size: 18px;
+                    font-weight: 300;
+                }
             }
-        }
-    }
-}
+
+            .welcome-form {
+                margin-top: 22px;
+
+                .panel-body h4 {
+                    margin-bottom: 0;
+                    text-align: center;
+                }
+
+                input[type="submit"] {
+                    // position: relative;
+                    // top: 24px;
+                    margin-top: 32px;
+                }
+
+                .option {
+                    margin-top: 20px;
+                }
+            }
+        } // main
+    } // wrapper
+} // full-page

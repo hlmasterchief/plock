@@ -21,7 +21,7 @@ class CommentController extends Controller {
         $this->auth = $auth;
         $this->view = $view;
 
-        $this->middleware('guest', ['except' => 'getLogout']);
+        // $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     /**
@@ -42,19 +42,20 @@ class CommentController extends Controller {
         $bookmark_id = $request->only('bookmark_id');
 
         if (!isset($bookmark_id) or is_null($bookmark_id)) {
-            return redirect()->action('BookmarkController@getUpdate')
-                                ->with('flash_message', trans('bookmark.not_valid'));
+            return redirect()->action('BookmarkController@getNewsFeed')
+                             ->with('flash_message', trans('bookmark.not_valid'));
         }
         $bookmark = $this->bookmark->find($bookmark_id);
         if (is_null($bookmark)) {
-            return redirect()->action('BookmarkController@getUpdate')
-                                ->with('flash_message', trans('bookmark.not_found'));
+            return redirect()->action('BookmarkController@getNewsFeed')
+                              >with('flash_message', trans('bookmark.not_found'));
         }
 
-        $this->comment->create(Auth::id(), $request->all());
+        $id = $this->auth->user()->id;
+        $comment = $this->comment->create($id, $request->all());
 
-        return redirect()->action('CommentController@getCreate')
-                            ->with('flash_message', trans('comment.add_success'));
+        return redirect()->action('BookmarkController@getRead', array($comment->bookmark_id))
+                          ->with('flash_message', trans('comment.add_success'));
     }
 
     /**
@@ -64,17 +65,17 @@ class CommentController extends Controller {
      */
     public function getUpdate($id = null) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('CommentController@getUpdate')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('comment.not_valid'));
         }
 
         $comment = $this->comment->find($id);
         if (is_null($comment)) {
-            return redirect()->action('CommentController@getUpdate')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('comment.not_found'));
         }
 
-        return $this->view->make('comment.update')->with('comment' => $comment);
+        return $this->view->make('comment.update')->with('comment', $comment);
     }
 
     /**
@@ -84,19 +85,19 @@ class CommentController extends Controller {
      */
     public function postUpdate($id = null, \App\Http\Requests\CommentRequest $request) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('CommentController@getUpdate')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('comment.not_valid'));
         }
 
         $comment = $this->comment->find($id);
         if (is_null($comment)) {
-            return redirect()->action('CommentController@getUpdate')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('comment.not_found'));
         }
         
         $this->comment->update($id, $request->only('content'));
 
-        return redirect()->action('CommentController@getUpdate')
+        return redirect()->action('BookmarkController@getRead', array($comment->bookmark_id))
                             ->with('flash_message', trans('comment.update_success'));
     }
 
@@ -117,7 +118,7 @@ class CommentController extends Controller {
                                 ->with('flash_message', trans('comment.not_found'));
         }
 
-        return $this->view->make('comment.delete')->with('comment' => $comment);
+        return $this->view->make('comment.delete')->with('comment', $comment);
     }
 
     /**
@@ -127,19 +128,19 @@ class CommentController extends Controller {
      */
     public function postDelete($id = null) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('CommentController@getDelete')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('comment.not_valid'));
         }
 
         $comment = $this->comment->find($id);
         if (is_null($comment)) {
-            return redirect()->action('CommentController@getDelete')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('comment.not_found'));
         }
         
         $this->comment->delete($id);
 
-        return redirect()->action('CommentController@getDelete')
+        return redirect()->action('BookmarkController@getNewsFeed')
                             ->with('flash_message', trans('comment.delete_success'));
     }
 }

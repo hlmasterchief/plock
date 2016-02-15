@@ -2,14 +2,15 @@
 
 use App\Http\Requests\Request;
 
-class AvatarRequest extends Request {
+class CommentRequest extends Request {
 
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()
+    {
         return true;
     }
 
@@ -18,9 +19,10 @@ class AvatarRequest extends Request {
      *
      * @return array
      */
-    public function rules() {
+    public function rules()
+    {
         return [
-            'image' => 'required|mimes:jpeg,bmp,png'
+            "content"  =>  "required|min:5",
         ];
     }
 

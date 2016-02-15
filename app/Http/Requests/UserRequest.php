@@ -1,8 +1,9 @@
 <?php namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Auth;
 
-class CoverRequest extends Request {
+class UserRequest extends Request {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -20,7 +21,9 @@ class CoverRequest extends Request {
      */
     public function rules() {
         return [
-            'image' => 'required|mimes:jpeg,bmp,png'
+            'display_name'  =>  'required|min:3',
+            'avatar'        => 'mimes:jpeg,bmp,png',
+            'cover'         => 'mimes:jpeg,bmp,png',
         ];
     }
 

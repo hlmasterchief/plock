@@ -11,6 +11,7 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,300,600,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,300,600,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,300,700&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
 </head>
 <body>

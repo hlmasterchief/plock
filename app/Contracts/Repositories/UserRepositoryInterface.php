@@ -39,17 +39,17 @@ interface UserRepositoryInterface {
 
     /**
      * Update Profile avatar in Database
-     * @param  array  $modifiers
+     * @param  object  $modifiers
      * @return App\Models\Profile
      */
-    public function updateAvatar($id, array $modifiers);
+    public function updateAvatar($id, $modifiers);
 
     /**
      * Update Profile cover in Database
-     * @param  array  $modifiers
+     * @param  object  $modifiers
      * @return App\Models\Profile
      */
-    public function updateCover($id, array $modifiers);
+    public function updateCover($id, $modifiers);
 
     /**
      * Toggle follow user in Database
@@ -79,3 +79,11 @@ interface UserRepositoryInterface {
      * @return App\Models\Box
      */
     public function getBoxes($id);
+
+    /**
+     * Get user's bookmarks in Database
+     * @param  array  $modifiers
+     * @return App\Models\Bookmark
+     */
+    public function getBookmarks($id);
+}

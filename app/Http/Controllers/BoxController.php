@@ -19,7 +19,7 @@ class BoxController extends Controller {
         $this->auth = $auth;
         $this->view = $view;
 
-        $this->middleware('guest', ['except' => 'getLogout']);
+        // $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     /**
@@ -29,17 +29,30 @@ class BoxController extends Controller {
      */
     public function getRead($id = null) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('BoxController@getUpdate')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_valid'));
         }
 
         $box = $this->box->find($id);
         if (is_null($box)) {
-            return redirect()->action('BoxController@getUpdate')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_found'));
         }
 
-        return $this->view->make('box.read')->with('box' => $box);;
+        $header = [
+            'title'    => $box->title,
+            'type'     => 'box',
+            'id'       => $id,
+            'username' => $box->user()->first()->username,
+            'user_id'  => $box->user()->first()->id,
+            'display_name' => $box->user()->first()->displayName()
+        ];
+
+        $bookmarks = $box->bookmarks()->get();
+
+        return $this->view->make('box.read')->with('header', $header)
+                                            ->with('box', $box)
+                                            ->with('bookmarks', $bookmarks);
     }
 
     /**
@@ -57,9 +70,11 @@ class BoxController extends Controller {
      * @return Response
      */
     public function postCreate(\App\Http\Requests\BoxRequest $request) {
-        $this->box->create(Auth::id(), $request->all());
+        $id = $this->auth->user()->id;
 
-        return redirect()->action('BoxController@getCreate')
+        $box = $this->box->create($id, $request->all());
+
+        return redirect()->action('BoxController@getRead', array($box->id))
                             ->with('flash_message', trans('box.add_success'));
     }
 
@@ -70,17 +85,17 @@ class BoxController extends Controller {
      */
     public function getUpdate($id = null) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('BoxController@getUpdate')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_valid'));
         }
 
         $box = $this->box->find($id);
         if (is_null($box)) {
-            return redirect()->action('BoxController@getUpdate')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_found'));
         }
 
-        return $this->view->make('box.update')->with('box' => $box);
+        return $this->view->make('box.update')->with('box', $box);
     }
 
     /**
@@ -90,19 +105,19 @@ class BoxController extends Controller {
      */
     public function postUpdate($id = null, \App\Http\Requests\BoxRequest $request) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('BoxController@getUpdate')
+            return redirect()->action('BoxController@getRead', array($box->id))
                                 ->with('flash_message', trans('box.not_valid'));
         }
 
         $box = $this->box->find($id);
         if (is_null($box)) {
-            return redirect()->action('BoxController@getUpdate')
+            return redirect()->action('BoxController@getRead', array($box->id))
                                 ->with('flash_message', trans('box.not_found'));
         }
         
-        $this->box->update($id, $request->only('name', 'type'));
+        $this->box->update($id, $request->only('title', 'description'));
 
-        return redirect()->action('BoxController@getUpdate')
+        return redirect()->action('BoxController@getRead', array($box->id))
                             ->with('flash_message', trans('box.update_success'));
     }
 
@@ -113,17 +128,17 @@ class BoxController extends Controller {
      */
     public function getdelete($id = null) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('BoxController@getDelete')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_valid'));
         }
 
         $box = $this->box->find($id);
         if (is_null($box)) {
-            return redirect()->action('BoxController@getDelete')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_found'));
         }
 
-        return $this->view->make('box.delete')->with('box' => $box);
+        return $this->view->make('box.delete')->with('box', $box);
     }
 
     /**
@@ -133,19 +148,19 @@ class BoxController extends Controller {
      */
     public function postDelete($id = null) {
         if (!isset($id) or is_null($id)) {
-            return redirect()->action('BoxController@getDelete')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_valid'));
         }
 
         $box = $this->box->find($id);
         if (is_null($box)) {
-            return redirect()->action('BoxController@getDelete')
+            return redirect()->action('BookmarkController@getNewsFeed')
                                 ->with('flash_message', trans('box.not_found'));
         }
         
         $this->box->delete($id);
 
-        return redirect()->action('BoxController@getDelete')
+        return redirect()->action('BookmarkController@getNewsFeed')
                             ->with('flash_message', trans('box.delete_success'));
     }
 }

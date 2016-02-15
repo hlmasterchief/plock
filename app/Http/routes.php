@@ -13,19 +13,6 @@
 
 Route::get('/', 'WelcomeController@index');
 
-//set route for basic view
-Route::get('/home', function () {
-    return view('template.home');
-});
-Route::get('/profile', 'WelcomeController@posts_list');
-Route::get('/box', 'WelcomeController@box');
-Route::get('/boxs-list', 'WelcomeController@boxs_list');
-Route::get('/posts-list', 'WelcomeController@posts_list');
-
-Route::get('/post-test', function () {
-    return view('template.post');
-});
-
 /**
  * Authentication
  */
@@ -43,11 +30,15 @@ Route::post('/update', 'AuthenticationController@postUpdate');
 Route::get('/bookmark/create', 'BookmarkController@getCreate');
 Route::post('/bookmark/create', 'BookmarkController@postCreate');
 
-Route::get('/bookmark/update/{id}', 'BookmarkController@getUpdate');
+Route::post('/bookmark/save', 'BookmarkController@postSave');
+
+// Route::get('/bookmark/update/{id}', 'BookmarkController@getUpdate');
 Route::post('/bookmark/update/{id}', 'BookmarkController@postUpdate');
 
 Route::get('/bookmark/delete/{id}', 'BookmarkController@getDelete');
 Route::post('/bookmark/delete/{id}', 'BookmarkController@postDelete');
+
+Route::get('/bookmark/{id}', 'BookmarkController@getRead');
 
 Route::get('/favourite/create', 'FavouriteController@getCreate');
 Route::post('/favourite/create', 'FavouriteController@postCreate');
@@ -58,7 +49,8 @@ Route::post('/favourite/update/{id}', 'FavouriteController@postUpdate');
 Route::get('/favourite/delete/{id}', 'FavouriteController@getDelete');
 Route::post('/favourite/delete/{id}', 'FavouriteController@postDelete');
 
-Route::post('/favourite/search', 'FavouriteController@postSearch');
+Route::get('/favourite/search', 'FavouriteController@getSearch');
+Route::get('/favourite/searchJson', 'FavouriteController@getSearchJson');
 
 Route::post('/follow/toggle', 'UserController@postToggleFollow');
 
@@ -70,7 +62,7 @@ Route::get('/{username}/followings', 'UserController@getFollowingsByName');
 Route::get('/followings/{id}', 'UserController@getFollowings');
 Route::get('/followings', 'UserController@getFollowings');
 
-Route::get('/comment/create', 'CommentController@getCreate');
+// Route::get('/comment/create', 'CommentController@getCreate');
 Route::post('/comment/create', 'CommentController@postCreate');
 
 Route::get('/comment/update/{id}', 'CommentController@getUpdate');
@@ -82,23 +74,24 @@ Route::post('/comment/delete/{id}', 'CommentController@postDelete');
 Route::get('/profile/update', 'UserController@getUpdate');
 Route::post('/profile/update', 'UserController@postUpdate');
 
-Route::get('/upload/avatar', 'UserController@getAvatar');
-Route::post('/upload/avatar', 'UserController@postAvatar');
-
-Route::get('/upload/cover', 'UserController@getCover');
-Route::post('/upload/cover', 'UserController@postCover');
-
 Route::get('/{username}/boxes', 'UserController@getBoxesByName');
 Route::get('/boxes/{id}', 'UserController@getBoxes');
 Route::get('/boxes', 'UserController@getBoxes');
 
-Route::get('/box/{id}', 'BoxController@getRead');
-
-Route::get('/box/create', 'BoxController@getCreate');
+// Route::get('/box/create', 'BoxController@getCreate');
 Route::post('/box/create', 'BoxController@postCreate');
 
-Route::get('/box/update/{id}', 'BoxController@getUpdate');
+// Route::get('/box/update/{id}', 'BoxController@getUpdate');
 Route::post('/box/update/{id}', 'BoxController@postUpdate');
 
 Route::get('/box/delete/{id}', 'BoxController@getDelete');
 Route::post('/box/delete/{id}', 'BoxController@postDelete');
+
+Route::get('/box/{id}', 'BoxController@getRead');
+
+Route::get('/user/{id}', 'UserController@getBookmarks');
+Route::get('/user', 'UserController@getBookmarks');
+
+Route::get('/news', 'BookmarkController@getNewsFeed');
+
+Route::get('/{username}', 'UserController@getBookmarksByName');

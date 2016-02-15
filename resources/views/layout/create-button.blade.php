@@ -12,12 +12,12 @@
             </div>
         </div>
 
-        <ul class="dropdown-menu" role="menu">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="createPost">Create post</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="createBox">Create box</a></li>
+        <ul class="dropdown-menu">
+            <li id="createPost">Create bookmark</li>
+            <li id="createBox">Create box</li>
         </ul>
     </div>
 </div>
 
-@include('template.create_post')
-@include('template.create_box')
+@include('bookmark.create')
+@include('box.create')

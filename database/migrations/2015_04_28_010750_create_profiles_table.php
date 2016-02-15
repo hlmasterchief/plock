@@ -20,7 +20,7 @@ class CreateProfilesTable extends Migration {
             $table->string('location');
             $table->string('homepage');
             $table->string('description');
-            $table->string('avatar');
+            $table->string('avatar')->default('/img/noava.png');
             $table->string('cover');
             $table->timestamps();
         });
