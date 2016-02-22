@@ -230,8 +230,8 @@ class BookmarkController extends Controller {
 
         $bookmarks = $bookmarks->merge($this->auth->user()->bookmarks);
 
-        $bookmarks->sort(function($value) {
-            return $value->id;
+        $bookmarks->sortByDesc(function($value) {
+            return $value->created_at;
         });
 
         return $this->view->make('template.home')->with('bookmarks', $bookmarks);

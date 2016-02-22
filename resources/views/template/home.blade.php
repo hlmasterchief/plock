@@ -19,7 +19,7 @@
 
         <div class="media-body">
             <p>{{ $bookmark->user->profile->display_name }} bookmark a {{ str_singular($bookmark->favourite->type) }}</p>
-            <h4 class="media-heading"><small><abbr title="12:26am" data-livestamp="{{ $bookmark->created_at }}"></abbr></small></h4>
+            <h4 class="media-heading"><small><abbr title="{{ $bookmark->created_at }}" data-livestamp="{{ $bookmark->created_at }}"></abbr></small></h4>
 
             <div class="panel panel-default">
             <div class="panel-body">
