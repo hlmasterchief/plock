@@ -49,7 +49,7 @@
             </div>
 
             {{-- FORM 2 select 1 type --}}
-            <form class="createPost-form">
+            <form class="createPost-form" id="createPost-form-2">
                 <div class="modal-body">
                 <h3><span id="search-words"></span> is existed in Plock</h3>
                 <p>Choose existed <span id="search-type"></span> below or create a new one</p>

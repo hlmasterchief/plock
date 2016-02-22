@@ -40,7 +40,7 @@ $(document).ready(function(){
         $("#inputEditBookmark").modal('show');
     });
 
-    $(".addPost").click(function(){
+    $("#addPost").click(function(){
         var id = $(this).attr("value");
         $("#bookmark_id").attr("value", id);
         $("#inputAddPost").modal('show');
@@ -133,4 +133,10 @@ $(document).ready(function(){
         });
     });
 
+    $("#createPost-form-2").submit(function(event) {
+        event.preventDefault();
+
+        $('#inputPost-2').modal('hide');
+        $('#inputPost-3').modal('show');
+    });
 });
